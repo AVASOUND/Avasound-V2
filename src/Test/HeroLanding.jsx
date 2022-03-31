@@ -14,6 +14,7 @@ import { ChevronRightIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import SetupMap from './SetupMap'
+import Newsletter from './Newsletter'
 
 const navigation = [
   { name: 'Info', href: '#' },
@@ -370,7 +371,7 @@ export default function HeroLanding() {
                   </p>
                   <div className="mt-10 sm:mt-12">
                     <form action="#" className="sm:mx-auto sm:max-w-xl lg:mx-0">
-                      <div className="sm:flex">
+                      {/* <div className="sm:flex">
                         <div className="min-w-0 flex-1">
                           <label htmlFor="email" className="sr-only">
                             Email address
@@ -390,15 +391,15 @@ export default function HeroLanding() {
                             Get Newsletter
                           </button>
                         </div>
-                      </div>
-                      <p className="mt-3 text-sm text-gray-300 sm:mt-4">
-                        Before you start please read the{' '}
+                      </div> */}
+                      <p className="mt-3 pb-8 text-sm text-gray-300 sm:mt-4 sm:pb-0">
+                        Read the{' '}
                         <a
                           href="#"
                           className="font-medium text-white"
                           // onClick={()=> setTOA(true)}
                         >
-                          terms of service
+                          Terms Of Service
                         </a>
                         .
                       </p>
@@ -469,8 +470,9 @@ export default function HeroLanding() {
               </div>
             </div>
           </div>
+          <Newsletter />
           {/* Feature section with screenshot */}
-          <div className="relative bg-gray-50 pt-16 sm:pt-24 lg:pt-32">
+          <div className="relative bg-gray-50 pt-8 sm:pt-24 lg:pt-16">
             <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="flex flex-col items-center space-y-8 pb-16">
                 <h2 className=" text-base font-semibold uppercase tracking-wider text-teal-600">

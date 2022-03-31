@@ -1,35 +1,27 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
 import Header from '../src/components/Header'
-import Liveticker from '../src/components/Liveticker'
-import MarketplaceNav from '../src/Test/MarketplaceNav'
-import TrendingSection from '../src/Test/TrendingSection'
-import MPFeatures from '../src/components/MPFeatures'
+import ProfilePage from '../src/components/Profile/ProfilePage'
 
 const Home: NextPage = () => {
-  const { isAuthenticated, user } = useMoralis()
+  const { isAuthenticated } = useMoralis()
 
   if (!isAuthenticated) return <Login />
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center ">
+    <div className="flex min-h-screen flex-col items-center bg-white">
       <Head>
-        <title>Avasound Market</title>
+        <title>AVSO Profile</title>
         <link rel="icon" href="/avso-teal.png" />
       </Head>
-      {/* Header Section in App */}
+      {/* Header Section App */}
       <Header />
-      {/* Navigation Section for Marketplace */}
-      <MarketplaceNav />
-      {/* Add Selling Right Now Section */}
-      <TrendingSection />
-      {/* Featured on the Frontpage */}
-      <MPFeatures />
+      {/* Profile Section */}
+      <ProfilePage />
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
+      {/* <footer className="flex h-12 w-full items-center justify-center border-t">
         <a
           className="flex items-center justify-center gap-2"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -43,7 +35,7 @@ const Home: NextPage = () => {
             height={16}
           />
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }

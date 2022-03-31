@@ -44,9 +44,7 @@ export default function Header() {
   function openHomepage() {
     router.push('/')
   }
-  function openMusicPage() {
-    router.push('/music')
-  }
+
   function openCommunity() {
     router.push('/community')
   }
@@ -64,7 +62,7 @@ export default function Header() {
           <div
             onClick={openHomepage}
             className={`cursor-pointer ${
-              router.pathname == '/' ? 'animate-pulse text-teal-300' : ''
+              router.pathname === '/' ? 'animate-pulse text-teal-300' : ''
             }`}
           >
             <HeaderItem title="Discover" Icon={HomeIcon} />
@@ -73,7 +71,7 @@ export default function Header() {
             <div
               onClick={openProfile}
               className={`cursor-pointer ${
-                router.pathname == '/profile'
+                router.pathname === '/profile'
                   ? 'animate-pulse text-teal-300'
                   : ''
               }`}

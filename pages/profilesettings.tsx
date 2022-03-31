@@ -5,9 +5,8 @@ import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
 import Header from '../src/components/Header'
 import Liveticker from '../src/components/Liveticker'
-import MarketplaceNav from '../src/Test/MarketplaceNav'
-import TrendingSection from '../src/Test/TrendingSection'
-import MPFeatures from '../src/components/MPFeatures'
+import ProfileSettings from '../src/Test/ProfileSettings'
+import ProfileMain from '../src/Test/ProfileMain'
 
 const Home: NextPage = () => {
   const { isAuthenticated, user } = useMoralis()
@@ -15,19 +14,18 @@ const Home: NextPage = () => {
   if (!isAuthenticated) return <Login />
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center ">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <Head>
-        <title>Avasound Market</title>
+        <title>Avasound Profile</title>
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section in App */}
       <Header />
-      {/* Navigation Section for Marketplace */}
-      <MarketplaceNav />
-      {/* Add Selling Right Now Section */}
-      <TrendingSection />
-      {/* Featured on the Frontpage */}
-      <MPFeatures />
+      {/* Profile Navigation Section */}
+      {/* <MarketplaceNav /> */}
+      {/* <TrendingSection /> */}
+      {/* <ProfileMain /> */}
+      <ProfileSettings />
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a
