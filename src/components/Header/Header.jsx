@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import HeaderItem from './HeaderItem'
 import { useState, useEffect, useRef } from 'react'
 import { useMoralis } from 'react-moralis'
+import WalletPopover from '../../Test/WalletPopover'
 
 export default function Header() {
   const router = useRouter()
@@ -95,12 +96,13 @@ export default function Header() {
           {auth ? (
             <div
               //   onClick={() => setWalletModal((b) => !b)}
-              onClick={logout}
+              // onClick={logout}
               className={`cursor-pointer ${
                 walletModal ? 'animate-pulse text-teal-300' : ''
               }`}
             >
-              <HeaderItem title="Wallet" Icon={CreditCardIcon} />
+              {/* <HeaderItem title="Wallet" Icon={CreditCardIcon} /> */}
+              <WalletPopover />
             </div>
           ) : (
             <div

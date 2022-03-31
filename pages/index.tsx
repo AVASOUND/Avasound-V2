@@ -3,11 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-import Header from '../src/components/Header'
-import Liveticker from '../src/components/Liveticker'
+import Header from '../src/components/Header/Header'
 import MarketplaceNav from '../src/Test/MarketplaceNav'
 import TrendingSection from '../src/Test/TrendingSection'
-import MPFeatures from '../src/components/MPFeatures'
+import Features from '../src/components/Market/Features'
 
 const Home: NextPage = () => {
   const { isAuthenticated, user } = useMoralis()
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
       {/* Add Selling Right Now Section */}
       <TrendingSection />
       {/* Featured on the Frontpage */}
-      <MPFeatures />
+      <Features />
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a

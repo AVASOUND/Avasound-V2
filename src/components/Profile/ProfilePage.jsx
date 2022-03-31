@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import { CogIcon } from '@heroicons/react/outline'
+import { CogIcon, PlusCircleIcon } from '@heroicons/react/outline'
 import { MailIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
 import { useMoralis } from 'react-moralis'
@@ -126,16 +126,16 @@ export default function ProfilePage() {
                           <p>78 Records</p>
                           <p>1000 Followers</p>
                           <p>100 Following</p>
-                          {/* <button
+                          <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                           >
-                            <MailIcon
+                            <PlusCircleIcon
                               className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                               aria-hidden="true"
                             />
-                            <span>Message</span>
-                          </button> */}
+                            <span>Follow</span>
+                          </button>
                           <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"

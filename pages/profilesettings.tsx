@@ -3,10 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-import Header from '../src/components/Header'
-import Liveticker from '../src/components/Liveticker'
+import Header from '../src/components/Header/Header'
 import ProfileSettings from '../src/Test/ProfileSettings'
-import ProfileMain from '../src/Test/ProfileMain'
 
 const Home: NextPage = () => {
   const { isAuthenticated, user } = useMoralis()

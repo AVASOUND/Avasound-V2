@@ -1,6 +1,6 @@
-import Albumcard from '../components/Albumcard'
+import Albumcard from '../Albumcard'
 
-export default function MPFeatures() {
+export default function Features() {
   return (
     <div className="w-full py-8 sm:py-24 lg:py-8 lg:px-8">
       <div className="flex items-center justify-between px-4 sm:px-4 lg:px-4">

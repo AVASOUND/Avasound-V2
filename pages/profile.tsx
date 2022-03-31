@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-import Header from '../src/components/Header'
+import Header from '../src/components/Header/Header'
 import ProfilePage from '../src/components/Profile/ProfilePage'
 
 const Home: NextPage = () => {

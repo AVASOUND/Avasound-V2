@@ -39,15 +39,19 @@ export default function Trending() {
           </h2>
         </div>
 
-        <div className="relative mx-24 mt-4">
+        <div className="relative mt-4 sm:mx-28">
           <div className="relative w-full items-center overflow-x-auto">
-            <ul role="list" className=" mx-4 inline-flex space-x-2 sm:mx-4 ">
+            <ul role="list" className=" mx-4 inline-flex space-x-2 sm:mx-4">
               {trendingProducts.map((product) => (
                 <li
                   key={product.id}
                   className="inline-flex w-full flex-row
                  text-center lg:w-full "
                 >
+                  <AlbumcardSmall />
+                  <AlbumcardSmall />
+                  <AlbumcardSmall />
+                  <AlbumcardSmall />
                   <AlbumcardSmall />
                   <AlbumcardSmall />
                   <AlbumcardSmall />
