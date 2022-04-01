@@ -11,6 +11,7 @@ import {
   PhoneIcon,
 } from '@heroicons/react/outline'
 import HeaderItem from '../components/Header/HeaderItem'
+import { useMoralis } from 'react-moralis'
 
 const solutions = [
   {
@@ -56,6 +57,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const { logout } = useMoralis()
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -102,20 +104,27 @@ export default function Example() {
                   ))}
                 </div>
                 <div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
-                  {callsToAction.map((item) => (
-                    <div key={item.name} className="flow-root">
-                      <a
-                        href={item.href}
-                        className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100"
-                      >
-                        <item.icon
-                          className="h-6 w-6 flex-shrink-0 text-gray-400"
-                          aria-hidden="true"
-                        />
-                        <span className="ml-3">{item.name}</span>
-                      </a>
-                    </div>
-                  ))}
+                  <button
+                    className="flex flex-row items-center text-black"
+                    onClick={logout}
+                  >
+                    <LogoutIcon className="ml-2 h-5 rotate-180" />
+                    Logout
+                    {callsToAction.map((item) => (
+                      <div key={item.name} className="flow-root">
+                        <a
+                          href={item.href}
+                          className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100"
+                        >
+                          <item.icon
+                            className="h-6 w-6 flex-shrink-0 text-gray-400"
+                            aria-hidden="true"
+                          />
+                          <span className="ml-3">{item.name}</span>
+                        </a>
+                      </div>
+                    ))}
+                  </button>
                 </div>
               </div>
             </Popover.Panel>
