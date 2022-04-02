@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
 import Header from '../src/components/Header/Header'
-import ProfileSettings from '../src/Test/ProfileSettings'
+import ProfileSettings from '../src/components/Profile/ProfileSettings'
 
 const Home: NextPage = () => {
   const { isAuthenticated, user } = useMoralis()

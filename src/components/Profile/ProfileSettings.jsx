@@ -1,29 +1,3 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  const colors = require('tailwindcss/colors')
-  
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        colors: {
-          sky: colors.sky,
-          teal: colors.teal,
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Switch, Transition } from '@headlessui/react'
 import { SearchIcon } from '@heroicons/react/solid'
@@ -38,6 +12,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
+import { useMoralis, useMoralisFile } from 'react-moralis'
 
 const user = {
   name: 'Debbie Lewis',
@@ -56,7 +31,7 @@ const subNavigation = [
   { name: 'Account', href: '#', icon: CogIcon, current: false },
   { name: 'Password', href: '#', icon: KeyIcon, current: false },
   { name: 'Notifications', href: '#', icon: BellIcon, current: false },
-  { name: 'Billing', href: '#', icon: CreditCardIcon, current: false },
+  { name: 'Wallet', href: '#', icon: CreditCardIcon, current: false },
   { name: 'Integrations', href: '#', icon: ViewGridAddIcon, current: false },
 ]
 const userNavigation = [
@@ -76,6 +51,110 @@ export default function Example() {
   const [allowMentions, setAllowMentions] = useState(true)
 
   const router = useRouter()
+  const { user, Moralis } = useMoralis()
+  const { saveFile } = useMoralisFile()
+
+  async function saveProfile(e) {
+    e.preventDefault()
+
+    //profile
+    const userName = document.getElementById('userName').value
+    const userBio = document.getElementById('userBio').value
+    const artistName = document.getElementById('artistName').value
+    const userUrl = document.getElementById('userUrl').value
+    const userEmail = document.getElementById('userEmail').value
+    const userImg = document.getElementById('userImg').files[0]
+    // const coverImg = document.getElementById('coverImg').files[0]
+
+    let ipfsProfile = ''
+    let ipfsCover = ''
+
+    if (userImg) {
+      console.log('uploading profile picture')
+      await saveFile('userImg', userImg, { saveIPFS: true }).then(
+        async (hash) => {
+          console.log(hash)
+          ipfsProfile = hash._ipfs
+        }
+      )
+    }
+    // if (coverImg) {
+    //   console.log('uploading file')
+    //   await saveFile('coverImg', coverImg, { saveIPFS: true }).then(
+    //     async (hash) => {
+    //       console.log(hash)
+    //       ipfsCover = hash._ipfs
+    //     }
+    //   )
+    // }
+
+    // Map through Interested In & Pronouns Section
+
+    // const InterestedIn = Moralis.Object.extend('InterestedIn')
+    // const int = new InterestedIn()
+    // int.set('objectId', selectIntId[selectedInt])
+
+    // console.log(selectIntId[selectedInt])
+    // const Pronouns = Moralis.Object.extend('Pronouns')
+    // const pro = new Pronouns()
+    // pro.set('objectId', selectPronId[selectedPron])
+
+    // Lens Protocol
+
+    // const updateProfileRequest = {
+    //   profileId: user.get('profileId'),
+    //   name: firstName + ' ' + lastName,
+    //   bio: userBio,
+    //   location: location,
+    //   website: null,
+    //   twitterUrl: null,
+    // }
+
+    // const createProfileRequest = {
+    //   handle: userName,
+    //   profilePictureUri: ipfsProfile,
+    //   followNFTURI: null,
+    //   followModule: null,
+    // }
+
+    // if (!getAuthenticationToken()) {
+    //   console.log('You are not logged in')
+    //   return
+    // }
+
+    // Lens Integration 2
+
+    // if (user.get('profileId') == undefined) {
+    //   createProfile(createProfileRequest).then(
+    //     (result) => {
+    //       if (result.data.createProfile.reason == 'HANDLE_TAKEN')
+    //         console.log(result)
+    //     },
+    //     (err) => {
+    //       console.log('Error')
+    //     }
+    //   )
+    // } else {
+    //   const result = await updateProfile(updateProfileRequest)
+    //   console.log('UpdateProfile', result)
+    // }
+
+    // save user info
+    user.set('username', userName)
+    user.set('artistName', artistName)
+    user.set('userbio', userBio)
+    user.set('userEmail', userEmail)
+    user.set('userUrl', userUrl)
+    if (ipfsProfile) user.set('userImg', ipfsProfile)
+    // if (ipfsCover) user.set('coverImg', ipfsCover)
+
+    // user.set('profileId', profileID)
+    //saving
+    user.save().then((object) => {
+      alert('saved')
+      router.push('/profile')
+    })
+  }
 
   return (
     <div className="w-full">
@@ -203,8 +282,8 @@ export default function Example() {
                           </span>
                           <input
                             type="text"
-                            name="username"
-                            id="username"
+                            name="userName"
+                            id="userName"
                             autoComplete="username"
                             className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                             defaultValue={user.handle}
@@ -221,16 +300,15 @@ export default function Example() {
                         </label>
                         <div className="mt-1">
                           <textarea
-                            id="about"
-                            name="about"
+                            id="userBio"
+                            name="userBio"
                             rows={3}
                             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                             defaultValue={''}
                           />
                         </div>
                         <p className="mt-2 text-sm text-gray-500">
-                          Brief description for your profile. URLs are
-                          hyperlinked.
+                          Brief description for your profile.
                         </p>
                       </div>
                     </div>
@@ -264,8 +342,8 @@ export default function Example() {
                                 <span className="sr-only"> user photo</span>
                               </label>
                               <input
-                                id="mobile-user-photo"
-                                name="user-photo"
+                                id="userImg"
+                                name="user"
                                 type="file"
                                 className="absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
                               />
@@ -288,8 +366,8 @@ export default function Example() {
                           <span className="sr-only"> user photo</span>
                           <input
                             type="file"
-                            id="desktop-user-photo"
-                            name="user-photo"
+                            id="userImg"
+                            name="userImg"
                             className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
                           />
                         </label>
@@ -307,8 +385,8 @@ export default function Example() {
                       </label>
                       <input
                         type="text"
-                        name="first-name"
-                        id="first-name"
+                        name="artistName"
+                        id="artistName"
                         autoComplete="given-name"
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                       />
@@ -339,8 +417,8 @@ export default function Example() {
                       </label>
                       <input
                         type="text"
-                        name="url"
-                        id="url"
+                        name="userUrl"
+                        id="userUrl"
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                       />
                     </div>
@@ -350,12 +428,12 @@ export default function Example() {
                         htmlFor="company"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Booking Email
+                        Contact Email
                       </label>
                       <input
                         type="email"
-                        name="company"
-                        id="company"
+                        name="userEmail"
+                        id="userEmail"
                         autoComplete="organization"
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                       />
@@ -531,6 +609,7 @@ export default function Example() {
                     <button
                       type="submit"
                       className="ml-5 inline-flex justify-center rounded-md border border-transparent bg-sky-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
+                      onClick={saveProfile}
                     >
                       Save
                     </button>

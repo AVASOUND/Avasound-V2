@@ -121,11 +121,11 @@ export default function ProfilePage() {
                           <h1 className="truncate text-2xl font-bold text-gray-900">
                             {profile.name}
                           </h1>
-                        </div>
-                        <div className="justify-stretch mt-6 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:space-y-0 sm:space-x-4">
                           <p>78 Records</p>
                           <p>1000 Followers</p>
                           <p>100 Following</p>
+                        </div>
+                        <div className="justify-stretch mt-6 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:space-y-0 sm:space-x-4">
                           <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
