@@ -1,7 +1,8 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 
 import AlbumcardSmall from '../components/AlbumcardSmall'
+import { useMoralis } from 'react-moralis'
 
 const trendingProducts = [
   {
@@ -22,11 +23,29 @@ const trendingProducts = [
   },
   // More products...
 ]
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Trending() {
+  const { Moralis, user } = useMoralis()
+
+  // CONTENT / ITEMS
+  const [content, setContent] = useState([])
+  const [likedBy, setLikedBy] = useState(false)
+
+  useEffect(() => {
+    if (user) {
+      const Album = Moralis.Object.extend('Album')
+      const query = new Moralis.Query(Album)
+      // query.equalTo('address', user.get('ethAddress'))
+      query.find().then((results) => {
+        let result = []
+        results.forEach((content) => {
+          result.push(content)
+        })
+        setContent(result)
+      })
+    }
+  }, [user])
+
   return (
     <section aria-labelledby="trending-heading" className="w-full">
       <div className="w-full py-8 sm:py-24 lg:py-8 lg:px-8">
@@ -42,19 +61,14 @@ export default function Trending() {
         <div className="relative mt-4 sm:mx-28">
           <div className="relative w-full items-center overflow-x-auto">
             <ul role="list" className=" mx-4 inline-flex space-x-2 sm:mx-4">
-              {trendingProducts.map((product) => (
+              {/* {trendingProducts.map((product) => (
                 <li
                   key={product.id}
                   className="inline-flex w-full flex-row
                  text-center lg:w-full "
-                >
-                  <AlbumcardSmall />
-                  <AlbumcardSmall />
-                  <AlbumcardSmall />
-                  <AlbumcardSmall />
-                  <AlbumcardSmall />
-                  <AlbumcardSmall />
-                  <AlbumcardSmall />
+                > */}
+              {content.map((data, index) => (
+                <li key={index}>
                   <AlbumcardSmall />
                 </li>
               ))}

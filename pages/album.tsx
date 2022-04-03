@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
 import Header from '../src/components/Header/Header'
-import ProfilePage from '../src/components/Profile/ProfilePage'
+import AlbumPage from '../src/components/Album/AlbumPage'
 
 const Home: NextPage = () => {
   const { isAuthenticated } = useMoralis()
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       {/* Header Section App */}
       <Header />
       {/* Profile Section */}
-      <ProfilePage />
+      <AlbumPage />
 
       {/* <footer className="flex h-12 w-full items-center justify-center border-t">
         <a

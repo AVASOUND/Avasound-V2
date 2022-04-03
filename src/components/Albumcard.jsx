@@ -20,7 +20,7 @@ export default function Albumcard() {
     // or add to cart
   }
   return (
-    <div className="relative my-8 flex h-60 w-56 flex-col items-center justify-start overflow-hidden rounded-lg bg-white shadow-xl sm:mx-4 lg:mx-8">
+    <div className="relative my-4 flex h-60 w-56 flex-col items-center justify-start overflow-hidden rounded-lg bg-white shadow-xl sm:mx-4 lg:mx-8">
       <div className="relative w-full">
         {/* <div className="absolute flex items-end left-1 top-1 z-50 bg-[#f5f5f5] w-5 h-5">
           <ShoppingCartIcon className="w-5 h-5" />
