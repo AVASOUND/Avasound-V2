@@ -55,15 +55,21 @@ export default function Example() {
   const { user, Moralis } = useMoralis()
   const { saveFile } = useMoralisFile()
 
+  const [userName, setUserName] = useState(user.get('username'))
+  const [userBio, setUserBio] = useState(user.get('userbio'))
+  const [artistName, setArtistName] = useState(user.get('artistName'))
+  const [userUrl, setUserUrl] = useState(user.get('userUrl'))
+  const [userEmail, setUserEmail] = useState(user.get('email'))
+  const [userImg, setUserImg] = useState(user.get('userImg'))
+
   async function saveProfile(e) {
     e.preventDefault()
-
     //profile
     const userName = document.getElementById('userName').value
     const userBio = document.getElementById('userBio').value
     const artistName = document.getElementById('artistName').value
     const userUrl = document.getElementById('userUrl').value
-    const userEmail = document.getElementById('userEmail').value
+    const userEmail = document.getElementById('email').value
     const userImg = document.getElementById('userImg').files[0]
     // const coverImg = document.getElementById('coverImg').files[0]
 
@@ -144,7 +150,7 @@ export default function Example() {
     user.set('username', userName)
     user.set('artistName', artistName)
     user.set('userbio', userBio)
-    user.set('userEmail', userEmail)
+    user.set('email', userEmail)
     user.set('userUrl', userUrl)
     if (ipfsProfile) user.set('userImg', ipfsProfile)
     // if (ipfsCover) user.set('coverImg', ipfsCover)
@@ -296,6 +302,8 @@ export default function Example() {
                             type="text"
                             name="userName"
                             id="userName"
+                            value={userName}
+                            onChange={(e) => setUserName(e.target.value)}
                             autoComplete="username"
                             className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                             defaultValue={user.handle}
@@ -314,6 +322,8 @@ export default function Example() {
                           <textarea
                             id="userBio"
                             name="userBio"
+                            value={userBio}
+                            onChange={(e) => setUserBio(e.target.value)}
                             rows={3}
                             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                             defaultValue={''}
@@ -367,7 +377,7 @@ export default function Example() {
                       <div className="relative hidden overflow-hidden rounded-full lg:block">
                         <img
                           className="relative h-40 w-40 rounded-full"
-                          src={user.imageUrl}
+                          src={user.userImg}
                           alt=""
                         />
                         <label
@@ -380,7 +390,7 @@ export default function Example() {
                             type="file"
                             id="userImg"
                             name="userImg"
-                            className="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+                            className="absolute inset-0 z-50 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
                           />
                         </label>
                       </div>
@@ -399,6 +409,8 @@ export default function Example() {
                         type="text"
                         name="artistName"
                         id="artistName"
+                        value={artistName}
+                        onChange={(e) => setArtistName(e.target.value)}
                         autoComplete="given-name"
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                       />
@@ -431,6 +443,8 @@ export default function Example() {
                         type="text"
                         name="userUrl"
                         id="userUrl"
+                        value={userUrl}
+                        onChange={(e) => setUserUrl(e.target.value)}
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                       />
                     </div>
@@ -444,8 +458,10 @@ export default function Example() {
                       </label>
                       <input
                         type="email"
-                        name="userEmail"
-                        id="userEmail"
+                        name="email"
+                        id="email"
+                        value={userEmail}
+                        onChange={(e) => setUserEmail(e.target.value)}
                         autoComplete="organization"
                         className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                       />
