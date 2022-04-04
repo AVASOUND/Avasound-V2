@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
 import Header from '../src/components/Header/Header'
-import MarketplaceNav from '../src/Test/MarketplaceNav'
+import MarketNav from '../src/components/Market/MarketNav'
 import TrendingSection from '../src/Test/TrendingSection'
 import Features from '../src/components/Market/Features'
 
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       {/* Header Section in App */}
       <Header />
       {/* Navigation Section for Marketplace */}
-      <MarketplaceNav />
+      <MarketNav />
       {/* Add Selling Right Now Section */}
       <TrendingSection />
       {/* Featured on the Frontpage */}

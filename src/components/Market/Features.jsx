@@ -2,7 +2,7 @@ import { CashIcon, PlayIcon } from '@heroicons/react/outline'
 import { HeartIcon } from '@heroicons/react/solid'
 import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
-import Albumcard from '../Albumcard'
+import Albumcard from '../Album/Albumcard'
 
 export default function Features() {
   const { Moralis, user } = useMoralis()

@@ -1,35 +1,33 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
 import {
-  ChartBarIcon,
+  CashIcon,
   CogIcon,
   CreditCardIcon,
-  CursorClickIcon,
   LogoutIcon,
-  PhoneIcon,
+  UserIcon,
 } from '@heroicons/react/outline'
-import HeaderItem from '../components/Header/HeaderItem'
+import HeaderItem from './HeaderItem'
 import { useMoralis } from 'react-moralis'
 
 const solutions = [
-  {
-    name: 'Wallet',
-    description:
-      'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: ChartBarIcon,
-  },
+  // {
+  //   name: 'Wallet',
+  //   description:
+  //     'Get a better understanding of where your traffic is coming from.',
+  //   href: '#',
+  //   icon: CashIcon,
+  // },
   {
     name: 'Fiat Onramp',
     description: 'Buy any cryptocurrency with your credit card. 100% safe.',
     href: '#',
-    icon: CursorClickIcon,
+    icon: CreditCardIcon,
   },
   {
     name: 'Settings',
-    description: "Your customers' data will be safe and secure.",
+    description: 'Edit your Account.',
     href: '/profilesettings',
     icon: CogIcon,
   },
@@ -49,7 +47,7 @@ const solutions = [
 ]
 const callsToAction = [
   { name: 'Logout', href: '#', icon: LogoutIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
+  // { name: 'Contact Sales', href: '#', icon: PhoneIcon },
 ]
 
 function classNames(...classes) {
@@ -57,7 +55,27 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const { logout } = useMoralis()
+  const { logout, user } = useMoralis()
+
+  const [walletSolution, setWalletSolution] = useState([
+    {
+      name: '',
+      description: '',
+      href: '',
+      icon: CashIcon,
+    },
+  ])
+
+  useEffect(() => {
+    setWalletSolution([
+      {
+        name: user.get('username'),
+        description: user.get('ethAddress'),
+        href: '/profile',
+        icon: UserIcon,
+      },
+    ])
+  }, [])
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -79,9 +97,29 @@ export default function Example() {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute z-10 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0">
+            <Popover.Panel className="absolute -left-36 z-50 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0 lg:left-0 ">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                  {walletSolution.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50"
+                    >
+                      <item.icon
+                        className="h-6 w-6 flex-shrink-0 text-teal-500"
+                        aria-hidden="true"
+                      />
+                      <div className="ml-4">
+                        <p className="text-base font-medium text-gray-900">
+                          {item.name}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {item.description}
+                        </p>
+                      </div>
+                    </a>
+                  ))}
                   {solutions.map((item) => (
                     <a
                       key={item.name}
@@ -108,22 +146,15 @@ export default function Example() {
                     className="flex flex-row items-center text-black"
                     onClick={logout}
                   >
-                    <LogoutIcon className="ml-2 h-5 rotate-180" />
-                    Logout
-                    {callsToAction.map((item) => (
-                      <div key={item.name} className="flow-root">
-                        <a
-                          href={item.href}
-                          className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100"
-                        >
-                          <item.icon
-                            className="h-6 w-6 flex-shrink-0 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-3">{item.name}</span>
-                        </a>
-                      </div>
-                    ))}
+                    <div className="flow-root">
+                      <a className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100">
+                        <LogoutIcon
+                          className="h-6 w-6 flex-shrink-0 text-gray-400"
+                          aria-hidden="true"
+                        />
+                        <span className="ml-3">Logout</span>
+                      </a>
+                    </div>
                   </button>
                 </div>
               </div>

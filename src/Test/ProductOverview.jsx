@@ -12,6 +12,7 @@ const product = {
   price: '$10',
   description: 'Digital download with community perks',
   highlights: ['Digital Download in MP3 & WAV', 'Exclusive Community Access'],
+  music: ['Side A: Simaese Twins', 'Side B: The Oracles Call'],
   imageSrc:
     'https://tailwindui.com/img/ecommerce-images/product-page-05-product-01.jpg',
   imageAlt:
@@ -236,8 +237,8 @@ export default function Example() {
               <h3 className="text-sm font-medium text-gray-900">Music</h3>
               <div className="prose prose-sm mt-4 text-gray-500">
                 <ul role="list">
-                  {product.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
+                  {product.music.map((music) => (
+                    <li key={music}>{music}</li>
                   ))}
                 </ul>
               </div>
@@ -348,7 +349,7 @@ export default function Example() {
                     Comments
                   </Tab>
 
-                  {/* <Tab
+                  <Tab
                     className={({ selected }) =>
                       classNames(
                         selected
@@ -359,7 +360,7 @@ export default function Example() {
                     }
                   >
                     License
-                  </Tab> */}
+                  </Tab>
                 </Tab.List>
               </div>
               <Tab.Panels as={Fragment}>

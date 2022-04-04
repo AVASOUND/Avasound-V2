@@ -311,7 +311,7 @@ export default function HeroLanding() {
                       </a>
                     ))}
                   </div>
-                  <div className="mt-6 px-5">
+                  <div className="mt-6 px-5" onClick={authenticate}>
                     <a
                       href="#"
                       className="block w-full rounded-md bg-gradient-to-r from-teal-500 to-cyan-600 py-3 px-4 text-center font-medium text-white shadow hover:from-teal-600 hover:to-cyan-700"

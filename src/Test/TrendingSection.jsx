@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 
-import AlbumcardSmall from '../components/AlbumcardSmall'
+import AlbumcardSmall from '../components/Album/AlbumcardSmall'
 import { useMoralis } from 'react-moralis'
 
 const trendingProducts = [

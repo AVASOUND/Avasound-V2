@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis, useMoralisFile } from 'react-moralis'
+import Notifications from './NotificationSaved'
 
 const user = {
   name: 'Debbie Lewis',
@@ -151,9 +152,19 @@ export default function Example() {
     // user.set('profileId', profileID)
     //saving
     user.save().then((object) => {
-      alert('saved')
-      router.push('/profile')
+      setNotificationSaved(true)
+      // router.push('/profile')
     })
+  }
+
+  const [notificationSaved, setNotificationSaved] = useState(false)
+
+  const handleNotif = () => {
+    if (notificationSaved) {
+      setNotificationSaved(false)
+    } else {
+      setNotificationSaved(true)
+    }
   }
 
   return (
@@ -218,6 +229,7 @@ export default function Example() {
       </Disclosure>
 
       <main className="relative -mt-32">
+        {notificationSaved && <Notifications handleNotif={handleNotif} />}
         <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
           <div className="overflow-hidden rounded-lg bg-white shadow">
             <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">

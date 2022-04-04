@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import HeaderItem from './HeaderItem'
 import { useState, useEffect, useRef } from 'react'
 import { useMoralis } from 'react-moralis'
-import WalletPopover from '../../Test/WalletPopover'
+import WalletPopover from './WalletPopover'
 
 export default function Header() {
   const router = useRouter()
