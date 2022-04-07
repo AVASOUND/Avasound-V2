@@ -163,7 +163,7 @@ export default function Example() {
 
             <p className="mt-6 text-gray-500">{product.description}</p>
             {/* Size picker */}
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <div className="flex items-center justify-between">
                 <h2 className="text-sm font-medium text-gray-900">Type</h2>
                 <a
@@ -206,7 +206,7 @@ export default function Example() {
                   ))}
                 </div>
               </RadioGroup>
-            </div>
+            </div> */}
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
               <button

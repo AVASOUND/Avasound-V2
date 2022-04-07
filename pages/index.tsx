@@ -7,6 +7,7 @@ import Header from '../src/components/Header/Header'
 import MarketNav from '../src/components/Market/MarketNav'
 import TrendingSection from '../src/Test/TrendingSection'
 import Features from '../src/components/Market/Features'
+import AudioPlayer from '../src/components/Footer/AudioPlayer'
 
 const Home: NextPage = () => {
   const { isAuthenticated, user } = useMoralis()
@@ -43,6 +44,7 @@ const Home: NextPage = () => {
           />
         </a>
       </footer>
+      <AudioPlayer />
     </div>
   )
 }

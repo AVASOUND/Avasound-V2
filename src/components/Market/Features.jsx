@@ -57,33 +57,33 @@ export default function Features() {
         <div className="flex ">
           <ul className="mt-8 flex w-full max-w-6xl flex-wrap items-center justify-evenly">
             {content.map((data, index) => (
-              <li
-                key={index}
-                className="relative m-1 mb-4  rounded-lg bg-white p-1 px-4 shadow-lg sm:px-0"
-              >
-                <Albumcard data={data} key={index} />
-                <div className="flex w-full flex-row items-center justify-evenly ">
-                  {likedBy ? (
-                    <HeartIcon
-                      className="mb-2 h-5 cursor-pointer text-red-500"
-                      onClick={disLike}
-                    />
-                  ) : (
-                    <HeartIcon
-                      className="mb-2 h-5 cursor-pointer text-gray-500"
-                      onClick={likeAction}
-                    />
-                  )}
-                  <PlayIcon
-                    className="mb-2 h-5 cursor-pointer"
-                    onClick={playAction}
-                  />
-                  <CashIcon
-                    className="mb-2 h-5 cursor-pointer"
-                    onClick={buyAction}
-                  />
-                </div>
-              </li>
+              // <li
+              //   key={index}
+              //   className="relative m-1 mb-4  rounded-lg bg-white p-1 px-4 shadow-lg sm:px-0"
+              // >
+              <Albumcard data={data} key={index} />
+              //   <div className="flex w-full flex-row items-center justify-evenly ">
+              //     {likedBy ? (
+              //       <HeartIcon
+              //         className="mb-2 h-5 cursor-pointer text-red-500"
+              //         onClick={disLike}
+              //       />
+              //     ) : (
+              //       <HeartIcon
+              //         className="mb-2 h-5 cursor-pointer text-gray-500"
+              //         onClick={likeAction}
+              //       />
+              //     )}
+              //     <PlayIcon
+              //       className="mb-2 h-5 cursor-pointer"
+              //       onClick={playAction}
+              //     />
+              //     <CashIcon
+              //       className="mb-2 h-5 cursor-pointer"
+              //       onClick={buyAction}
+              //     />
+              //   </div>
+              // </li>
             ))}
           </ul>
         </div>

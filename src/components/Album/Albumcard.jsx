@@ -1,4 +1,4 @@
-import { ShoppingCartIcon } from '@heroicons/react/outline'
+import { PlayIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { Router, useRouter } from 'next/router'
 
@@ -26,11 +26,38 @@ export default function Albumcard() {
           <ShoppingCartIcon className="w-5 h-5" />
         </div> */}
       </div>
-      <Image width={175} height={175} src={'/avso-logo.png'} />
+
+      <div className="h-44 w-44">
+        <Image
+          width={175}
+          height={175}
+          src={'/wmex.png'}
+          className="hover:opacity-50"
+        />
+        <label
+          htmlFor="desktop-user-photo"
+          className=" absolute inset-0 left-6 flex h-44 w-44 items-center justify-center bg-black bg-opacity-75 text-sm font-medium text-white opacity-0 focus-within:opacity-100 hover:opacity-100"
+        >
+          <span>
+            <PlayIcon className="h-8 text-white" />
+          </span>
+          <span className="sr-only">Play</span>
+          {/* PLAY BUTTON */}
+          <div
+            // type="file"
+            // id="userImg"
+            // name="userImg"
+            className="absolute inset-0 z-50 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+            onClick={() => {
+              alert('play music')
+            }}
+          />
+        </label>
+      </div>
       <div className="flex w-11/12 flex-col space-y-2">
         <div className="mt-2 flex flex-row items-center justify-between text-xs">
           <h1
-            className="mx-4 mt-1 flex cursor-pointer items-start text-xs font-bold hover:text-black"
+            className="mx-4 mt-1 flex cursor-pointer items-start text-xs font-bold hover:text-black hover:underline"
             onClick={openAlbum}
           >
             Aiden - Seek Discomfort

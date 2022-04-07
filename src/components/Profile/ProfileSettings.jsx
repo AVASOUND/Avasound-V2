@@ -175,10 +175,7 @@ export default function Example() {
 
   return (
     <div className="w-full">
-      <Disclosure
-        as="div"
-        className="relative overflow-hidden bg-teal-700 pb-32"
-      >
+      <Disclosure as="div" className="relative bg-teal-700">
         {({ open }) => (
           <>
             <div

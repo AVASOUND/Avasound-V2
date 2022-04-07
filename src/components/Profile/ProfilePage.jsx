@@ -10,7 +10,7 @@ const tabs = [
   { name: 'Collection', href: '#', current: false },
   { name: 'Community', href: '#', current: false },
   { name: 'Revenue', href: '#', current: false },
-  { name: 'Insights', href: '#', current: false },
+  // { name: 'Insights', href: '#', current: false },
 ]
 const profile = {
   name: 'FPX',
@@ -175,7 +175,7 @@ export default function ProfilePage() {
           </>
         )}
       </Disclosure>
-      <div className="z-40 flex h-full w-9/12 rounded-b-xl bg-white">
+      <div className="z-40 flex h-full w-11/12 rounded-b-xl bg-white shadow-xl lg:w-9/12">
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
@@ -244,8 +244,8 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Tabs */}
-                <div className="mt-6 sm:mt-2 2xl:mt-5">
-                  <div className="border-b border-gray-200">
+                <div className=" mt-6 sm:mt-2 2xl:mt-5">
+                  <div className="w-full border-b border-gray-200">
                     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
                       <nav className="-mb-px flex space-x-8" aria-label="Tabs">
                         {tabs.map((tab) => (
@@ -274,7 +274,7 @@ export default function ProfilePage() {
                   className="mx-auto mt-6 max-w-5xl px-4 sm:px-6 lg:px-8"
                 >
                   <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                    {Object.keys(userInfo.fields).map((field) => (
+                    {/* {Object.keys(userInfo.fields).map((field) => (
                       <div key={field} className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">
                           {field}
@@ -283,7 +283,7 @@ export default function ProfilePage() {
                           {userInfo.fields[field]}
                         </dd>
                       </div>
-                    ))}
+                    ))} */}
                     <div className="pb-8 sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         About
