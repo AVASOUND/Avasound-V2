@@ -492,7 +492,7 @@ export default function HeroLanding() {
             </div>
           </div>
           {/* Feature section with grid */}
-          <div className="relative bg-white py-16 sm:py-24 lg:py-32">
+          {/* <div className="relative bg-white py-16 sm:py-24 lg:py-32">
             <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
               <h2 className="text-base font-semibold uppercase tracking-wider text-cyan-600">
                 Tech Dive
@@ -532,7 +532,7 @@ export default function HeroLanding() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Blog section */}
           <div className="relative bg-gray-50 py-16 sm:py-24 lg:py-32">

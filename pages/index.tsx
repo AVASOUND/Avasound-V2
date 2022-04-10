@@ -21,9 +21,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section in App */}
-      <Header />
+      <div className="sticky top-0 z-50 w-full">
+        <Header />
+      </div>
       {/* Navigation Section for Marketplace */}
-      <MarketNav />
+      {/* <MarketNav /> */}
       {/* Add Selling Right Now Section */}
       <TrendingSection />
       {/* Featured on the Frontpage */}

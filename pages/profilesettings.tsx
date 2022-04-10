@@ -12,13 +12,15 @@ const Home: NextPage = () => {
   if (!isAuthenticated) return <Login />
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
+    <div className="flex min-h-screen flex-col items-center">
       <Head>
         <title>Avasound Profile</title>
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section in App */}
-      <Header />
+      <div className="sticky top-0 z-50 w-full">
+        <Header />
+      </div>
       {/* Profile Navigation Section */}
       {/* <MarketplaceNav /> */}
       {/* <TrendingSection /> */}

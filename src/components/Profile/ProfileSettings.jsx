@@ -1,51 +1,35 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Switch, Transition } from '@headlessui/react'
 import { SearchIcon } from '@heroicons/react/solid'
 import {
   BellIcon,
+  CloudUploadIcon,
   CogIcon,
   CreditCardIcon,
   KeyIcon,
-  MenuIcon,
   UserCircleIcon,
   ViewGridAddIcon,
-  XIcon,
 } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 import Notifications from './NotificationSaved'
+import AccountSettings from './Settings/AccountSettings'
+import UploadFiles from './Settings/UploadFiles'
 
-const user = {
-  name: 'Debbie Lewis',
-  handle: 'deblewis',
-  email: 'debbielewis@example.com',
-  imageUrl: '/avso-teal.png',
-}
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Jobs', href: '#', current: false },
-  { name: 'Applicants', href: '#', current: false },
-  { name: 'Company', href: '#', current: false },
-]
-const subNavigation = [
+const tabs = [
   { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
-  { name: 'Account', href: '#', icon: CogIcon, current: false },
-  { name: 'Password', href: '#', icon: KeyIcon, current: false },
-  { name: 'Notifications', href: '#', icon: BellIcon, current: false },
   { name: 'Wallet', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Integrations', href: '#', icon: ViewGridAddIcon, current: false },
-]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Upload', href: '#', icon: CloudUploadIcon, current: false },
+  // { name: 'Notifications', href: '#', icon: BellIcon, current: false },
+  // { name: 'Wallet', href: '#', icon: CreditCardIcon, current: false },
+  // { name: 'Integrations', href: '#', icon: ViewGridAddIcon, current: false },
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function ProfileSettings() {
   const [availableToHire, setAvailableToHire] = useState(true)
   const [privateAccount, setPrivateAccount] = useState(false)
   const [allowCommenting, setAllowCommenting] = useState(true)
@@ -61,6 +45,8 @@ export default function Example() {
   const [userUrl, setUserUrl] = useState(user.get('userUrl'))
   const [userEmail, setUserEmail] = useState(user.get('email'))
   const [userImg, setUserImg] = useState(user.get('userImg'))
+
+  const [selectedTab, setSelectedTab] = useState('Profile')
 
   async function saveProfile(e) {
     e.preventDefault()
@@ -172,6 +158,9 @@ export default function Example() {
       setNotificationSaved(true)
     }
   }
+  useEffect(() => {
+    console.log(selectedTab)
+  }, [])
 
   return (
     <div className="w-full">
@@ -237,29 +226,31 @@ export default function Example() {
           <div className="overflow-hidden rounded-lg bg-white shadow">
             <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
               <aside className="py-6 lg:col-span-3">
-                <nav className="space-y-1">
-                  {subNavigation.map((item) => (
+                <nav className="cursor-pointer space-y-1">
+                  {tabs.map((tab) => (
                     <a
-                      key={item.name}
-                      href={item.href}
+                      key={tab.name}
+                      onClick={() => {
+                        setSelectedTab(tab.name)
+                      }}
                       className={classNames(
-                        item.current
+                        selectedTab == tab.current
                           ? 'border-teal-500 bg-teal-50 text-teal-700 hover:bg-teal-50 hover:text-teal-700'
                           : 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900',
                         'group flex items-center border-l-4 px-3 py-2 text-sm font-medium'
                       )}
-                      aria-current={item.current ? 'page' : undefined}
+                      aria-current={tab.current ? 'page' : undefined}
                     >
-                      <item.icon
+                      <tab.icon
                         className={classNames(
-                          item.current
+                          selectedTab == tab.current
                             ? 'text-teal-500 group-hover:text-teal-500'
                             : 'text-gray-400 group-hover:text-gray-500',
                           '-ml-1 mr-3 h-6 w-6 flex-shrink-0'
                         )}
                         aria-hidden="true"
                       />
-                      <span className="truncate">{item.name}</span>
+                      <span className="truncate">{tab.name}</span>
                     </a>
                   ))}
                 </nav>
@@ -271,7 +262,11 @@ export default function Example() {
                 method="POST"
               >
                 {/* Profile section */}
-                <div className="py-6 px-4 sm:p-6 lg:pb-8">
+
+                <div
+                  hidden={selectedTab != 'Profile'}
+                  className="py-6 px-4 sm:p-6 lg:pb-8"
+                >
                   <div>
                     <h2 className="text-lg font-medium leading-6 text-gray-900">
                       Profile
@@ -303,11 +298,12 @@ export default function Example() {
                             onChange={(e) => setUserName(e.target.value)}
                             autoComplete="username"
                             className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                            defaultValue={user.handle}
+                            // defaultValue={user.handle}
                           />
                         </div>
                       </div>
 
+                      {/* About */}
                       <div>
                         <label
                           htmlFor="about"
@@ -323,14 +319,46 @@ export default function Example() {
                             onChange={(e) => setUserBio(e.target.value)}
                             rows={3}
                             className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                            defaultValue={''}
                           />
                         </div>
                         <p className="mt-2 text-sm text-gray-500">
                           Brief description for your profile.
                         </p>
                       </div>
+
+                      {/* Cover Art */}
+                      <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label
+                          htmlFor="cover-photo"
+                          className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                        >
+                          Header
+                        </label>
+                        <div className="mt-1 sm:col-span-2 sm:mt-0">
+                          <div className="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                            <div className="space-y-1 text-center">
+                              <div className="flex text-sm text-gray-600">
+                                <label
+                                  htmlFor="file-upload"
+                                  className="relative cursor-pointer rounded-md bg-white font-medium text-teal-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
+                                >
+                                  <span>Upload Header</span>
+                                  <input
+                                    id="file-upload"
+                                    name="file-upload"
+                                    type="file"
+                                    className="sr-only"
+                                  />
+                                </label>
+                              </div>
+                              <p className="text-xs text-gray-500">PNG, JPG</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+
+                    {/* Profile Foto */}
 
                     <div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
                       <p
@@ -347,22 +375,22 @@ export default function Example() {
                           >
                             <img
                               className="h-full w-full rounded-full"
-                              src={user.imageUrl}
+                              src={userImg}
                               alt=""
                             />
                           </div>
                           <div className="ml-5 rounded-md shadow-sm">
-                            <div className="group relative flex items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:bg-gray-50">
+                            <div className="group relative flex items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-teal-500 focus-within:ring-offset-2 hover:bg-gray-50">
                               <label
                                 htmlFor="mobile-user-photo"
                                 className="pointer-events-none relative text-sm font-medium leading-4 text-gray-700"
                               >
                                 <span>Change</span>
-                                <span className="sr-only"> user photo</span>
+                                <span className="sr-only">Change photo</span>
                               </label>
                               <input
                                 id="userImg"
-                                name="user"
+                                name="userImg"
                                 type="file"
                                 className="absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
                               />
@@ -374,7 +402,7 @@ export default function Example() {
                       <div className="relative hidden overflow-hidden rounded-full lg:block">
                         <img
                           className="relative h-40 w-40 rounded-full"
-                          src={user.userImg}
+                          src={userImg}
                           alt=""
                         />
                         <label
@@ -466,179 +494,11 @@ export default function Example() {
                   </div>
                 </div>
 
-                {/* Privacy section */}
-                <div className="divide-y divide-gray-200 pt-6">
-                  <div className="px-4 sm:px-6">
-                    <div>
-                      <h2 className="text-lg font-medium leading-6 text-gray-900">
-                        Privacy
-                      </h2>
-                      <p className="mt-1 text-sm text-gray-500">
-                        Ornare eu a volutpat eget vulputate. Fringilla commodo
-                        amet.
-                      </p>
-                    </div>
-                    <ul role="list" className="mt-2 divide-y divide-gray-200">
-                      <Switch.Group
-                        as="li"
-                        className="flex items-center justify-between py-4"
-                      >
-                        <div className="flex flex-col">
-                          <Switch.Label
-                            as="p"
-                            className="text-sm font-medium text-gray-900"
-                            passive
-                          >
-                            Available to hire
-                          </Switch.Label>
-                          <Switch.Description className="text-sm text-gray-500">
-                            Nulla amet tempus sit accumsan. Aliquet turpis sed
-                            sit lacinia.
-                          </Switch.Description>
-                        </div>
-                        <Switch
-                          checked={availableToHire}
-                          onChange={setAvailableToHire}
-                          className={classNames(
-                            availableToHire ? 'bg-teal-500' : 'bg-gray-200',
-                            'relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
-                          )}
-                        >
-                          <span
-                            aria-hidden="true"
-                            className={classNames(
-                              availableToHire
-                                ? 'translate-x-5'
-                                : 'translate-x-0',
-                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
-                            )}
-                          />
-                        </Switch>
-                      </Switch.Group>
-                      <Switch.Group
-                        as="li"
-                        className="flex items-center justify-between py-4"
-                      >
-                        <div className="flex flex-col">
-                          <Switch.Label
-                            as="p"
-                            className="text-sm font-medium text-gray-900"
-                            passive
-                          >
-                            Make account private
-                          </Switch.Label>
-                          <Switch.Description className="text-sm text-gray-500">
-                            Pharetra morbi dui mi mattis tellus sollicitudin
-                            cursus pharetra.
-                          </Switch.Description>
-                        </div>
-                        <Switch
-                          checked={privateAccount}
-                          onChange={setPrivateAccount}
-                          className={classNames(
-                            privateAccount ? 'bg-teal-500' : 'bg-gray-200',
-                            'relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
-                          )}
-                        >
-                          <span
-                            aria-hidden="true"
-                            className={classNames(
-                              privateAccount
-                                ? 'translate-x-5'
-                                : 'translate-x-0',
-                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
-                            )}
-                          />
-                        </Switch>
-                      </Switch.Group>
-                      <Switch.Group
-                        as="li"
-                        className="flex items-center justify-between py-4"
-                      >
-                        <div className="flex flex-col">
-                          <Switch.Label
-                            as="p"
-                            className="text-sm font-medium text-gray-900"
-                            passive
-                          >
-                            Allow commenting
-                          </Switch.Label>
-                          <Switch.Description className="text-sm text-gray-500">
-                            Integer amet, nunc hendrerit adipiscing nam.
-                            Elementum ame
-                          </Switch.Description>
-                        </div>
-                        <Switch
-                          checked={allowCommenting}
-                          onChange={setAllowCommenting}
-                          className={classNames(
-                            allowCommenting ? 'bg-teal-500' : 'bg-gray-200',
-                            'relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
-                          )}
-                        >
-                          <span
-                            aria-hidden="true"
-                            className={classNames(
-                              allowCommenting
-                                ? 'translate-x-5'
-                                : 'translate-x-0',
-                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
-                            )}
-                          />
-                        </Switch>
-                      </Switch.Group>
-                      <Switch.Group
-                        as="li"
-                        className="flex items-center justify-between py-4"
-                      >
-                        <div className="flex flex-col">
-                          <Switch.Label
-                            as="p"
-                            className="text-sm font-medium text-gray-900"
-                            passive
-                          >
-                            Allow mentions
-                          </Switch.Label>
-                          <Switch.Description className="text-sm text-gray-500">
-                            Adipiscing est venenatis enim molestie commodo eu
-                            gravid
-                          </Switch.Description>
-                        </div>
-                        <Switch
-                          checked={allowMentions}
-                          onChange={setAllowMentions}
-                          className={classNames(
-                            allowMentions ? 'bg-teal-500' : 'bg-gray-200',
-                            'relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
-                          )}
-                        >
-                          <span
-                            aria-hidden="true"
-                            className={classNames(
-                              allowMentions ? 'translate-x-5' : 'translate-x-0',
-                              'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
-                            )}
-                          />
-                        </Switch>
-                      </Switch.Group>
-                    </ul>
-                  </div>
-                  <div className="mt-4 flex justify-end py-4 px-4 sm:px-6">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
-                      onClick={() => router.push('/profile')}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="ml-5 inline-flex justify-center rounded-md border border-transparent bg-sky-700 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2"
-                      onClick={saveProfile}
-                    >
-                      Save
-                    </button>
-                  </div>
+                <div hidden={selectedTab != 'Wallet'}>
+                  <AccountSettings />
+                </div>
+                <div hidden={selectedTab != 'Upload'}>
+                  <UploadFiles />
                 </div>
               </form>
             </div>

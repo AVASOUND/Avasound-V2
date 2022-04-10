@@ -3,11 +3,12 @@ import { CogIcon, PlusCircleIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis } from 'react-moralis'
 import Albumcard from '../Album/Albumcard'
+import RecordListItem from '../Album/RecordListItem'
 import { Disclosure } from '@headlessui/react'
 
 const tabs = [
   { name: 'Profile', href: '#', current: true },
-  { name: 'Collection', href: '#', current: false },
+  { name: 'Items', href: '#', current: false },
   { name: 'Community', href: '#', current: false },
   { name: 'Revenue', href: '#', current: false },
   // { name: 'Insights', href: '#', current: false },
@@ -271,9 +272,9 @@ export default function ProfilePage() {
                 {/* Description list */}
                 <div
                   hidden={selectedTab != 'Profile'}
-                  className="mx-auto mt-6 max-w-5xl px-4 sm:px-6 lg:px-8"
+                  className="mx-auto mt-6 w-full max-w-5xl px-4 sm:px-6 lg:px-8"
                 >
-                  <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                  <dl className="grid grid-cols-1 gap-x-4 gap-y-8 ">
                     {/* {Object.keys(userInfo.fields).map((field) => (
                       <div key={field} className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">
@@ -284,7 +285,7 @@ export default function ProfilePage() {
                         </dd>
                       </div>
                     ))} */}
-                    <div className="pb-8 sm:col-span-2">
+                    <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         About
                       </dt>
@@ -293,48 +294,17 @@ export default function ProfilePage() {
                         dangerouslySetInnerHTML={{ __html: userInfo.about }}
                       />
                     </div>
+                    <ul className="flex w-full flex-col items-center justify-evenly rounded-lg border-t border-gray-200 bg-[#f5f5f5] p-4 shadow-2xl">
+                      <p className="flex w-full items-center pb-4">Records</p>
+                      {content.map((data, index) => (
+                        // <Albumcard data={data} key={index} />
+                        <RecordListItem data={data} key={index} />
+                      ))}
+                    </ul>
                   </dl>
                 </div>
-
-                {/* Team member list */}
-                {/* <div className="mx-auto mt-8 max-w-5xl px-4 pb-8 sm:px-6 lg:px-8">
-                  <h2 className="text-sm font-medium text-gray-500">
-                    Fans also Like
-                  </h2>
-                  <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {team.map((person) => (
-                      <div
-                        key={person.handle}
-                        className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-teal-200 focus-within:ring-offset-2 hover:border-gray-400"
-                      >
-                        <div className="flex-shrink-0">
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={person.imageUrl}
-                            alt=""
-                          />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <a href="#" className="focus:outline-none">
-                            <span
-                              className="absolute inset-0"
-                              aria-hidden="true"
-                            />
-                            <p className="text-sm font-medium text-gray-900">
-                              {person.name}
-                            </p>
-                            <p className="truncate text-sm text-gray-500">
-                              {person.role}
-                            </p>
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div> */}
-
                 <div
-                  hidden={selectedTab != 'Collection'}
+                  hidden={selectedTab != 'Items'}
                   className="mx-auto  mt-8 max-w-5xl px-4 pb-4 sm:px-6 lg:px-8"
                 >
                   <div className="mt-8">

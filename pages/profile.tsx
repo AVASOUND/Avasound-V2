@@ -8,7 +8,7 @@ import ProfilePage from '../src/components/Profile/ProfilePage'
 const Home: NextPage = () => {
   const { isAuthenticated } = useMoralis()
 
-  if (!isAuthenticated) return <Login />
+  // if (!isAuthenticated) return <Login />
 
   return (
     <div className="flex min-h-screen flex-col items-center">
