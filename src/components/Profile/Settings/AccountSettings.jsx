@@ -9,8 +9,7 @@ export default function AccountSettings() {
       <div>
         <h2 className="text-lg font-medium leading-6 text-gray-900">Account</h2>
         <p className="mt-1 text-sm text-gray-500">
-          This information will be displayed publicly so be careful what you
-          share.
+          This is where you see your wallet address and currency balances.
         </p>
       </div>
 
@@ -27,6 +26,16 @@ export default function AccountSettings() {
             <p className="mt-1 text-sm text-gray-500">
               {user.get('ethAddress')}
             </p>
+          </div>
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Username
+            </label>
+
+            <p className="mt-1 text-sm text-gray-500">{user.get('username')}</p>
           </div>
 
           <div>
