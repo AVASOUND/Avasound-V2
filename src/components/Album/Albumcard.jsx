@@ -57,7 +57,7 @@ export default function Albumcard() {
       <div className="flex w-11/12 flex-col space-y-2">
         <div className="mt-2 flex flex-row items-center justify-between text-xs">
           <h1
-            className="mx-4 mt-1 flex cursor-pointer items-start text-xs font-bold hover:text-black hover:underline"
+            className="mx-4 mt-1 flex w-full cursor-pointer items-center justify-center text-xs font-bold hover:text-black hover:underline"
             onClick={openAlbum}
           >
             Aiden - Seek Discomfort
@@ -68,12 +68,14 @@ export default function Albumcard() {
         </div>
 
         <div className="mx-4 mt-1 flex flex-row items-center justify-between text-xs">
-          <p
+          {/* <p
             className="cursor-pointer text-xs hover:text-black"
             onClick={openProfile}
           >
             Casual Gabberz
-          </p>
+          </p> */}
+
+          <p className="flex whitespace-nowrap">100 Records</p>
           <p className="flex whitespace-nowrap">10 USDC</p>
         </div>
       </div>

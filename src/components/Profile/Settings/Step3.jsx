@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
+import Albumcard from '../../Album/Albumcard'
+
+const steps = [
+  { id: 'Step 1', name: 'Upload Tracks', status: 'complete' },
+  { id: 'Step 2', name: 'Mint Item', status: 'current' },
+  { id: 'Step 3', name: 'Approve & List Item', status: 'upcoming' },
+]
 
 export default function ProfileSettings(props) {
   const { user, Moralis } = useMoralis()
@@ -9,7 +16,7 @@ export default function ProfileSettings(props) {
   // async
   function completeStep(e) {
     e.preventDefault()
-    props.handleStep('2')
+    props.handleStep('4')
     // const recordTitle = document.getElementById('recordTitle').value
     // const owner = user.get('ethAddress')
     // const recordCover = document.getElementById('recordCoverFile').files[0]
@@ -52,42 +59,22 @@ export default function ProfileSettings(props) {
               htmlFor="username"
               className="block text-sm font-medium text-gray-700"
             >
-              Record Title
+              Overview
             </label>
-            <div className="mt-1 flex rounded-md shadow-sm">
-              <input
-                type="text"
-                name="recordTitle"
-                id="recordTitle"
-                autoComplete="recordtitle"
-                className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
-              />
+            <div className="mt-1 flex items-center justify-center rounded-md bg-[#f5f5f5] shadow-sm">
+              <div className="z-30">
+                <Albumcard />
+              </div>
             </div>
           </div>
-          <div>
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Artist
-            </label>
-            <div className="mt-1 flex rounded-md shadow-sm">
-              <input
-                type="text"
-                name="recordTitle"
-                id="recordTitle"
-                autoComplete="recordtitle"
-                className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
-              />
-            </div>
-          </div>
+
           {/* Cover Art */}
           <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
             <label
               htmlFor="cover-photo"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Cover Artwork
+              Details
             </label>
             <div className="mt-1 sm:col-span-2 sm:mt-0">
               <div className="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
@@ -117,15 +104,14 @@ export default function ProfileSettings(props) {
               htmlFor="cover-photo"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Price per Record
+              Royalty Shares (Max. 100)
             </label>
             <div>
               <div className="mt-1 flex rounded-md shadow-sm">
                 <input
                   type="number"
-                  name="recordPrice"
-                  id="recordPrice"
-                  placeholder="USD"
+                  name="royaltyShares"
+                  id="royaltyShares"
                   autoComplete="recordtitle"
                   className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
                 />
@@ -179,7 +165,7 @@ export default function ProfileSettings(props) {
                   className=" ml-3 inline-flex rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                   onClick={completeStep}
                 >
-                  Next Step
+                  Mint Items
                 </button>
               </div>
             </div>

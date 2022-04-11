@@ -20,7 +20,7 @@ import UploadNavbar from './Settings/UploadNavbar'
 const tabs = [
   { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
   { name: 'Wallet', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Upload Record', href: '#', icon: CloudUploadIcon, current: false },
+  { name: 'Upload', href: '#', icon: CloudUploadIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -512,10 +512,9 @@ export default function ProfileSettings() {
                   <AccountSettings />
                 </div>
                 <div
-                  hidden={selectedTab != 'Upload Record'}
+                  hidden={selectedTab != 'Upload'}
                   className="flex w-full flex-col items-center justify-center pt-4"
                 >
-                  {/* <UploadNavbar /> */}
                   <UploadFiles />
                 </div>
               </form>

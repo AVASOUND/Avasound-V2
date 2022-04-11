@@ -8,7 +8,7 @@ const steps = [
   { id: 'Step 4', name: 'Approve & List', href: '#', status: 'upcoming' },
 ]
 
-export default function Example() {
+export default function UploadNavbar() {
   const [step, setStep] = useState('Step 1')
 
   return (
