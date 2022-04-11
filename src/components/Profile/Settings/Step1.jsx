@@ -1,10 +1,16 @@
 import { PlusCircleIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon } from '@heroicons/react/solid'
 import { useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
+import InfoPanel from './InfoPanel'
 
 export default function ProfileSettings(props) {
   const { user, Moralis } = useMoralis()
   const { saveFile } = useMoralisFile()
+
+  const [showArtistInfo, setShowArtistInfo] = useState(false)
+  const [showPriceInfo, setShowPriceInfo] = useState(false)
+  const [showTotalCopies, setShowTotalCopies] = useState(false)
 
   // STEP 1
   // async
@@ -68,9 +74,22 @@ export default function ProfileSettings(props) {
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
+              className="flex flex-row text-sm font-medium text-gray-700"
             >
               Artist
+              <InformationCircleIcon
+                className="ml-2 h-3 cursor-pointer text-teal-500"
+                onClick={() => {
+                  setShowArtistInfo(true)
+                }}
+              />
+              {showArtistInfo && (
+                <InfoPanel
+                  handleModal={setShowArtistInfo}
+                  title={'Artist'}
+                  description={'Provide the name of the Artist'}
+                />
+              )}
             </label>
             <div className="mt-1 flex rounded-md shadow-sm">
               <input
@@ -82,7 +101,7 @@ export default function ProfileSettings(props) {
               />
             </div>
           </div>
-          {/* ZIP FILE */}
+          {/* COVER */}
           <div className="mt-6 grid grid-cols-12 gap-6">
             <div className="col-span-12">
               <label
@@ -144,9 +163,24 @@ export default function ProfileSettings(props) {
           <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
             <label
               htmlFor="cover-photo"
-              className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+              className="flex flex-row text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
               Price per Record
+              <InformationCircleIcon
+                className="ml-2 h-3 cursor-pointer text-teal-500"
+                onClick={() => {
+                  setShowPriceInfo(true)
+                }}
+              />
+              {showPriceInfo && (
+                <InfoPanel
+                  handleModal={setShowPriceInfo}
+                  title={'Price per Record'}
+                  description={
+                    'A USD amount for each copy sold on the marketplace'
+                  }
+                />
+              )}
             </label>
             <div>
               <div className="mt-1 flex rounded-md shadow-sm">
@@ -163,11 +197,27 @@ export default function ProfileSettings(props) {
           </div>
           {/* Number of Copies */}
           <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+            {/*  CONSIDER ADDING A SWITCH TO SHOW COPIES AVAILABLE PUBLICLY OR NOT */}
             <label
               htmlFor="cover-photo"
-              className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+              className="flex flex-row text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
               Number of Records
+              <InformationCircleIcon
+                className="ml-2 h-3 cursor-pointer text-teal-500"
+                onClick={() => {
+                  setShowTotalCopies(true)
+                }}
+              />
+              {showTotalCopies && (
+                <InfoPanel
+                  handleModal={setShowTotalCopies}
+                  title={'Record Copies'}
+                  description={
+                    'The total number of records available on the marketplace.'
+                  }
+                />
+              )}
             </label>
             <div>
               <div className="mt-1 flex rounded-md shadow-sm">

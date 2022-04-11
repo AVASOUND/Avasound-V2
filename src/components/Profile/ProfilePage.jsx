@@ -298,7 +298,7 @@ export default function ProfilePage() {
                       <dt className="text-sm font-medium text-gray-500">
                         Spotlight
                       </dt>
-                      <div className="my-4 mb-8 flex w-full flex-row items-center">
+                      <div className="my-4 mb-8 flex w-full flex-row flex-wrap items-center justify-center sm:flex-nowrap">
                         <Albumcard />
                         <Albumcard />
                         <Albumcard />
