@@ -91,7 +91,7 @@ export default function Header() {
                 : ''
             }`}
           >
-            <HeaderItem title="Community" Icon={GlobeAltIcon} />
+            <HeaderItem title="Playlist" Icon={GlobeAltIcon} />
           </div>
           {auth ? (
             <div

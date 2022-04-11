@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
 import Header from '../src/components/Header/Header'
-import ProfileSettings from '../src/components/Profile/ProfileSettings'
+import SettingsPage from '../src/components/Profile/SettingsPage'
 
 const Home: NextPage = () => {
   const { isAuthenticated, user } = useMoralis()
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       {/* <MarketplaceNav /> */}
       {/* <TrendingSection /> */}
       {/* <ProfileMain /> */}
-      <ProfileSettings />
+      <SettingsPage />
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a

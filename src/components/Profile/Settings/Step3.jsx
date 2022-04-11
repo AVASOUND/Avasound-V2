@@ -68,36 +68,6 @@ export default function ProfileSettings(props) {
             </div>
           </div>
 
-          {/* Cover Art */}
-          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
-            <label
-              htmlFor="cover-photo"
-              className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >
-              Details
-            </label>
-            <div className="mt-1 sm:col-span-2 sm:mt-0">
-              <div className="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
-                <div className="space-y-1 text-center">
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-medium text-teal-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-teal-500 focus-within:ring-offset-2 hover:text-teal-500"
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        id="recordCoverFile"
-                        name="recordCoverFile"
-                        type="file"
-                        className="sr-only"
-                      />
-                    </label>
-                  </div>
-                  <p className="text-xs text-gray-500">PNG, JPG</p>
-                </div>
-              </div>
-            </div>
-          </div>
           {/* Price */}
           <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
             <label
@@ -137,24 +107,6 @@ export default function ProfileSettings(props) {
                 />
               </div>
             </div>
-          </div>
-          {/* Description */}
-          <div>
-            <label
-              htmlFor="about"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Description
-            </label>
-            <div className="mt-1">
-              <textarea
-                id="recordDescription"
-                name="recordDescription"
-                rows={3}
-                className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
-              />
-            </div>
-            <p className="mt-2 text-sm text-gray-500">Record description</p>
           </div>
 
           <div className="pb-16 pt-5">

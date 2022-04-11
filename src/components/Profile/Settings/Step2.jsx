@@ -270,7 +270,7 @@ export default function Step2(props) {
               <div className="flex w-full flex-row items-center space-x-4">
                 <label
                   htmlFor="file-upload"
-                  className=" mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 text-teal-600 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
+                  className=" mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 text-teal-600 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
                 >
                   <span className="flex w-full flex-row items-center justify-between">
                     <PlusCircleIcon className="h-5" />
@@ -296,7 +296,7 @@ export default function Step2(props) {
               <div className="flex w-full items-center justify-center">
                 <button
                   type="submit"
-                  className=" ml-3 inline-flex rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className=" ml-3 inline-flex rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                   onClick={uploadFiles}
                 >
                   Next Step

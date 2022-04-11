@@ -38,6 +38,7 @@ export default function AccountSettings() {
             <p className="mt-1 text-sm text-gray-500">{user.get('username')}</p>
           </div>
 
+          {/* BAlances */}
           <div>
             <label
               htmlFor="about"
@@ -81,6 +82,18 @@ export default function AccountSettings() {
                 <div className="text-sm text-gray-500">2,000.00</div>
               </div>
             </div>
+          </div>
+          {/* FIAT ONRAMP PLUGIN */}
+          <div>
+            <label
+              htmlFor="about"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Fiat Onramp
+            </label>
+            <p className="mt-1 text-sm text-gray-500">
+              Buy Crypto with your Creditcard.
+            </p>
           </div>
         </div>
       </div>

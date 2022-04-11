@@ -205,14 +205,14 @@ export default function ProfilePage() {
                             {userInfo.name}
                           </h1>
 
-                          <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">
+                          {/* <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">
                             <p>78 Items</p>
                             <p>1000 Followers</p>
                             <p>100 Following</p>
-                          </div>
+                          </div> */}
                         </div>
                         <div className="justify-stretch mt-6 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:space-y-0 sm:space-x-4">
-                          <button
+                          {/* <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                           >
@@ -221,7 +221,7 @@ export default function ProfilePage() {
                               aria-hidden="true"
                             />
                             <span>Follow</span>
-                          </button>
+                          </button> */}
                           <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
@@ -294,13 +294,22 @@ export default function ProfilePage() {
                         dangerouslySetInnerHTML={{ __html: userInfo.about }}
                       />
                     </div>
-                    <ul className="flex w-full flex-col items-center justify-evenly rounded-lg border-t border-gray-200 bg-[#f5f5f5] p-4 shadow-2xl">
+                    <div className="sm:col-span-2">
+                      <dt className="text-sm font-medium text-gray-500">
+                        Spotlight
+                      </dt>
+                      <div className="my-4 mb-8 flex w-full flex-row items-center">
+                        <Albumcard />
+                        <Albumcard />
+                        <Albumcard />
+                      </div>
+                    </div>
+                    {/* <ul className="flex w-full flex-col items-center justify-evenly rounded-lg border-t border-gray-200 bg-[#f5f5f5] p-4 shadow-2xl">
                       <p className="flex w-full items-center pb-4">Records</p>
                       {content.map((data, index) => (
-                        // <Albumcard data={data} key={index} />
                         <RecordListItem data={data} key={index} />
                       ))}
-                    </ul>
+                    </ul> */}
                   </dl>
                 </div>
                 <div

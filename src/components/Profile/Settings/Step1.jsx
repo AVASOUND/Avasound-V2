@@ -1,3 +1,4 @@
+import { PlusCircleIcon } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 
@@ -81,8 +82,36 @@ export default function ProfileSettings(props) {
               />
             </div>
           </div>
+          {/* ZIP FILE */}
+          <div className="mt-6 grid grid-cols-12 gap-6">
+            <div className="col-span-12">
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Cover Artwork
+              </label>
+              <div className="flex w-full flex-row items-center space-x-4">
+                <label
+                  htmlFor="file-upload"
+                  className=" mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 text-teal-600 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
+                >
+                  <span className="flex w-full flex-row items-center justify-between">
+                    <PlusCircleIcon className="h-5" />
+                    <p>Upload PNG or JPG</p>
+                  </span>
+                  <input
+                    id="recordZipFile"
+                    name="recordZipFile"
+                    type="file"
+                    className="sr-only"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
           {/* Cover Art */}
-          <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+          {/* <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
             <label
               htmlFor="cover-photo"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
@@ -110,7 +139,7 @@ export default function ProfileSettings(props) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* Price */}
           <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
             <label
