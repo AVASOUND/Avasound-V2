@@ -2,6 +2,11 @@ import { CheckCircleIcon } from '@heroicons/react/outline'
 import Router, { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
+import {
+  MarketplaceABI,
+  marketplaceAddress,
+} from '../../../contracts/MarketplaceContract'
+import { TokenABI, TokenAddress } from '../../../contracts/TokenContract'
 import Albumcard from '../../Album/Albumcard'
 
 export default function ProfileSettings(props) {
@@ -10,35 +15,66 @@ export default function ProfileSettings(props) {
 
   const [done, setDone] = useState(false)
 
-  useEffect(() => {
-    setApprove(true)
-    setDone(false)
-  }, [])
-
-  // STEP 1 APPROVE ITEM FOR MARKETPLACE
-
-  async function approveItem(e) {
-    e.preventDefault()
-
-    // contractCall
-
-    setApprove(false)
-  }
-
-  // STEP 2 LIST ITEM
-  async function listItem(e) {
-    e.preventDefault()
-    // contractcall
-
-    setDone(true)
-    //   .then(() => {
-  }
   function allDone(e) {
     e.preventDefault()
 
     // props.handleStep('5')
     router.push('/profile')
   }
+
+  // STEP 1 - CONTRACT CALL APPROVE FOR MARKETPLACE
+  async function approveItem(e) {
+    e.preventDefault()
+
+    const web3Provider = await Moralis.enableWeb3()
+    const ethers = Moralis.web3Library
+    const contract = new ethers.Contract(
+      TokenAddress,
+      TokenABI,
+      web3Provider.getSigner()
+    )
+    contract.setApprovalForAll(marketplaceAddress, true).then(() => {
+      contract.setApprovalForAll(marketplaceAddress, true)
+      setApprove(false)
+    })
+  }
+
+  //  STEP 2 - CONTRACT CALL  LIST ITEMS
+  async function listItem(e) {
+    e.preventDefault()
+
+    const web3Provider = await Moralis.enableWeb3()
+    const ethers = Moralis.web3Library
+
+    const contract = new ethers.Contract(
+      marketplaceAddress,
+      MarketplaceABI,
+      web3Provider.getSigner()
+    )
+
+    const price = ethers.utils.parseEther(
+      props.data.get('recordPrice').toString()
+    )
+    contract
+      .listToken(
+        TokenAddress,
+
+        //  QUERY TOKEN ID & RECORD COUNT
+
+        props.data.get('token_id'),
+        props.data.get('recordCount'),
+        // props.data.get("recordPrice")
+        price
+      )
+      .then(() => {
+        // props.data.set('listed', true)
+        // props.data.save()
+        alert('successfully listed on the marketplace.')
+        // setIsListed(true)
+        setDone(true)
+      })
+  }
+
   return (
     <div className="w-11/12 py-6 px-4 sm:p-6 lg:pb-8">
       <div className="mt-6 flex flex-col lg:flex-row">

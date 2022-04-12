@@ -25,7 +25,7 @@ const Home: NextPage = () => {
         <Header />
       </div>
       {/* Navigation Section for Marketplace */}
-      {/* <MarketNav /> */}
+      <MarketNav />
       {/* Add Selling Right Now Section */}
       <TrendingSection />
       {/* Featured on the Frontpage */}
