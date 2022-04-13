@@ -27,7 +27,6 @@ export default function AudioPlayer(props) {
       format: ['mp3'],
       volume: 0.5,
       seek: 0.2,
-      onpos,
       // mute: false,
     }),
   ])
