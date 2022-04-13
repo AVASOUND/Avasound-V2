@@ -27,6 +27,7 @@ export default function AudioPlayer(props) {
       format: ['mp3'],
       volume: 0.5,
       seek: 0.2,
+      onpos,
       // mute: false,
     }),
   ])
@@ -58,6 +59,10 @@ export default function AudioPlayer(props) {
     const seekPart = document.getElementById('seekPart').value
     track[0].seek(seekPart)
   }
+
+  // track[0].onpos(function () {
+  //   console.log('Finished!')
+  // })
 
   function mute() {
     // if (track[0].mute(false)) {
