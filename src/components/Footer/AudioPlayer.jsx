@@ -8,19 +8,63 @@ import {
 } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Howl } from 'howler'
 
-export default function AudioPlayer() {
+export default function AudioPlayer(props) {
   const router = useRouter()
-  const [isPlaying, setIsPlaying] = useState()
+
+  const [isPlaying, setIsPlaying] = useState(false)
+
   const [closedPlayer, setClosedPlayer] = useState(false)
 
-  function clickPlay() {
-    if (isPlaying) {
-      setIsPlaying(false)
-    } else {
+  // STATE VAR TRACK
+  const [track, setTrack] = useState([
+    new Howl({
+      src: [
+        'https://ipfs.moralis.io:2053/ipfs/QmTDdBFUL8XSK3EzmYrN1YaaTpyQZz8LozPhzey732qd3c',
+      ],
+      format: ['mp3'],
+      volume: 0.5,
+      seek: 0.2,
+      // mute: false,
+    }),
+  ])
+
+  // PLAY & PAUSE TRACK
+  function playTrack() {
+    if (!track[0].playing()) {
+      track[0].play()
       setIsPlaying(true)
+    } else {
+      track[0].pause()
+      setIsPlaying(false)
     }
+  }
+  // STOP TRACK
+  function stopPlaying() {
+    if (track[0].playing()) {
+      track[0].stop()
+      setClosedPlayer(true)
+    } else return
+  }
+
+  function volume() {
+    const value = document.getElementById('volumeBar').value / 100
+    track[0].volume(value)
+  }
+
+  function skipThroughTrack() {
+    const seekPart = document.getElementById('seekPart').value
+    track[0].seek(seekPart)
+  }
+
+  function mute() {
+    // if (track[0].mute(false)) {
+    //   track[0].mute(true)
+    // } else {
+    //   track[0].mute(false)
+    // }
   }
 
   return (
@@ -60,7 +104,7 @@ export default function AudioPlayer() {
         <div className="flex w-full flex-col items-center">
           <div className="flex w-full items-center justify-evenly lg:w-6/12">
             <FastForwardIcon className="h-5 rotate-180 cursor-pointer text-white hover:text-teal-300" />
-            <div onClick={clickPlay}>
+            <div onClick={playTrack}>
               {!isPlaying && (
                 <PlayIcon className="h-8 cursor-pointer text-white hover:text-teal-300" />
               )}
@@ -72,14 +116,19 @@ export default function AudioPlayer() {
           </div>
           <input
             type="range"
+            id="seekPart"
             min="0"
             max="100"
+            onChange={skipThroughTrack}
             className="range range-xs w-6/12"
           />
         </div>
 
         <div className="mr-4 flex w-4/12 items-center justify-center space-x-2 lg:w-2/12">
-          <VolumeOffIcon className="h-6 text-gray-300" />
+          <VolumeOffIcon
+            className="h-6 cursor-pointer text-gray-300"
+            onClick={mute}
+          />
           {/* <input
             type="range"
             min="0"
@@ -88,16 +137,16 @@ export default function AudioPlayer() {
           /> */}
           <input
             type="range"
+            id="volumeBar"
             min="0"
             max="100"
+            onChange={volume}
             className="range range-xs fill-green-500"
           />
           <VolumeUpIcon className="h-6 text-white" />
           <XIcon
             className="h-6 cursor-pointer text-white"
-            onClick={() => {
-              setClosedPlayer(true)
-            }}
+            onClick={stopPlaying}
           />
         </div>
       </a>

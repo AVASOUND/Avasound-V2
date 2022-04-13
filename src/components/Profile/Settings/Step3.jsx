@@ -22,6 +22,16 @@ export default function ProfileSettings(props) {
 
   // CONTRACT CALL MINT ITEM
   async function contractCall(object) {
+    const masterOwner = document.getElementById('masterOwner').value
+    const share1 = document.getElementById('shares1').value
+    const share2 = document.getElementById('shares2').value
+
+    if (share1 + share2 != 100) {
+      alert('Must be 100%!')
+      console.log(share1 * share2)
+      return
+    }
+
     const web3Provider = await Moralis.enableWeb3()
     const ethers = Moralis.web3Library
 
@@ -92,7 +102,7 @@ export default function ProfileSettings(props) {
                   handleModal={setShowMasterInfo}
                   title={'Master Record'}
                   description={
-                    'The unique creator of this token has to own the rights to the Masters'
+                    'The unique creator of this token who owns the rights to the masters'
                   }
                 />
               )}
@@ -130,7 +140,7 @@ export default function ProfileSettings(props) {
                     handleModal={setShowRoyaltyInfo}
                     title={'Royalty Tokens'}
                     description={
-                      'Distribute shares to unique holders. For example 50% Record Label, 25% Artist A, 25% Artist B'
+                      'Distribute shares between you and other creators who might be part of this project.'
                     }
                   />
                 )}
@@ -138,9 +148,9 @@ export default function ProfileSettings(props) {
               <div className="flex w-full flex-row items-center space-x-4">
                 <input
                   type="text"
-                  name="trackATitle"
+                  name="royalties1"
+                  id="royalties1"
                   value={user.get('ethAddress')}
-                  id="trackATitle"
                   className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                 />
 
@@ -150,9 +160,10 @@ export default function ProfileSettings(props) {
                   </span>
                   <input
                     type="number"
-                    name="shares"
-                    id="shares"
-                    value={100}
+                    name="shares1"
+                    id="shares1"
+                    placeholder="100"
+                    max="100"
                     className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                     // defaultValue={user.handle}
                   />
@@ -172,8 +183,8 @@ export default function ProfileSettings(props) {
               <div className="flex w-full flex-row items-center space-x-4">
                 <input
                   type="text"
-                  name="trackATitle"
-                  id="trackATitle"
+                  name="royalties2"
+                  id="royalties2"
                   className="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"
                 />
 
@@ -183,9 +194,8 @@ export default function ProfileSettings(props) {
                   </span>
                   <input
                     type="number"
-                    name="shares"
-                    id="shares"
-                    value={0}
+                    name="shares2"
+                    id="shares2"
                     className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
                     // defaultValue={user.handle}
                   />

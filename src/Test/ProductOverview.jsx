@@ -1,6 +1,9 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/solid'
 import { RadioGroup, Tab } from '@headlessui/react'
+import { PauseIcon, PlayIcon } from '@heroicons/react/outline'
+import { Howl, Howler } from 'howler'
+import { useMoralis } from 'react-moralis'
 
 const product = {
   name: 'Gestalt - Siamese Twins',
@@ -13,8 +16,7 @@ const product = {
   description: 'Digital download with community perks',
   highlights: ['Digital Download in MP3 & WAV', 'Exclusive Community Access'],
   music: ['Side A: Simaese Twins', 'Side B: The Oracles Call'],
-  imageSrc:
-    'https://tailwindui.com/img/ecommerce-images/product-page-05-product-01.jpg',
+  imageSrc: '/wmex.png',
   imageAlt:
     'Sample of 30 icons with friendly and fun details in outline, filled, and brand color styles.',
   sizes: [
@@ -103,20 +105,62 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+//
+// https://ipfs.moralis.io:2053/ipfs/QmUDqR6ksYZ8HVtpjvzPGNNGz5ZBSiruRVG8SS7G6Gyx8H
+
+export default function ProductOverview() {
+  // const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+
+  const { Moralis } = useMoralis()
+
+  const [track, setTrack] = useState([
+    new Howl({
+      src: [
+        'https://ipfs.moralis.io:2053/ipfs/QmTDdBFUL8XSK3EzmYrN1YaaTpyQZz8LozPhzey732qd3c',
+      ],
+      format: ['mp3'],
+    }),
+  ])
+
+  // STATE VAR TRACK
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  // PLAY TRACK
+  function playTrack() {
+    if (!track[0].playing()) {
+      track[0].play()
+      setIsPlaying(true)
+    } else {
+      track[0].pause()
+      setIsPlaying(false)
+    }
+  }
+
   return (
     <div className="bg-white">
       <div className="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         {/* Product */}
         <div className="lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16">
           {/* Product image */}
-          <div className="lg:col-span-4 lg:row-end-1">
-            <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg bg-gray-100">
+          <div className="flex justify-center lg:col-span-4 lg:row-end-1">
+            <div className="group h-96  w-96 overflow-hidden rounded-lg bg-gray-100">
+              <div className="flex w-full items-center justify-center">
+                {!isPlaying ? (
+                  <PlayIcon
+                    className=" absolute top-64 z-50 w-10 cursor-pointer text-gray-900 opacity-0 hover:text-teal-500 group-hover:opacity-100"
+                    onClick={playTrack}
+                  />
+                ) : (
+                  <PauseIcon
+                    className=" absolute top-64 z-50 w-10 cursor-pointer text-gray-900 opacity-0 hover:text-teal-500 group-hover:opacity-100"
+                    onClick={playTrack}
+                  />
+                )}
+              </div>
               <img
                 src={product.imageSrc}
                 alt={product.imageAlt}
-                className="object-cover object-center"
+                className="object-center hover:opacity-50"
               />
             </div>
           </div>
@@ -211,13 +255,13 @@ export default function Example() {
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
               <button
                 type="button"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-teal-600 py-3 px-8 text-base font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 Pay {product.price}
               </button>
               <button
                 type="button"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 py-3 px-8 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 py-3 px-8 text-base font-medium text-teal-700 hover:bg-teal-100 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 Preview
               </button>
@@ -250,7 +294,7 @@ export default function Example() {
                 {license.summary}{' '}
                 <a
                   href={license.href}
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-teal-600 hover:text-teal-500"
                 >
                   Terms and Conditions
                 </a>
@@ -328,7 +372,7 @@ export default function Example() {
                     className={({ selected }) =>
                       classNames(
                         selected
-                          ? 'border-indigo-600 text-indigo-600'
+                          ? 'border-teal-600 text-teal-600'
                           : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
                         'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
                       )
@@ -340,7 +384,7 @@ export default function Example() {
                     className={({ selected }) =>
                       classNames(
                         selected
-                          ? 'border-indigo-600 text-indigo-600'
+                          ? 'border-teal-600 text-teal-600'
                           : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
                         'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
                       )
@@ -353,7 +397,7 @@ export default function Example() {
                     className={({ selected }) =>
                       classNames(
                         selected
-                          ? 'border-indigo-600 text-indigo-600'
+                          ? 'border-teal-600 text-teal-600'
                           : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
                         'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
                       )

@@ -107,16 +107,15 @@ export default function Step2(props) {
           {/* ZIP FILE */}
           <div className="mt-6 grid grid-cols-12 gap-6">
             <div className="col-span-12">
-              {/* <label
+              <label
                 htmlFor="first-name"
                 className="block text-sm font-medium text-gray-700"
               >
-                Upload up to 4 Tracks
-              </label> */}
+                Upload Tracks
+              </label>
 
               <p className="mt-2 text-sm text-gray-500">
-                Upload up to 4 MP3s and include WAVs or other exclusive files in
-                a zip below.
+                Up to 4 MP3s and a zip file including WAVs or exclusives.
               </p>
             </div>
           </div>

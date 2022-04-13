@@ -34,7 +34,7 @@ export default function ProfileSettings(props) {
       })
       setGenre(r)
       setSelectGenreId(rmap)
-      console.log(r)
+      console.log(rmap)
     })
   }, [])
 
@@ -76,14 +76,6 @@ export default function ProfileSettings(props) {
       props.handleStep('2')
     })
   }
-
-  //   useEffect(() => {
-  //     if (stepDone) {
-  //       handleStep(true)
-  //     }
-  //   })
-
-  //  STEP BACK
 
   return (
     <div className="w-11/12 py-6 px-4 sm:p-6 lg:pb-8">
@@ -232,7 +224,8 @@ export default function ProfileSettings(props) {
                   type="number"
                   name="recordNumber"
                   id="recordNumber"
-                  autoComplete="recordtitle"
+                  min="1"
+                  max="100000"
                   className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
                 />
               </div>

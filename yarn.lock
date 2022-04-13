@@ -1342,6 +1342,11 @@
   dependencies:
     "lru-cache" "^7.5.1"
 
+"howler@^2.2.3":
+  "integrity" "sha512-QM0FFkw0LRX1PR8pNzJVAY25JhIWvbKMBFM4gqk+QdV+kPXOhleWGCB6AiAF/goGjIHK2e/nIElplvjQwhr0jg=="
+  "resolved" "https://registry.npmjs.org/howler/-/howler-2.2.3.tgz"
+  "version" "2.2.3"
+
 "http-cache-semantics@^4.1.0":
   "version" "4.1.0"
 
