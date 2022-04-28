@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
   MenuIcon,
@@ -9,6 +9,12 @@ import {
   ShieldCheckIcon,
   CogIcon,
   ServerIcon,
+  ArrowDownIcon,
+  ChevronDownIcon,
+  CheckCircleIcon,
+  CheckIcon,
+  XCircleIcon,
+  SwitchHorizontalIcon,
 } from '@heroicons/react/outline'
 import { ChevronRightIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
@@ -212,6 +218,15 @@ const footerNavigation = {
 export default function HeroLanding() {
   const { authenticate, logout } = useMoralis()
 
+  const [correctNetwork, setCorrectNetwork] = useState(false)
+
+  function switchNetwork() {
+    if (!correctNetwork) setCorrectNetwork(true)
+    else {
+      setCorrectNetwork(false)
+    }
+  }
+
   return (
     <div className="absolute top-0 w-full bg-white">
       <div className="relative overflow-hidden">
@@ -232,7 +247,7 @@ export default function HeroLanding() {
                     />
                   </a> */}
                   <div className="-mr-2 flex items-center md:hidden">
-                    <Popover.Button className="focus-ring-inset inline-flex items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                    <Popover.Button className="focus-ring-inset inline-flex items-center justify-center rounded-md bg-transparent p-2 text-gray-400 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white">
                       <span className="sr-only">Open main menu</span>
                       <MenuIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -250,19 +265,28 @@ export default function HeroLanding() {
                   ))}
                 </div>
               </div>
-              <div
-                className="hidden md:flex md:items-center md:space-x-6"
-                onClick={authenticate}
-              >
-                {/* <a
-                  href="#"
-                  className="text-base font-medium text-white hover:text-gray-300"
-                >
-                  Log in
-                </a> */}
+              <div className="hidden md:flex md:items-center md:space-x-6">
                 <a
+                  onClick={switchNetwork}
                   href="#"
-                  className="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-4 py-2 text-base font-medium text-white hover:bg-gray-700"
+                  className="flex items-center whitespace-nowrap text-base font-medium text-white hover:text-gray-300"
+                >
+                  {!correctNetwork ? (
+                    <div className="flex flex-row items-center justify-evenly rounded-full p-1 px-3 ring-1 ring-white">
+                      Switch Network!
+                      {/* <ChevronDownIcon className="ml-1 h-3" /> */}
+                    </div>
+                  ) : (
+                    <div className="flex flex-row items-center justify-evenly rounded-full p-1 px-3 ring-1 ring-white">
+                      Avalanche
+                      {/* <ChevronDownIcon className="ml-1 h-3" /> */}
+                    </div>
+                  )}
+                </a>
+                <a
+                  onClick={authenticate}
+                  href="#"
+                  className="block w-full rounded-md bg-gradient-to-r from-teal-400 to-teal-700 py-2 px-4 text-center font-medium text-white shadow hover:from-teal-500 hover:to-teal-800"
                 >
                   Login with Metamask
                 </a>
@@ -281,7 +305,7 @@ export default function HeroLanding() {
           >
             <Popover.Panel
               focus
-              className="absolute inset-x-0 top-0 origin-top transform p-2 transition md:hidden"
+              className="absolute inset-x-0 top-0 z-50 origin-top transform p-2 transition md:hidden"
             >
               <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
                 <div className="flex items-center justify-between px-5 pt-4">
@@ -319,21 +343,39 @@ export default function HeroLanding() {
                       Login with Metamask
                     </a>
                   </div>
-                  {/* <div className="mt-6 px-5">
-                    <p className="text-center text-base font-medium text-gray-500">
-                      Existing customer?{' '}
-                      <a href="#" className="text-gray-900 hover:underline">
-                        Login
-                      </a>
-                    </p>
-                  </div> */}
+                  <div className="mt-6 px-5">
+                    <div
+                      onClick={switchNetwork}
+                      className="flex cursor-pointer flex-row items-center justify-center text-center text-base font-medium text-gray-500"
+                    >
+                      {!correctNetwork ? (
+                        <div className="flex flex-row items-center justify-center">
+                          <p>Switch Network</p>
+                          <SwitchHorizontalIcon className="ml-2 h-3" />
+                        </div>
+                      ) : (
+                        <div className="flex flex-row items-center justify-center">
+                          <p>Avalanche Network</p>
+                          <CheckIcon className="ml-2 h-3" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </Popover.Panel>
           </Transition>
+          <div className="">
+            <img
+              className="absolute w-full"
+              // src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg"
+              src="/Green_Wave.png"
+              alt=""
+            />
+          </div>
         </Popover>
-        <div className="bg-black pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14">
-          <div className="mx-auto max-w-7xl lg:px-8">
+        <div className="relative pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14">
+          <div className="z-50 mx-auto max-w-7xl lg:px-8">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8">
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
                 <div className="lg:py-24">
@@ -352,24 +394,25 @@ export default function HeroLanding() {
                       aria-hidden="true"
                     />
                   </a> */}
-                  <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                  <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:mt-6 xl:text-6xl">
                     {/* <span className="block">AVASOUND</span> */}
                     <img
-                      className="h-8 w-auto sm:h-12"
-                      src="/avso-hori-wht.svg"
+                      className="h-10 w-auto sm:h-16"
+                      src="/avasound-white.svg"
+                      // src="/avasound-blk.svg"
                       alt=""
                     />
-                    <span className="block bg-gradient-to-r from-teal-400 to-teal-700 bg-clip-text pb-3 text-transparent sm:pb-5">
-                      a new wave.
+                    <span className="block bg-gradient-to-r from-teal-400 to-emerald-700 bg-clip-text pb-3 text-transparent sm:pb-5">
+                      a new wav
                     </span>
                   </h1>
-                  <p className="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
+                  <div className="rounded-xl bg-transparent p-1 text-base text-white shadow-2xl backdrop-blur-xl sm:text-xl lg:text-lg xl:text-xl">
                     Avasound is the first one stop music platform of it's kind
                     on the Avalanche Network. Our mission is to put Artists and
                     Record Labels first, leveraging blockchain technology for
                     direct payment flow and low fees.
-                  </p>
-                  <div className="mt-10 sm:mt-12">
+                  </div>
+                  <div className="mt-8">
                     <form action="#" className="sm:mx-auto sm:max-w-xl lg:mx-0">
                       {/* <div className="sm:flex">
                         <div className="min-w-0 flex-1">
@@ -407,30 +450,32 @@ export default function HeroLanding() {
                   </div>
                 </div>
               </div>
-              <div className="mt-12 -mb-16 sm:-mb-48 lg:relative lg:m-0">
-                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                  {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
-                  {/* <img
+
+              {/* <div className="mt-12 -mb-16 sm:-mb-48 lg:relative lg:m-0">
+                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0"> */}
+              {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
+              {/* <img
                     className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                    src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg"
+                    // src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg"
+                    src="/Green_Wave.png"
                     alt=""
-                  /> */}
+                  />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
         {/* Testimonial section */}
-        <div className="mt-24 bg-gradient-to-r from-teal-500 to-teal-700 pb-16 lg:relative lg:z-10 lg:mt-0 lg:pb-0">
+        <div className="bg-gradient-to-r from-teal-400 to-emerald-600  lg:relative lg:z-10 lg:mt-0 lg:pb-0">
           <div className="pb-16 lg:relative lg:z-10 lg:pb-0">
             <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
               <div className="relative lg:-my-8">
                 <div
                   aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"
+                  className="absolute inset-x-0 top-0 h-1/2 bg-black lg:hidden"
                 />
                 <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
-                  <div className="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
+                  <div className="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl ring-1 ring-teal-300 sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                     <img
                       className="object-cover lg:h-full lg:w-full"
                       // src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"

@@ -92,7 +92,7 @@ export default function AudioPlayer(props) {
                 }}
                 className="cursor-pointer whitespace-nowrap  text-sm"
               >
-                Nymph Catching
+                Empress
               </h1>
               <h1
                 onClick={() => {
@@ -100,7 +100,7 @@ export default function AudioPlayer(props) {
                 }}
                 className="cursor-pointer  text-xs text-gray-300"
               >
-                Aiden
+                FPX
               </h1>
             </div>
           </div>
