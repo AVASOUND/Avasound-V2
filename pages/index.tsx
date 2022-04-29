@@ -3,10 +3,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-import Header from '../src/components/Header/Header'
+// import Header from '../src/components/Header/Header'
 import MarketNav from '../src/components/Market/MarketNav'
 import TrendingSection from '../src/Test/TrendingSection'
-import AltHeader from '../src/Test/AltHeader'
+import Header from '../src/components/Header/Header'
 import Features from '../src/components/Market/Features'
 import AudioPlayer from '../src/components/Footer/AudioPlayer'
 
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       </Head>
       {/* Header Section in App */}
       <div className="sticky top-0 z-50 w-full shadow-lg">
-        <AltHeader />
+        <Header />
       </div>
       {/* Navigation Section for Marketplace */}
       {/* <div className="sticky top-16 z-30 w-full">

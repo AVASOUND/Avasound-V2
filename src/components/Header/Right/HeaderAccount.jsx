@@ -21,7 +21,7 @@ export default function HeaderAccount() {
       onClick={() => {
         navigator.clipboard.writeText(user.get('ethAddress'))
       }}
-      className={` group flex cursor-pointer flex-row items-center justify-center rounded-full p-1 px-3 text-xs font-semibold ring-1 ring-black hover:underline active:text-zinc-800`}
+      className={` group flex cursor-pointer flex-row items-center justify-center rounded-full p-2 px-3 text-xs font-semibold ring-1 ring-black hover:underline active:text-zinc-800`}
     >
       <p className="">{userEthAdd}</p>
       &nbsp;

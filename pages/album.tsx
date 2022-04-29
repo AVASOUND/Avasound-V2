@@ -19,9 +19,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section App */}
-      <Header />
+      <div className="sticky top-0 z-50 w-full shadow-lg">
+        <Header />
+      </div>
       {/* Profile Section */}
-      <AlbumPage />
+      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+        <AlbumPage />
+      </section>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a

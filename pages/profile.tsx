@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useMoralis } from 'react-moralis'
-import Login from '../src/components/Login'
 import Header from '../src/components/Header/Header'
 import ProfilePage from '../src/components/Profile/ProfilePage'
 
@@ -17,9 +16,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section App */}
-      <Header />
+      <div className="sticky top-0 z-50 w-full shadow-lg">
+        <Header />
+      </div>
       {/* Profile Section */}
-      <ProfilePage />
+
+      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+        <ProfilePage />
+      </section>
 
       {/* <footer className="flex h-12 w-full items-center justify-center border-t">
         <a

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-import Header from '../src/components/Header/Header'
+import Header from '../src/components/Header/oldHeader'
 import SettingsPage from '../src/components/Profile/SettingsPage'
 
 const Home: NextPage = () => {

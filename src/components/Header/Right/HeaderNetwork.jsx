@@ -34,7 +34,7 @@ export default function HeaderAccount() {
       onClick={setNetwork}
       className="flex items-center whitespace-nowrap text-xs font-semibold tracking-wide text-black"
     >
-      <div className="hidden flex-row items-center justify-evenly rounded-full p-1 px-3 ring-1 ring-black lg:flex">
+      <div className="hidden flex-row items-center justify-evenly rounded-full p-2 px-3 ring-1 ring-black lg:flex">
         {wrongNetwork ? (
           <div className="text-red-500">Switch Network!</div>
         ) : (

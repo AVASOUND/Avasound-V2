@@ -4,7 +4,6 @@ import ImgPopover from './ImgPopover'
 import Image from 'next/image'
 import { useChain, useMoralis } from 'react-moralis'
 import { useEffect, useState } from 'react'
-import { XCircleIcon, XIcon } from '@heroicons/react/outline'
 
 export default function HeaderRight() {
   const { user, chainId, isAuthenticated, enableWeb3, isWeb3Enabled } =
@@ -57,12 +56,6 @@ export default function HeaderRight() {
       </div>
       <div className="flex cursor-pointer rounded-full p-1 md:hidden">
         <ImgPopover />
-        {/* <Image
-          src={user.get('userImg')}
-          width={35}
-          height={35}
-          className="rounded-full"
-        /> */}
       </div>
     </div>
   )

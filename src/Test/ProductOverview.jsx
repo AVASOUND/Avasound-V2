@@ -4,6 +4,7 @@ import { RadioGroup, Tab } from '@headlessui/react'
 import { PauseIcon, PlayIcon } from '@heroicons/react/outline'
 import { Howl, Howler } from 'howler'
 import { useMoralis } from 'react-moralis'
+import Image from 'next/image'
 
 const product = {
   name: 'Gestalt - Siamese Twins',
@@ -168,7 +169,7 @@ export default function ProductOverview() {
           {/* Product details */}
           <div className="mx-auto mt-14 max-w-2xl sm:mt-16 lg:col-span-3 lg:row-span-2 lg:row-end-2 lg:mt-0 lg:max-w-none">
             <div className="flex flex-col-reverse">
-              <div className="mt-4">
+              <div className="">
                 <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
                   {product.name}
                 </h1>
@@ -177,80 +178,19 @@ export default function ProductOverview() {
                   Product information
                 </h2>
                 <p className="mt-2 text-sm text-gray-500">
-                  {product.version.name} (
+                  {product.version.name}
+                  {/* (
                   <time dateTime={product.version.datetime}>
                     {product.version.date}
                   </time>
-                  )
+                  ) */}
                 </p>
               </div>
-
-              <div>
-                <h3 className="sr-only">Reviews</h3>
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
-                      key={rating}
-                      className={classNames(
-                        reviews.average > rating
-                          ? 'text-yellow-400'
-                          : 'text-gray-300',
-                        'h-5 w-5 flex-shrink-0'
-                      )}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <p className="sr-only">{reviews.average} out of 5 stars</p>
-              </div>
             </div>
+            <Image src={'/AudioSprite.png'} height={250} width={1000} />
+            {/* ADD Playlist Component */}
 
             <p className="mt-6 text-gray-500">{product.description}</p>
-            {/* Size picker */}
-            {/* <div className="mt-8">
-              <div className="flex items-center justify-between">
-                <h2 className="text-sm font-medium text-gray-900">Type</h2>
-                <a
-                  href="#"
-                  className="text-xs font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Learn about Types
-                </a>
-              </div>
-
-              <RadioGroup
-                value={selectedSize}
-                onChange={setSelectedSize}
-                className="mt-2"
-              >
-                <RadioGroup.Label className="sr-only">
-                  Choose a size
-                </RadioGroup.Label>
-                <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                  {product.sizes.map((size) => (
-                    <RadioGroup.Option
-                      key={size.name}
-                      value={size}
-                      className={({ active, checked }) =>
-                        classNames(
-                          size.inStock
-                            ? 'cursor-pointer focus:outline-none'
-                            : 'cursor-not-allowed opacity-25',
-                          active ? 'ring-2 ring-indigo-500 ring-offset-2' : '',
-                          checked
-                            ? 'border-transparent bg-indigo-600 text-white hover:bg-indigo-700'
-                            : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
-                          'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1'
-                        )
-                      }
-                      disabled={!size.inStock}
-                    >
-                      <RadioGroup.Label as="p">{size.name}</RadioGroup.Label>
-                    </RadioGroup.Option>
-                  ))}
-                </div>
-              </RadioGroup>
-            </div> */}
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
               <button

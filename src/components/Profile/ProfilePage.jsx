@@ -117,66 +117,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      {' '}
-      <Disclosure
-        as="div"
-        className="absolute top-20 w-full overflow-hidden bg-teal-700 pb-32"
-      >
-        {({ open }) => (
-          <>
-            <div
-              aria-hidden="true"
-              className={classNames(
-                open ? 'bottom-0' : 'inset-y-0',
-                'absolute inset-x-0 left-1/2 w-full -translate-x-1/2 transform overflow-hidden lg:inset-y-0'
-              )}
-            >
-              <div className="absolute inset-0 flex">
-                <div
-                  className="h-full w-1/2"
-                  style={{ backgroundColor: '#00bfa5' }}
-                />
-                <div
-                  className="h-full w-1/2"
-                  style={{ backgroundColor: '#00796b' }}
-                />
-              </div>
-              <div className="relative flex justify-center">
-                <svg
-                  className="flex-shrink-0"
-                  width={1750}
-                  height={308}
-                  viewBox="0 0 1750 308"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M284.161 308H1465.84L875.001 182.413 284.161 308z"
-                    fill="#4db6ac"
-                  />
-                  <path
-                    d="M1465.84 308L16.816 0H1750v308h-284.16z"
-                    fill="#00796b"
-                  />
-                  <path
-                    d="M1733.19 0L284.161 308H0V0h1733.19z"
-                    fill="#00bfa5"
-                  />
-                  <path
-                    d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z"
-                    fill="#009688"
-                  />
-                </svg>
-              </div>
-            </div>
-            {/* <header className="relative py-10">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-white">Settings</h1>
-              </div>
-            </header> */}
-          </>
-        )}
-      </Disclosure>
-      <div className="z-40 flex h-full w-11/12 rounded-b-xl bg-white shadow-xl lg:w-9/12">
+      <div className="z-40 flex h-full w-full rounded-b-xl bg-white shadow-xl">
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
@@ -205,11 +146,11 @@ export default function ProfilePage() {
                             {userInfo.name}
                           </h1>
 
-                          {/* <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">
-                            <p>78 Items</p>
-                            <p>1000 Followers</p>
-                            <p>100 Following</p>
-                          </div> */}
+                          <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">
+                            <p>78 Records</p>
+                            <p>10,657 Likes</p>
+                            <p>786 Fans</p>
+                          </div>
                         </div>
                         <div className="justify-stretch mt-6 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:space-y-0 sm:space-x-4">
                           {/* <button
