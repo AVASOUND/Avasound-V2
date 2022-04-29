@@ -51,8 +51,8 @@ export default function Trending() {
     <section aria-labelledby="trending-heading" className="w-full">
       <div className="pt-6">
         <div className="flex">
-          <h2 className="text-md ml-8 font-bold tracking-wide text-teal-700">
-            TRENDING RIGHT NOW
+          <h2 className="text-md ml-8 font-semibold tracking-wide text-teal-700">
+            Trending
           </h2>
         </div>
         <div className="">

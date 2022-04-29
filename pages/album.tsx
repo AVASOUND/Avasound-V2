@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section App */}
-      <div className="sticky top-0 z-50 w-full shadow-lg">
+      <div className="sticky top-0 z-50 w-full">
         <Header />
       </div>
       {/* Profile Section */}

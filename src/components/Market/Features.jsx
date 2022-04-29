@@ -46,8 +46,8 @@ export default function Features() {
   return (
     <div className="pt-6">
       <div>
-        <h2 className="text-md ml-8 font-bold tracking-wide text-teal-700">
-          FEATURED
+        <h2 className="text-md ml-8 font-semibold tracking-wide text-teal-700">
+          Featured
         </h2>
       </div>
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">

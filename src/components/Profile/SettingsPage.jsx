@@ -34,7 +34,7 @@ export default function SettingsPage() {
 
   return (
     <div className="w-full">
-      <Disclosure as="div" className="relative bg-teal-700">
+      {/* <Disclosure as="div" className="relative bg-teal-700">
         {({ open }) => (
           <>
             <div
@@ -88,11 +88,11 @@ export default function SettingsPage() {
             </header>
           </>
         )}
-      </Disclosure>
+      </Disclosure> */}
 
-      <main className="relative -mt-32">
+      <main className="relative">
         {notificationSaved && <Notifications handleNotif={handleNotif} />}
-        <div className="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
+        <div className=" w-full">
           <div className="overflow-hidden rounded-lg bg-white shadow">
             <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
               <aside className="py-6 lg:col-span-3">

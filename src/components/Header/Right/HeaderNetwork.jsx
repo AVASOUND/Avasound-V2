@@ -38,7 +38,7 @@ export default function HeaderAccount() {
         {wrongNetwork ? (
           <div className="text-red-500">Switch Network!</div>
         ) : (
-          'Testnet'
+          'Avalanche'
         )}
       </div>
     </button>

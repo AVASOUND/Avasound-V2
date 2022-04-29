@@ -1,41 +1,30 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-// import Header from '../src/components/Header/Header'
-import MarketNav from '../src/components/Market/MarketNav'
-import TrendingSection from '../src/Test/TrendingSection'
 import Header from '../src/components/Header/Header'
-import Features from '../src/components/Market/Features'
+import PlaylistPage from '../src/components/Playlist/PlaylistPage'
 import AudioPlayer from '../src/components/Footer/AudioPlayer'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
-  const { isAuthenticated, user } = useMoralis()
+  const { isAuthenticated } = useMoralis()
 
   if (!isAuthenticated) return <Login />
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center ">
+    <div className="flex min-h-screen flex-col items-center">
       <Head>
-        <title>Avasound Market</title>
+        <title>AVSO Profile</title>
         <link rel="icon" href="/avso-teal.png" />
       </Head>
-      {/* Header Section in App */}
+      {/* Header Section App */}
       <div className="sticky top-0 z-50 w-full">
         <Header />
       </div>
-      {/* Navigation Section for Marketplace */}
-      {/* <div className="sticky top-16 z-30 w-full">
-        <MarketNav />
-      </div> */}
-      {/* Add Selling Right Now Section */}
+      {/* Profile Section */}
       <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
-        <TrendingSection />
-        {/* Featured on the Frontpage */}
-      </section>
-      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
-        <Features />
+        <PlaylistPage />
       </section>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">

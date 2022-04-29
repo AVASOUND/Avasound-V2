@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import Login from '../src/components/Login'
-import Header from '../src/components/Header/oldHeader'
+import Header from '../src/components/Header/Header'
 import SettingsPage from '../src/components/Profile/SettingsPage'
 
 const Home: NextPage = () => {
@@ -25,9 +25,11 @@ const Home: NextPage = () => {
       {/* <MarketplaceNav /> */}
       {/* <TrendingSection /> */}
       {/* <ProfileMain /> */}
-      <SettingsPage />
+      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+        <SettingsPage />
+      </section>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
+      {/* <footer className="flex h-24 w-full items-center justify-center border-t">
         <a
           className="flex items-center justify-center gap-2"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -41,7 +43,7 @@ const Home: NextPage = () => {
             height={16}
           />
         </a>
-      </footer>
+      </footer> */}
     </div>
   )
 }

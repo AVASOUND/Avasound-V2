@@ -1,11 +1,10 @@
-import { Fragment, useEffect, useRef, useState } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { useEffect, useRef, useState } from 'react'
+import { Popover } from '@headlessui/react'
 import { ChipIcon, PlayIcon, GlobeAltIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { useMoralis } from 'react-moralis'
 import HeaderItem from './HeaderItem'
 import { useRouter } from 'next/router'
-import WalletPopover from './WalletPopover'
 import HeaderRight from './Right/HeaderRight'
 
 const navigation = [
@@ -21,17 +20,11 @@ export default function AltHeader() {
   const [walletModal, setWalletModal] = useState(false)
   const dropdownWallet = useRef(null)
 
-  const [auth, setAuth] = useState()
-
   const { authenticate, isAuthenticated } = useMoralis()
 
   useEffect(() => {
     // only add the event listener when the dropdown is opened
-    if (isAuthenticated) {
-      setAuth(true)
-    } else {
-      setAuth(false)
-    }
+
     if (!walletModal) return
     function handleClick(event) {
       if (
@@ -51,7 +44,7 @@ export default function AltHeader() {
   }
 
   function openCommunity() {
-    router.push('/community')
+    router.push('/playlist')
   }
   function openProfile() {
     router.push('/profile')
@@ -60,7 +53,7 @@ export default function AltHeader() {
   return (
     <div>
       <Popover as="header" className="relative">
-        <div className="ring-b z-50 flex h-20 w-full flex-row items-center justify-between bg-[#f5f5f5] text-black ring-teal-700">
+        <div className="ring-b z-50 flex h-20 w-full flex-row items-center justify-between bg-[#f5f5f5] text-black shadow-md ring-teal-700">
           <nav
             className="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6"
             aria-label="Global"
