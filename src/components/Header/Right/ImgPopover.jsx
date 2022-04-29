@@ -59,8 +59,8 @@ export default function WalletPopover() {
           >
             <Image
               src={user.get('userImg')}
-              width={30}
-              height={30}
+              width={35}
+              height={35}
               className="rounded-full"
             />
           </Popover.Button>
@@ -74,7 +74,7 @@ export default function WalletPopover() {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute z-50 mt-3">
+            <Popover.Panel className="relative top-44 z-50 max-w-md transform  px-2  sm:px-0  lg:left-0 ">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid bg-white px-5 py-6 sm:gap-8 sm:p-8">
                   {walletSolution.map((item) => (

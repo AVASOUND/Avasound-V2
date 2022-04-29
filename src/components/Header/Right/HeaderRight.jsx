@@ -29,40 +29,40 @@ export default function HeaderRight() {
   }
   return (
     <div className="flex flex-row items-center justify-center space-x-2">
-      <div className="hidden xl:flex">
-        <HeaderNetwork />
-      </div>
       <div
         onClick={setNetwork}
-        className="flex cursor-pointer rounded-full p-1 xl:hidden"
+        className="hidden cursor-pointer rounded-full p-1 md:flex lg:hidden"
       >
         {wrongNetwork ? (
           <Image
             src={'/avso-logo.png'}
-            width={30}
-            height={30}
+            width={25}
+            height={25}
             className="rounded-full"
           />
         ) : (
           <Image
             src={'/avaxlogo.png'}
-            width={30}
-            height={30}
+            width={20}
+            height={20}
             className="rounded-full"
           />
         )}
       </div>
-      <div className="hidden xl:flex">
+      <div className="hidden lg:flex">
+        <HeaderNetwork />
+      </div>
+      <div className="hidden md:flex">
         <WalletPopover />
       </div>
-      <div className="flex cursor-pointer rounded-full p-1 xl:hidden">
-        {/* <ImgPopover /> */}
-        <Image
+      <div className="flex cursor-pointer rounded-full p-1 md:hidden">
+        <ImgPopover />
+        {/* <Image
           src={user.get('userImg')}
-          width={30}
-          height={30}
+          width={35}
+          height={35}
           className="rounded-full"
-        />
+        /> */}
       </div>
     </div>
   )

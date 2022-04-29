@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useChain, useMoralis } from 'react-moralis'
 
