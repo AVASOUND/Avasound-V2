@@ -15,8 +15,7 @@ import { useMoralis } from 'react-moralis'
 import HeaderItem from '../components/Header/HeaderItem'
 import { useRouter } from 'next/router'
 import WalletPopover from '../components/Header/WalletPopover'
-import Index from '../components/Header/Right/Index'
-import HeaderNetwork from '../components/Header/Right/HeaderNetwork'
+import HeaderRight from '../components/Header/Right/HeaderRight'
 
 const navigation = [
   { name: 'Discover', href: '#' },
@@ -33,7 +32,7 @@ export default function AltHeader() {
 
   const [auth, setAuth] = useState()
 
-  const { authenticate, user, isAuthenticated } = useMoralis()
+  const { authenticate, isAuthenticated } = useMoralis()
 
   useEffect(() => {
     // only add the event listener when the dropdown is opened
@@ -67,45 +66,22 @@ export default function AltHeader() {
     router.push('/profile')
   }
 
-  function openWallet() {
-    alert('wallet opened')
-  }
   return (
     <div>
       <Popover as="header" className="relative">
-        <div className="ring-b z-50 flex h-16 w-full flex-row items-center justify-between bg-[#f5f5f5] text-black ring-teal-700">
+        <div className="ring-b z-50 flex h-20 w-full flex-row items-center justify-between bg-[#f5f5f5] text-black ring-teal-700">
           <nav
             className="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6"
             aria-label="Global"
           >
-            <div className="flex flex-1 items-center">
+            <div className="flex w-full items-center justify-evenly">
               <div className="flex w-full items-center justify-between text-xs font-semibold tracking-wide md:w-auto">
                 <a href="#" className="fixed left-8 flex">
                   <span className="sr-only">Avasound</span>
                   <img className="h-3 w-auto" src="/avasound-blk.svg" alt="" />
                 </a>
                 <div className="fixed right-8 flex flex-row items-center space-x-4">
-                  {/* <div className="hidden lg:flex">
-                    <HeaderNetwork />
-                  </div>
-                  <div className="flex lg:hidden">
-                    <Image src={'/avaxlogo.png'} width={25} height={25} />
-                  </div>
-                  <div onClick={openWallet} className="hidden md:flex">
-                    <HeaderAccount />
-                  </div>
-                  <div
-                    onClick={openWallet}
-                    className="flex cursor-pointer rounded-full p-1 md:hidden"
-                  >
-                    <Image
-                      src={user.get('userImg')}
-                      width={25}
-                      height={25}
-                      className="rounded-full"
-                    />
-                  </div> */}
-                  <Index />
+                  <HeaderRight />
                 </div>
                 <div className="-mr-2 md:hidden">
                   <Popover.Button className="focus-ring-inset inline-flex items-center justify-center rounded-md bg-transparent text-gray-400 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white">
@@ -114,7 +90,7 @@ export default function AltHeader() {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="hidden items-center md:flex">
+              <div className="hidden w-full items-center justify-evenly space-x-8 md:flex lg:space-x-24">
                 <div
                   onClick={openHomepage}
                   className={`cursor-pointer ${
