@@ -97,7 +97,7 @@ export default function AltHeader() {
                     router.pathname === '/' ? 'animate-pulse text-teal-700' : ''
                   }`}
                 >
-                  <HeaderItem title="Discover" Icon={HomeIcon} />
+                  <HeaderItem title="Discover" Icon={GlobeAltIcon} />
                 </div>
                 {isAuthenticated ? (
                   <div
@@ -122,7 +122,7 @@ export default function AltHeader() {
                       : ''
                   }`}
                 >
-                  <HeaderItem title="Playlist" Icon={GlobeAltIcon} />
+                  <HeaderItem title="Playlist" Icon={PlayIcon} />
                 </div>
                 {auth ? (
                   <div
