@@ -36,6 +36,7 @@ export default function Trending() {
       const Album = Moralis.Object.extend('Album')
       const query = new Moralis.Query(Album)
       // query.equalTo('address', user.get('ethAddress'))
+      query.limit(7)
       query.find().then((results) => {
         let result = []
         results.forEach((content) => {
@@ -48,25 +49,18 @@ export default function Trending() {
 
   return (
     <section aria-labelledby="trending-heading" className="w-full">
-      <div className="w-full py-8 sm:py-24 lg:py-8 lg:px-8">
-        <div className="flex items-center justify-between px-8 sm:px-4 lg:px-4">
-          <h2
-            id="trending-heading"
-            className="text-xl font-bold tracking-tight text-gray-900"
-          >
-            Recently sold
+      <div className="pt-6">
+        <div className="flex">
+          <h2 className="text-md ml-8 font-bold tracking-wide text-teal-700">
+            TRENDING RIGHT NOW
           </h2>
         </div>
-
-        <div className="relative mt-4 sm:mx-28">
-          <div className="relative w-full items-center overflow-x-auto">
-            <ul role="list" className=" mx-4 inline-flex space-x-2 sm:mx-4">
-              {/* {trendingProducts.map((product) => (
-                <li
-                  key={product.id}
-                  className="inline-flex w-full flex-row
-                 text-center lg:w-full "
-                > */}
+        <div className="">
+          <div className="overflow-x-auto">
+            <ul
+              role="list"
+              className="flex flex-row items-center justify-center "
+            >
               {content.map((data, index) => (
                 <li key={index}>
                   <AlbumcardSmall />

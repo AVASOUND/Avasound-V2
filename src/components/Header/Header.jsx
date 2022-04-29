@@ -1,6 +1,7 @@
 import {
   ChipIcon,
   CreditCardIcon,
+  DuplicateIcon,
   GlobeAltIcon,
   HomeIcon,
 } from '@heroicons/react/outline'
@@ -19,12 +20,19 @@ export default function Header() {
 
   const [auth, setAuth] = useState()
 
-  const { authenticate, logout, isAuthenticated } = useMoralis()
+  const { authenticate, user, isAuthenticated } = useMoralis()
+  const [userEthAdd, setUserEthAdd] = useState('')
 
   useEffect(() => {
     // only add the event listener when the dropdown is opened
     if (isAuthenticated) {
       setAuth(true)
+      if (user) {
+        setUserEthAdd(
+          user.get('ethAddress').slice(0, 4).concat('...') +
+            user.get('ethAddress').slice(38, 42)
+        )
+      }
     } else {
       setAuth(false)
     }
@@ -54,12 +62,32 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full">
-      <div className=" flex h-20 w-full flex-row items-center border-b-2 border-teal-500 bg-black text-white shadow-xl">
-        <div className="fixed ml-8 hidden lg:inline-grid">
-          <Image src="/avasound-white.svg" width={100} height={25} />
+    <header className="sticky top-0 z-50 flex w-full flex-row items-center">
+      <div className="fixed ml-8 hidden items-center lg:inline-grid">
+        <Image src="/avasound-white.svg" width={100} height={25} />
+      </div>
+      <div className="fixed right-8 mr-8 flex flex-row  items-center justify-evenly space-x-4">
+        <div className="hidden items-center lg:inline-grid">
+          <div className="flex flex-row items-center justify-center rounded-full p-1 px-3 text-sm font-medium tracking-widest text-white ring-1 ring-white">
+            <p>Avalanche</p>
+          </div>
         </div>
-        <div className="my-1 ml-4 flex w-full flex-row justify-evenly">
+        <div className="hidden items-center lg:inline-grid">
+          <div
+            onClick={() => {
+              navigator.clipboard.writeText(user.get('ethAddress'))
+            }}
+            className={`group flex cursor-pointer flex-row items-center justify-center rounded-full p-1 px-3 text-sm font-medium tracking-widest text-white ring-1 ring-white hover:underline active:text-teal-400`}
+          >
+            <p>{userEthAdd}</p>
+            <div className="hidden group-active:flex">
+              <DuplicateIcon className="h-3" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className=" flex h-20 w-full flex-row items-center justify-center border-b-2 border-teal-500 bg-black text-white shadow-xl">
+        <div className="flex w-11/12 flex-row items-center justify-evenly lg:w-6/12">
           <div
             onClick={openHomepage}
             className={`cursor-pointer ${

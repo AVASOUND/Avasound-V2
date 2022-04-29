@@ -73,8 +73,8 @@ const navigation = {
     // },
   ],
   other: [
-    { name: 'ART', href: '#' },
-    { name: 'MEMBERS', href: '#' },
+    { name: 'TICKETS', href: '#' },
+    { name: 'COMMUNITY', href: '#' },
   ],
 }
 
@@ -136,7 +136,7 @@ export default function MarketNav() {
               </div>
             </div>
 
-            <header className="relative py-4">
+            <header className="relative">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* <h1 className="text-3xl font-bold text-white">Discover</h1> */}
 
@@ -172,7 +172,7 @@ export default function MarketNav() {
                                           className={classNames(
                                             open
                                               ? 'border-teal-600 text-gray-800'
-                                              : 'border-transparent text-white hover:text-gray-800',
+                                              : 'border-transparent text-sm tracking-wide text-white hover:text-gray-800',
                                             'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out'
                                           )}
                                         >

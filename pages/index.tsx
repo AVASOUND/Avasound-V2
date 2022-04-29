@@ -6,6 +6,7 @@ import Login from '../src/components/Login'
 import Header from '../src/components/Header/Header'
 import MarketNav from '../src/components/Market/MarketNav'
 import TrendingSection from '../src/Test/TrendingSection'
+import AltHeader from '../src/Test/AltHeader'
 import Features from '../src/components/Market/Features'
 import AudioPlayer from '../src/components/Footer/AudioPlayer'
 
@@ -21,15 +22,21 @@ const Home: NextPage = () => {
         <link rel="icon" href="/avso-teal.png" />
       </Head>
       {/* Header Section in App */}
-      <div className="sticky top-0 z-50 w-full">
-        <Header />
+      <div className="sticky top-0 z-50 w-full shadow-lg">
+        <AltHeader />
       </div>
       {/* Navigation Section for Marketplace */}
-      <MarketNav />
+      {/* <div className="sticky top-16 z-30 w-full">
+        <MarketNav />
+      </div> */}
       {/* Add Selling Right Now Section */}
-      <TrendingSection />
-      {/* Featured on the Frontpage */}
-      <Features />
+      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+        <TrendingSection />
+        {/* Featured on the Frontpage */}
+      </section>
+      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+        <Features />
+      </section>
 
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <a

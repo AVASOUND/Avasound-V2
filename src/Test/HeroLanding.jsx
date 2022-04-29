@@ -231,7 +231,7 @@ export default function HeroLanding() {
     <div className="absolute top-0 w-full bg-white">
       <div className="relative overflow-hidden">
         <Popover as="header" className="relative">
-          <div className="border-b border-teal-500 bg-black pb-4 pt-6">
+          <div className="border-b border-teal-500 bg-[#f5f5f5] pb-4 pt-6 text-black">
             <nav
               className="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6"
               aria-label="Global"
@@ -258,7 +258,7 @@ export default function HeroLanding() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="text-base font-medium text-white hover:text-gray-300"
+                      className="text-sm font-medium tracking-wide text-black  hover:text-gray-300"
                     >
                       {item.name}
                     </a>
@@ -269,24 +269,16 @@ export default function HeroLanding() {
                 <a
                   onClick={switchNetwork}
                   href="#"
-                  className="flex items-center whitespace-nowrap text-base font-medium text-white hover:text-gray-300"
+                  className="flex items-center whitespace-nowrap text-sm font-medium tracking-wide text-black"
                 >
-                  {!correctNetwork ? (
-                    <div className="flex flex-row items-center justify-evenly rounded-full p-1 px-3 ring-1 ring-white">
-                      Switch Network!
-                      {/* <ChevronDownIcon className="ml-1 h-3" /> */}
-                    </div>
-                  ) : (
-                    <div className="flex flex-row items-center justify-evenly rounded-full p-1 px-3 ring-1 ring-white">
-                      Avalanche
-                      {/* <ChevronDownIcon className="ml-1 h-3" /> */}
-                    </div>
-                  )}
+                  <div className="flex flex-row items-center justify-evenly rounded-full p-1 px-3 ring-1 ring-black">
+                    Avalanche
+                  </div>
                 </a>
                 <a
                   onClick={authenticate}
                   href="#"
-                  className="block w-full rounded-md bg-gradient-to-r from-teal-400 to-teal-700 py-2 px-4 text-center font-medium text-white shadow hover:from-teal-500 hover:to-teal-800"
+                  className="block w-full rounded-md bg-gradient-to-r from-teal-400 to-teal-700 py-2 px-4 text-center text-sm font-medium tracking-wide text-white shadow-lg hover:from-teal-500 hover:to-teal-800"
                 >
                   Login with Metamask
                 </a>
@@ -329,7 +321,7 @@ export default function HeroLanding() {
                       <a
                         key={item.name}
                         href={item.href}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50"
+                        className="block rounded-md px-3 py-2 text-sm font-medium tracking-wide text-black hover:bg-gray-50"
                       >
                         {item.name}
                       </a>
@@ -356,7 +348,6 @@ export default function HeroLanding() {
                       ) : (
                         <div className="flex flex-row items-center justify-center">
                           <p>Avalanche Network</p>
-                          <CheckIcon className="ml-2 h-3" />
                         </div>
                       )}
                     </div>

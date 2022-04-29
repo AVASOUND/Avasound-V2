@@ -20,12 +20,8 @@ export default function Albumcard() {
     // or add to cart
   }
   return (
-    <div className="relative my-8 mx-2 flex h-36 w-36 flex-col items-center justify-start overflow-hidden rounded-lg bg-[#f5f5f5] shadow-xl sm:mx-4 lg:mx-8">
-      <div className="relative w-full">
-        {/* <div className="absolute flex items-end left-1 top-1 z-50 bg-[#f5f5f5] w-5 h-5">
-          <ShoppingCartIcon className="w-5 h-5" />
-        </div> */}
-      </div>
+    <div className="relative my-8 mx-2 flex h-36 w-36 flex-col items-center justify-start overflow-hidden rounded-lg bg-[#f5f5f5] shadow-xl sm:mx-2 lg:mx-4">
+      <div className="relative w-full"></div>
       <Image width={90} height={90} src={'/avso-logo.png'} />
       <div className="flex w-11/12 flex-col space-y-2">
         <div className="mt-2 flex flex-row items-center justify-between text-xs">
@@ -35,20 +31,7 @@ export default function Albumcard() {
           >
             Aiden - Seek Discomfort
           </h1>
-          {/* <div className="flex cursor-pointer" onClick={itemAction}>
-            <ShoppingCartIcon className="mr-4 h-4 w-4" />
-          </div> */}
         </div>
-
-        {/* <div className="mx-4 mt-1 flex flex-row items-center justify-between text-xs">
-          <p
-            className="cursor-pointer text-xs hover:text-black"
-            onClick={openProfile}
-          >
-            Casual Gabberz
-          </p>
-          <p className="flex whitespace-nowrap">10 USDC</p>
-        </div> */}
       </div>
     </div>
   )

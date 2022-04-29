@@ -44,13 +44,10 @@ export default function Features() {
   }
 
   return (
-    <div className="w-full py-8 sm:py-24 lg:py-8 lg:px-8">
-      <div className="flex items-center justify-between px-4 sm:px-4 lg:px-4">
-        <h2
-          id="trending-heading"
-          className="text-xl font-bold tracking-tight text-gray-900"
-        >
-          Featured Albums
+    <div className="pt-6">
+      <div>
+        <h2 className="text-md ml-8 font-bold tracking-wide text-teal-700">
+          FEATURED
         </h2>
       </div>
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
