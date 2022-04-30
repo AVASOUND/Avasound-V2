@@ -4,6 +4,8 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import AlbumcardSmall from '../components/Album/AlbumcardSmall'
 import { useMoralis } from 'react-moralis'
 import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
   DotsHorizontalIcon,
   DownloadIcon,
   PlayIcon,
@@ -92,6 +94,11 @@ export default function Trending() {
                 </li>
               ))}
             </ul>
+            <div className="mt-4 flex w-full flex-row items-center justify-center space-x-4">
+              <ChevronLeftIcon className="h-5" />
+              <p className="underline">1</p>
+              <ChevronRightIcon className="h-5" />
+            </div>
           </div>
         </div>
       </div>
