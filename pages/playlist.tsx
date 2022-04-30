@@ -27,7 +27,7 @@ const Home: NextPage = () => {
         <PlaylistPage />
       </section>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
+      {/* <footer className="flex h-24 w-full items-center justify-center border-t">
         <a
           className="flex items-center justify-center gap-2"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
             height={16}
           />
         </a>
-      </footer>
+      </footer> */}
       <AudioPlayer />
     </div>
   )

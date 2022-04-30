@@ -74,7 +74,7 @@ export default function AudioPlayer(props) {
   return (
     <footer
       hidden={closedPlayer}
-      className="fixed bottom-0 h-16 w-full items-center justify-center bg-black bg-opacity-80"
+      className="fixed bottom-0 h-16 w-full items-center justify-center border-2 border-t-gray-100 bg-white bg-opacity-80 shadow-inner"
     >
       <a className="flex h-full w-full items-center justify-evenly gap-2">
         <div className="flex w-3/12 items-center justify-center">
@@ -85,7 +85,7 @@ export default function AudioPlayer(props) {
               height={50}
               className="rounded-full"
             />
-            <div className="flex flex-col items-start pl-2 text-white">
+            <div className="flex flex-col items-start pl-2 text-gray-800">
               <h1
                 onClick={() => {
                   router.push('/album')
@@ -98,25 +98,25 @@ export default function AudioPlayer(props) {
                 onClick={() => {
                   router.push('/profile')
                 }}
-                className="cursor-pointer  text-xs text-gray-300"
+                className="cursor-pointer  text-xs text-gray-500"
               >
                 FPX
               </h1>
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-col items-center">
+        <div className="flex w-full flex-col items-center text-gray-800">
           <div className="flex w-full items-center justify-evenly lg:w-6/12">
-            <FastForwardIcon className="h-5 rotate-180 cursor-pointer text-white hover:text-teal-300" />
+            <FastForwardIcon className="h-5 rotate-180 cursor-pointer  hover:text-teal-300" />
             <div onClick={playTrack}>
               {!isPlaying && (
-                <PlayIcon className="h-8 cursor-pointer text-white hover:text-teal-300" />
+                <PlayIcon className="h-8 cursor-pointer  hover:text-teal-300" />
               )}
               {isPlaying && (
                 <PauseIcon className="h-8 cursor-pointer text-teal-300 hover:text-white" />
               )}
             </div>
-            <FastForwardIcon className="h-5 cursor-pointer text-white hover:text-teal-300 " />
+            <FastForwardIcon className="h-5 cursor-pointer hover:text-teal-300 " />
           </div>
           <input
             type="range"
@@ -128,11 +128,8 @@ export default function AudioPlayer(props) {
           />
         </div>
 
-        <div className="mr-4 flex w-4/12 items-center justify-center space-x-2 lg:w-2/12">
-          <VolumeOffIcon
-            className="h-6 cursor-pointer text-gray-300"
-            onClick={mute}
-          />
+        <div className="mr-4 flex w-4/12 items-center justify-center space-x-2 text-gray-800 lg:w-2/12">
+          <VolumeOffIcon className="h-6 cursor-pointer" onClick={mute} />
           {/* <input
             type="range"
             min="0"
@@ -147,11 +144,8 @@ export default function AudioPlayer(props) {
             onChange={volume}
             className="range range-xs fill-green-500"
           />
-          <VolumeUpIcon className="h-6 text-white" />
-          <XIcon
-            className="h-6 cursor-pointer text-white"
-            onClick={stopPlaying}
-          />
+          <VolumeUpIcon className="h-6 " />
+          <XIcon className="h-6 cursor-pointer " onClick={stopPlaying} />
         </div>
       </a>
     </footer>
