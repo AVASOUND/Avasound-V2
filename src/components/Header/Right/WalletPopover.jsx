@@ -17,7 +17,7 @@ const solutions = [
   {
     name: 'Fiat Onramp',
     description: 'Buy crypto with your credit card.',
-    href: '#',
+    href: '/profile',
     icon: CreditCardIcon,
   },
   {
@@ -27,10 +27,10 @@ const solutions = [
     icon: CogIcon,
   },
 ]
-const callsToAction = [{ name: 'Logout', href: '#', icon: LogoutIcon }]
 
 export default function WalletPopover() {
-  const { logout, user, isAuthenticated } = useMoralis()
+  const { logout, user, isAuthenticated, isWeb3Enabled, enableWeb3 } =
+    useMoralis()
 
   const [walletSolution, setWalletSolution] = useState([
     {
@@ -41,21 +41,27 @@ export default function WalletPopover() {
       icon: CashIcon,
     },
   ])
-  const userAddress =
-    user.get('ethAddress').slice(0, 4).concat('...') +
-    user.get('ethAddress').slice(38, 42)
-  const userImg = user.get('userImg')
+  const [userAddress, setUserAddress] = useState()
+
+  // const userImg = user.get('userImg')
 
   useEffect(() => {
-    setWalletSolution([
-      {
-        name: user.get('username'),
-        address: userAddress,
-        balance: '2,337.20 AVAX', //MAX 10 signs including. and decimals
-        href: '/profile',
-        icon: ChipIcon,
-      },
-    ])
+    if (!isWeb3Enabled) enableWeb3()
+    if (isAuthenticated && user) {
+      setUserAddress(
+        user.get('ethAddress').slice(0, 4).concat('...') +
+          user.get('ethAddress').slice(38, 42)
+      )
+      setWalletSolution([
+        {
+          name: user.get('username'),
+          address: userAddress,
+          balance: '2,337.20 AVAX', //MAX 10 signs including. and decimals
+          href: '/profile',
+          icon: ChipIcon,
+        },
+      ])
+    }
   }, [])
   return (
     <Popover className="relative">

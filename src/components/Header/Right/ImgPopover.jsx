@@ -31,7 +31,7 @@ const solutions = [
 const callsToAction = [{ name: 'Logout', href: '#', icon: LogoutIcon }]
 
 export default function WalletPopover() {
-  const { logout, user } = useMoralis()
+  const { logout, user, isAuthenticated } = useMoralis()
 
   const [walletSolution, setWalletSolution] = useState([
     {
@@ -42,20 +42,26 @@ export default function WalletPopover() {
     },
   ])
 
-  const userAddress =
-    user.get('ethAddress').slice(0, 4).concat('...') +
-    user.get('ethAddress').slice(38, 42)
+  const [userAddress, setUserAddress] = useState()
 
+  const [userImg, setUserImg] = useState('/avaxlogo.png')
   useEffect(() => {
-    setWalletSolution([
-      {
-        name: user.get('username'),
-        address: userAddress,
-        balance: '2,337.20 AVAX', //MAX 10 signs including. and decimals
-        href: '/profile',
-        icon: ChipIcon,
-      },
-    ])
+    if (isAuthenticated && user) {
+      setUserImg(user.get('userImg'))
+      setUserAddress(
+        user.get('ethAddress').slice(0, 4).concat('...') +
+          user.get('ethAddress').slice(38, 42)
+      )
+      setWalletSolution([
+        {
+          name: user.get('username'),
+          address: userAddress,
+          balance: '2,337.20 AVAX', //MAX 10 signs including. and decimals
+          href: '/profile',
+          icon: ChipIcon,
+        },
+      ])
+    }
   }, [])
   return (
     <Popover className="relative">
@@ -65,7 +71,7 @@ export default function WalletPopover() {
             className={`cursor-pointer ${open ? 'text-teal-800' : ''}`}
           >
             <Image
-              src={user.get('userImg')}
+              src={userImg}
               width={35}
               height={35}
               className="rounded-full"
