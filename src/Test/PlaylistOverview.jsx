@@ -73,24 +73,7 @@ export default function Trending() {
             >
               {content.map((data, index) => (
                 <li className="w-full" key={index}>
-                  {/* <div className="flex h-16 items-center justify-between border-b-2">
-                    <div className="flex w-9/12 flex-row items-center justify-around lg:w-6/12">
-                      <Image src={'/avaxlogo.png'} width={50} height={50} />
-                      <div className="flex flex-col">
-                        <p className="font-semibold">Empress</p>
-                        <p className="text-xs">FPX</p>
-                      </div>
-                      <PlayIcon className="h-6" />
-                      <p className="text-xs">4:32</p>
-                    </div>
-                    <div className="flex flex-row space-x-4">
-                      <DownloadIcon className="h-5" />
-                      <ShareIcon className="h-5" />
-                      <DotsHorizontalIcon className="h-5" />
-                    </div>
-                  </div> */}
                   <PlaylistItem />
-                  {/* <AlbumcardSmall /> */}
                 </li>
               ))}
             </ul>
