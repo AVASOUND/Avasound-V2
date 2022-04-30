@@ -75,7 +75,7 @@ export default function ProfileSettings() {
   }
 
   return (
-    <div className="py-6 px-4 sm:p-6 lg:pb-8">
+    <div className="px-4 sm:p-6">
       <div>
         <h2 className="text-lg font-medium leading-6 text-gray-900">Profile</h2>
         <p className="mt-1 text-sm text-gray-500">
@@ -280,7 +280,7 @@ export default function ProfileSettings() {
           />
         </div>
       </div>
-      <div className="pb-16 pt-5">
+      <div className="pb-8 pt-5">
         <div className="flex justify-end">
           <button
             type="button"
