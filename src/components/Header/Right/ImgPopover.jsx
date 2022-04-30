@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
   CashIcon,
+  ChipIcon,
   CogIcon,
   CreditCardIcon,
   LogoutIcon,
@@ -15,12 +16,13 @@ import Image from 'next/image'
 const solutions = [
   {
     name: 'Fiat Onramp',
-    description: 'Buy any cryptocurrency with your credit card. 100% safe.',
+    description: 'Buy crypto with your credit card.',
+
     href: '#',
     icon: CreditCardIcon,
   },
   {
-    name: 'Settings',
+    name: 'Dashboard',
     description: 'Edit your Account.',
     href: '/profilesettings',
     icon: CogIcon,
@@ -40,13 +42,18 @@ export default function WalletPopover() {
     },
   ])
 
+  const userAddress =
+    user.get('ethAddress').slice(0, 4).concat('...') +
+    user.get('ethAddress').slice(38, 42)
+
   useEffect(() => {
     setWalletSolution([
       {
         name: user.get('username'),
-        description: user.get('ethAddress'),
+        address: userAddress,
+        balance: '2,337.20 AVAX', //MAX 10 signs including. and decimals
         href: '/profile',
-        icon: UserIcon,
+        icon: ChipIcon,
       },
     ])
   }, [])
@@ -74,26 +81,52 @@ export default function WalletPopover() {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="relative top-44 z-50 max-w-md transform  px-2  sm:px-0  lg:left-0 ">
+            <Popover.Panel className="relative top-44 z-50 max-w-sm transform  px-2  sm:px-0  lg:left-0 ">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="relative grid bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                  {walletSolution.map((item) => (
+                <div className="relative grid gap-4 bg-white p-6 py-6 ">
+                  {walletSolution.map((user) => (
                     <a
-                      key={item.name}
-                      href={item.href}
+                      key={user.name}
+                      href={user.href}
                       className="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50"
                     >
-                      <item.icon
-                        className="h-6 w-6 flex-shrink-0 text-teal-500"
+                      <user.icon
+                        className="h-6 w-6 flex-shrink-0 text-gray-800"
                         aria-hidden="true"
                       />
                       <div className="ml-4">
                         <p className="text-base font-medium text-gray-900">
-                          {item.name}
+                          {user.name}
                         </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          {item.description}
-                        </p>
+                        <div className="mt-1 flex w-72 flex-row items-start justify-between text-sm text-gray-500">
+                          <div>{user.address}</div>
+                          <div className="flex w-full flex-col items-end justify-end">
+                            <div className="flex w-9/12 flex-row items-center justify-evenly">
+                              <div>{user.balance}</div>
+                              <Image
+                                src={'/avaxlogo.png'}
+                                width={15}
+                                height={15}
+                              />
+                            </div>
+                            {/* <div className="flex w-6/12 flex-row items-center justify-evenly">
+                              <div>{item.description2}</div>
+                              <Image
+                                src={'/avaxlogo.png'}
+                                width={15}
+                                height={15}
+                              />
+                            </div>
+                            <div className="flex w-6/12 flex-row items-center justify-evenly">
+                              <div>{item.description2}</div>
+                              <Image
+                                src={'/avaxlogo.png'}
+                                width={15}
+                                height={15}
+                              />
+                            </div> */}
+                          </div>
+                        </div>
                       </div>
                     </a>
                   ))}
@@ -101,10 +134,10 @@ export default function WalletPopover() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50"
+                      className="-m-3 flex items-start rounded-lg p-4 transition duration-150 ease-in-out hover:bg-gray-50"
                     >
                       <item.icon
-                        className="h-6 w-6 flex-shrink-0 text-teal-500"
+                        className="h-6 w-6 flex-shrink-0 text-gray-800"
                         aria-hidden="true"
                       />
                       <div className="ml-4">
@@ -118,18 +151,14 @@ export default function WalletPopover() {
                     </a>
                   ))}
                 </div>
-                <div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
+                <div className="justify-center space-y-6 bg-gray-50 sm:flex sm:space-y-0 sm:space-x-10 ">
                   <button
-                    className="flex flex-row items-center text-black"
+                    className="flex w-full flex-row items-center justify-center py-4 px-4 text-black hover:bg-gray-100"
                     onClick={logout}
                   >
                     <div className="flow-root">
-                      <a className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100">
-                        <LogoutIcon
-                          className="h-6 w-6 flex-shrink-0 text-gray-400"
-                          aria-hidden="true"
-                        />
-                        <span className="ml-3">Logout</span>
+                      <a className="-m-3 flex items-center rounded-md p-2 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100">
+                        <span className="ml-3">Disconnect</span>
                       </a>
                     </div>
                   </button>
