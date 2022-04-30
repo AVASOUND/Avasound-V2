@@ -30,11 +30,11 @@ const Home: NextPage = () => {
         <MarketNav />
       </div> */}
       {/* Add Selling Right Now Section */}
-      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+      <section className="mt-8 flex w-full items-center justify-center rounded-2xl border-2 border-t-white border-l-white border-r-gray-100 border-b-gray-100 bg-white shadow-md xl:w-9/12 ">
         <TrendingSection />
         {/* Featured on the Frontpage */}
       </section>
-      <section className="mt-8 flex w-full items-center justify-center rounded-lg bg-white shadow-xl xl:w-9/12 ">
+      <section className="mt-8 flex w-full items-center justify-center rounded-lg border-2 border-t-white border-l-white border-b-gray-100 border-r-gray-100 bg-white shadow-md xl:w-9/12 ">
         <Features />
       </section>
 
