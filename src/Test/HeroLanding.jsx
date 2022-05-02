@@ -360,16 +360,16 @@ export default function HeroLanding() {
             <img
               className="absolute w-full"
               // src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg"
-              src="/Green_Wave.png"
+              src="/light-bg-wave.png"
               alt=""
             />
           </div>
         </Popover>
-        <div className="relative pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8 lg:pb-14">
+        <div className="relative pt-10 sm:pt-16 lg:overflow-hidden lg:pt-2 lg:pb-14">
           <div className="z-50 mx-auto max-w-7xl lg:px-8">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8">
               <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
-                <div className="lg:py-24">
+                <div className="lg:pt-16 lg:pb-8">
                   {/* <a
                     href="#"
                     className="inline-flex items-center rounded-full bg-gray-900 p-1 pr-2 text-white hover:text-gray-200 sm:text-base lg:text-sm xl:text-base"
@@ -385,11 +385,11 @@ export default function HeroLanding() {
                       aria-hidden="true"
                     />
                   </a> */}
-                  <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:mt-6 xl:text-6xl">
+                  <h1 className="text-4xl font-extrabold tracking-tight text-black sm:text-6xl lg:mt-2 xl:text-6xl">
                     {/* <span className="block">AVASOUND</span> */}
                     <img
                       className="h-10 w-auto sm:h-16"
-                      src="/avasound-white.svg"
+                      src="/avasound-blk.svg"
                       // src="/avasound-blk.svg"
                       alt=""
                     />
@@ -397,13 +397,13 @@ export default function HeroLanding() {
                       a new wav
                     </span>
                   </h1>
-                  <div className="rounded-xl bg-transparent p-1 text-base text-white shadow-2xl backdrop-blur-xl sm:text-xl lg:text-lg xl:text-xl">
+                  <div className="rounded-xl bg-transparent p-2 text-base text-gray-800 shadow-2xl backdrop-blur-xl sm:text-xl lg:text-lg xl:text-xl">
                     Avasound is the first one stop music platform of it's kind
                     on the Avalanche Network. Our mission is to put Artists and
                     Record Labels first, leveraging blockchain technology for
                     direct payment flow and low fees.
                   </div>
-                  <div className="mt-8">
+                  <div className="mt-4">
                     <form action="#" className="sm:mx-auto sm:max-w-xl lg:mx-0">
                       {/* <div className="sm:flex">
                         <div className="min-w-0 flex-1">
@@ -426,11 +426,11 @@ export default function HeroLanding() {
                           </button>
                         </div>
                       </div> */}
-                      <p className="mt-3 pb-8 text-sm text-gray-300 sm:mt-4 sm:pb-0">
+                      <p className="mt-3 pb-6 text-sm text-gray-800 sm:mt-4 sm:pb-4">
                         Read the{' '}
                         <a
                           href="#"
-                          className="font-medium text-white"
+                          className="font-medium text-black"
                           // onClick={()=> setTOA(true)}
                         >
                           Terms Of Service
@@ -457,16 +457,16 @@ export default function HeroLanding() {
           </div>
         </div>
         {/* Testimonial section */}
-        <div className="bg-gradient-to-r from-teal-400 to-emerald-600  lg:relative lg:z-10 lg:mt-0 lg:pb-0">
+        <div className="bg-[#f5f5f5] lg:relative lg:z-10 lg:mt-0 lg:pb-0">
           <div className="pb-16 lg:relative lg:z-10 lg:pb-0">
             <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
-              <div className="relative lg:-my-8">
+              <div className="relative lg:-my-4">
                 <div
                   aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-1/2 bg-black lg:hidden"
+                  className="absolute inset-x-0 top-0 h-1/2 lg:hidden"
                 />
                 <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
-                  <div className="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl ring-1 ring-teal-300 sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
+                  <div className="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                     <img
                       className="object-cover lg:h-full lg:w-full"
                       // src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
@@ -477,27 +477,25 @@ export default function HeroLanding() {
                 </div>
               </div>
               <div className="mt-12 lg:col-span-2 lg:m-0 lg:pl-8">
-                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
+                <div className="mx-auto max-w-md px-4 text-gray-800 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
                   <blockquote>
                     <div>
                       <svg
-                        className="h-12 w-12 text-white opacity-25"
+                        className="h-12 w-12 text-gray-800 opacity-25"
                         fill="currentColor"
                         viewBox="0 0 32 32"
                         aria-hidden="true"
                       >
                         <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                       </svg>
-                      <p className="mt-6 text-2xl font-medium text-white">
+                      <p className="mt-6 text-2xl font-medium ">
                         Avasound makes it possible to connect with our audience
                         on a new level.
                       </p>
                     </div>
                     <footer className="mt-6">
-                      <p className="text-base font-medium text-white">
-                        EBB Collective
-                      </p>
-                      <p className="text-base font-medium text-cyan-100">
+                      <p className="text-base font-medium ">EBB Collective</p>
+                      <p className="text-base font-medium text-teal-500">
                         Drum&Bass Label from Graz, Austria
                       </p>
                     </footer>
