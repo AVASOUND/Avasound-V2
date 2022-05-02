@@ -1,9 +1,19 @@
+import { ClipboardCheckIcon, ClipboardCopyIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { userInfo } from 'os'
+import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 
 export default function AccountSettings() {
   const { user } = useMoralis()
+
+  const [userAddress, setUserAddress] = useState()
+  const [copyClicked, setCopyClicked] = useState(false)
+
+  useEffect(() => {
+    if (user) setUserAddress(user.get('ethAddress'))
+  }, [])
+
   return (
     <div className="py-6 px-4 sm:p-6 lg:pb-8">
       <div>
@@ -23,9 +33,27 @@ export default function AccountSettings() {
               Address
             </label>
 
-            <p className="mt-1 text-sm text-gray-500">
-              {user.get('ethAddress')}
-            </p>
+            <div className="flex flex-row space-x-4">
+              <p
+                className="mt-1 cursor-pointer text-sm text-gray-500"
+                onClick={() => navigator.clipboard.writeText(userAddress)}
+              >
+                {userAddress}
+              </p>
+              <button
+                onClick={() => navigator.clipboard.writeText(userAddress)}
+                className="mt-1 cursor-pointer text-sm text-gray-500 hover:text-teal-500"
+              >
+                {!copyClicked ? (
+                  <ClipboardCopyIcon
+                    onClick={() => setCopyClicked(true)}
+                    className="h-4"
+                  />
+                ) : (
+                  <ClipboardCheckIcon className="h-4" />
+                )}
+              </button>
+            </div>
           </div>
           <div>
             <label

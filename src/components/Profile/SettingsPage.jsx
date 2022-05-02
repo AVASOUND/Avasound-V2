@@ -12,7 +12,7 @@ import ProfileSettings from './ProfileSettings'
 
 const tabs = [
   { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
-  { name: 'Wallet', href: '#', icon: CreditCardIcon, current: false },
+  { name: 'Account', href: '#', icon: CreditCardIcon, current: false },
   { name: 'Upload', href: '#', icon: CloudUploadIcon, current: false },
 ]
 
@@ -130,7 +130,7 @@ export default function SettingsPage() {
                 <div hidden={selectedTab != 'Profile'}>
                   <ProfileSettings />
                 </div>
-                <div hidden={selectedTab != 'Wallet'}>
+                <div hidden={selectedTab != 'Account'}>
                   <AccountSettings />
                 </div>
                 <div hidden={selectedTab != 'Upload'}>
