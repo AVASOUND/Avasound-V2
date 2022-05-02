@@ -278,7 +278,7 @@ export default function HeroLanding() {
                 <a
                   onClick={authenticate}
                   href="#"
-                  className="block w-full rounded-md bg-gradient-to-r from-teal-400 to-teal-700 py-2 px-4 text-center text-sm font-medium tracking-wide text-white shadow-lg hover:from-teal-500 hover:to-teal-800"
+                  className="block w-full rounded-md bg-teal-500 py-2 px-4 text-center text-sm font-medium tracking-wide text-white shadow-lg hover:from-teal-500 hover:to-teal-800"
                 >
                   Login with Metamask
                 </a>
