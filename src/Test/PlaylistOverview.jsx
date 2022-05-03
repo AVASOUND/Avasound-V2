@@ -13,6 +13,7 @@ import {
 } from '@heroicons/react/outline'
 import Image from 'next/image'
 import PlaylistItem from './PlaylistItem'
+import CollectionTabs from './CollectionTabs'
 
 const trendingProducts = [
   {
@@ -46,7 +47,7 @@ export default function Trending() {
       const Album = Moralis.Object.extend('Album')
       const query = new Moralis.Query(Album)
       // query.equalTo('address', user.get('ethAddress'))
-      query.limit(10)
+      query.limit(8)
       query.find().then((results) => {
         let result = []
         results.forEach((content) => {
@@ -61,9 +62,12 @@ export default function Trending() {
     <section aria-labelledby="trending-heading" className="w-full">
       <div className="pt-6">
         <div className="flex">
-          <h2 className="text-md ml-8 mb-8 font-semibold tracking-wide text-teal-700">
-            Collection Playlist
+          <h2 className="ml-8 mb-4 text-lg font-semibold tracking-wide text-teal-700">
+            Collection
           </h2>
+        </div>
+        <div className="flex w-full flex-row items-center justify-center">
+          <CollectionTabs />
         </div>
         <div className="px-8 ">
           <div className="overflow-x-auto">

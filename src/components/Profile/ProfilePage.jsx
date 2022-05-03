@@ -90,6 +90,7 @@ export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
     username: '',
     name: '',
+    userId: '',
     imageUrl: '',
     coverImageUrl: '',
     about: '',
@@ -104,6 +105,7 @@ export default function ProfilePage() {
       setUserInfo({
         username: user.get('username'),
         name: user.get('artistName'),
+        userId: user.get('objectId'),
         imageUrl: user.get('userImg'),
         coverImageUrl: user.get('userCover'),
         about: user.get('userbio'),
@@ -126,8 +128,8 @@ export default function ProfilePage() {
                 <div>
                   <div>
                     <img
-                      className="h-32 w-full object-cover lg:h-48"
-                      src={profile.coverImageUrl}
+                      className="h-32 w-full rounded-t-xl object-cover lg:h-48"
+                      src={profile.coverImageUrl || '/avasound-blk.svg'}
                       alt=""
                     />
                   </div>
@@ -136,14 +138,14 @@ export default function ProfilePage() {
                       <div className="flex">
                         <img
                           className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
-                          src={userInfo.imageUrl}
+                          src={userInfo.imageUrl || '/avso-logo.png'}
                           alt=""
                         />
                       </div>
                       <div className="mt-12 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                         <div className="mt-6 min-w-0 flex-1 sm:hidden 2xl:block">
                           <h1 className="mb-4 truncate pt-2 text-2xl font-bold text-gray-900">
-                            {userInfo.name}
+                            {userInfo.userId}
                           </h1>
 
                           <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">

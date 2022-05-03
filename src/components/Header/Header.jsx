@@ -44,7 +44,7 @@ export default function AltHeader() {
   }
 
   function openCommunity() {
-    router.push('/playlist')
+    router.push('/collection')
   }
   function openProfile() {
     router.push('/profile')
@@ -90,12 +90,12 @@ export default function AltHeader() {
                 <div
                   onClick={openCommunity}
                   className={`cursor-pointer ${
-                    router.pathname == '/community'
+                    router.pathname == '/collection'
                       ? 'animate-pulse text-teal-700'
                       : ''
                   }`}
                 >
-                  <HeaderItem title="Playlist" Icon={PlayIcon} />
+                  <HeaderItem title="Collection" Icon={PlayIcon} />
                 </div>
                 {isAuthenticated ? (
                   <div

@@ -71,7 +71,7 @@ export default function WalletPopover() {
             className={`cursor-pointer ${open ? 'text-teal-800' : ''}`}
           >
             <Image
-              src={userImg}
+              src={userImg || '/avso-logo.png'}
               width={35}
               height={35}
               className="rounded-full"

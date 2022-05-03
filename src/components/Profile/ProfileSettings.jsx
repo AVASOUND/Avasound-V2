@@ -105,7 +105,7 @@ export default function ProfileSettings() {
                 onChange={(e) => setUserName(e.target.value)}
                 autoComplete="username"
                 className="block w-full min-w-0 flex-grow rounded-none rounded-r-md border-gray-300 focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                // defaultValue={user.handle}
+                defaultValue={user.handle}
               />
             </div>
           </div>
@@ -146,13 +146,13 @@ export default function ProfileSettings() {
                 <div className="space-y-1 text-center">
                   <div className="flex text-sm text-gray-600">
                     <label
-                      htmlFor="file-upload"
+                      htmlFor="coverImg"
                       className="relative cursor-pointer rounded-md bg-white font-medium text-teal-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
                     >
                       <span>Upload Header</span>
                       <input
-                        id="file-upload"
-                        name="file-upload"
+                        id="coverImg"
+                        name="coverImg"
                         type="file"
                         className="sr-only"
                       />

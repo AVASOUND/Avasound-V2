@@ -107,7 +107,7 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: 'Learning about DEFI',
+    title: 'Alpha Venture DAO',
     href: '#',
     date: 'Feb 12, 2020',
     datetime: '2020-02-12',
@@ -117,7 +117,7 @@ const blogPosts = [
     preview:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
     author: {
-      name: 'Astrocave Academy',
+      name: 'Alpha DAO',
       imageUrl:
         'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
       href: '#',
@@ -358,7 +358,7 @@ export default function HeroLanding() {
           </Transition>
           <div className="">
             <img
-              className="absolute w-full"
+              className="absolute w-full opacity-70"
               // src="https://tailwindui.com/img/component-images/cloud-illustration-teal-cyan.svg"
               src="/light-bg-wave.png"
               alt=""
@@ -398,10 +398,9 @@ export default function HeroLanding() {
                     </span>
                   </h1>
                   <div className="rounded-xl bg-transparent p-2 text-base text-gray-800 shadow-2xl backdrop-blur-xl sm:text-xl lg:text-lg xl:text-xl">
-                    Avasound is the first one stop music platform of it's kind
-                    on the Avalanche Network. Our mission is to put Artists and
-                    Record Labels first, leveraging blockchain technology for
-                    direct payment flow and low fees.
+                    Avasound is a one stop music platform on Avalanche. We
+                    leverage blockchain technology for direct payment flow and
+                    low fees, putting artists & record labels first.
                   </div>
                   <div className="mt-4">
                     <form action="#" className="sm:mx-auto sm:max-w-xl lg:mx-0">
@@ -426,7 +425,7 @@ export default function HeroLanding() {
                           </button>
                         </div>
                       </div> */}
-                      <p className="mt-3 pb-6 text-sm text-gray-800 sm:mt-4 sm:pb-4">
+                      <p className="mt-3 pb-6 text-sm text-gray-800 sm:mt-4 sm:pb-8">
                         Read the{' '}
                         <a
                           href="#"
@@ -489,15 +488,20 @@ export default function HeroLanding() {
                         <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                       </svg>
                       <p className="mt-6 text-2xl font-medium ">
-                        Avasound makes it possible to connect with our audience
-                        on a new level.
+                        Avasound allows us to connect with our audience on a new
+                        level.
                       </p>
                     </div>
                     <footer className="mt-6">
                       <p className="text-base font-medium ">EBB Collective</p>
-                      <p className="text-base font-medium text-teal-500">
-                        Drum&Bass Label from Graz, Austria
-                      </p>
+                      <div className="flex flex-row items-center space-x-2">
+                        <p className="text-sm font-medium text-teal-500">
+                          Drum&Bass Label {''}
+                        </p>
+                        <p className="text-xs font-medium text-teal-500">
+                          (Graz, Austria)
+                        </p>
+                      </div>
                     </footer>
                   </blockquote>
                 </div>
@@ -516,58 +520,15 @@ export default function HeroLanding() {
               </div>
 
               {/* YOUTUBE VIDEO EMBED */}
-              <div className="mt-12 -mb-10 sm:-mb-24 lg:-mb-80">
+              {/* <div className="mt-12 -mb-10 sm:-mb-24 lg:-mb-80">
                 <img
                   className="rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
                   src="https://tailwindui.com/img/component-images/green-project-app-screenshot.jpg"
                   alt=""
                 />
-              </div>
+              </div> */}
             </div>
           </div>
-          {/* Feature section with grid */}
-          {/* <div className="relative bg-white py-16 sm:py-24 lg:py-32">
-            <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-              <h2 className="text-base font-semibold uppercase tracking-wider text-cyan-600">
-                Tech Dive
-              </h2>
-              <p className="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Everything you need to know.
-              </p>
-              <p className="mx-auto mt-5 max-w-prose text-xl text-gray-500">
-                Phasellus lorem quam molestie id quisque diam aenean nulla in.
-                Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend
-                condimentum id viverra nulla.
-              </p>
-              <div className="mt-12">
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                  {features.map((feature) => (
-                    <div key={feature.name} className="pt-6">
-                      <div className="flow-root rounded-lg bg-gray-50 px-6 pb-8">
-                        <div className="-mt-6">
-                          <div>
-                            <span className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-teal-500 to-cyan-600 p-3 shadow-lg">
-                              <feature.icon
-                                className="h-6 w-6 text-white"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          </div>
-                          <h3 className="mt-8 text-lg font-medium tracking-tight text-gray-900">
-                            {feature.name}
-                          </h3>
-                          <p className="mt-5 text-base text-gray-500">
-                            {feature.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div> */}
-
           {/* Blog section */}
           <div className="relative bg-gray-50 py-16 sm:py-24 lg:py-32">
             <div className="relative">
