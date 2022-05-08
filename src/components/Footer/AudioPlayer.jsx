@@ -76,37 +76,37 @@ export default function AudioPlayer(props) {
       hidden={closedPlayer}
       className="fixed bottom-0 h-16 w-full items-center justify-center border-2 border-t-gray-100 bg-white bg-opacity-80 shadow-inner"
     >
-      <a className="flex h-full w-full items-center justify-evenly gap-2">
-        <div className="flex w-3/12 items-center justify-center">
-          <div className="ml-4 flex flex-row items-center justify-between">
+      <a className="flex h-full w-full items-center justify-center gap-2">
+        <div className="ml-2 flex w-4/12 flex-row items-center justify-evenly lg:w-2/12">
+          <div className="hidden sm:flex">
             <Image
               src="/wmex.png"
               width={50}
               height={50}
               className="rounded-full"
             />
-            <div className="flex flex-col items-start pl-2 text-gray-800">
-              <h1
-                onClick={() => {
-                  router.push('/album')
-                }}
-                className="cursor-pointer whitespace-nowrap  text-sm"
-              >
-                Empress
-              </h1>
-              <h1
-                onClick={() => {
-                  router.push('/profile')
-                }}
-                className="cursor-pointer  text-xs text-gray-500"
-              >
-                FPX
-              </h1>
-            </div>
+          </div>
+          <div className="flex flex-col items-start pl-2 text-gray-800">
+            <h1
+              onClick={() => {
+                router.push('/album')
+              }}
+              className="cursor-pointer whitespace-nowrap  text-sm"
+            >
+              Empress
+            </h1>
+            <h1
+              onClick={() => {
+                router.push('/profile')
+              }}
+              className="cursor-pointer  text-xs text-gray-500"
+            >
+              FPX
+            </h1>
           </div>
         </div>
-        <div className="flex w-full flex-col items-center text-gray-800">
-          <div className="flex w-full items-center justify-evenly lg:w-6/12">
+        <div className="flex w-full flex-col items-center justify-center  text-gray-800">
+          <div className="flex w-9/12 items-center justify-evenly">
             <FastForwardIcon className="h-5 rotate-180 cursor-pointer  hover:text-teal-300" />
             <div onClick={playTrack}>
               {!isPlaying && (
@@ -124,18 +124,13 @@ export default function AudioPlayer(props) {
             min="0"
             max="100"
             onChange={skipThroughTrack}
-            className="range range-xs w-6/12"
+            className="range range-xs hidden w-6/12 sm:flex"
           />
         </div>
 
-        <div className="mr-4 flex w-4/12 items-center justify-center space-x-2 text-gray-800 lg:w-2/12">
+        <div className="mr-2 flex w-4/12 items-center justify-evenly space-x-2 text-gray-800 lg:w-2/12">
           <VolumeOffIcon className="h-6 cursor-pointer" onClick={mute} />
-          {/* <input
-            type="range"
-            min="0"
-            max="100"
-            className="cursor-pointer in-range:border-teal-500 out-of-range:border-red-500"
-          /> */}
+
           <input
             type="range"
             id="volumeBar"
@@ -145,7 +140,7 @@ export default function AudioPlayer(props) {
             className="range range-xs fill-green-500"
           />
           <VolumeUpIcon className="h-6 " />
-          <XIcon className="h-6 cursor-pointer " onClick={stopPlaying} />
+          {/* <XIcon className="h-6 cursor-pointer " onClick={stopPlaying} /> */}
         </div>
       </a>
     </footer>

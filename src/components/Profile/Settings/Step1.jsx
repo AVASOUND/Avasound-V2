@@ -63,6 +63,8 @@ export default function ProfileSettings(props) {
     const gen = new Genres()
     gen.set('objectId', selectGenreId[selectedGenre])
 
+    // Whats happening with gen?
+
     const Record = new Moralis.Object.extend('Record')
     const record = new Record()
     record.set('recordTitle', recordTitle)

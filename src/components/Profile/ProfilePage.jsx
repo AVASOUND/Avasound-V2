@@ -119,7 +119,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      <div className="z-40 flex h-full w-full rounded-b-xl bg-white shadow-xl">
+      <div className="z-40 flex h-full w-full rounded-xl bg-white shadow-xl">
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <div className="relative z-0 flex flex-1 overflow-hidden">
             <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
@@ -145,7 +145,7 @@ export default function ProfilePage() {
                       <div className="mt-12 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                         <div className="mt-6 min-w-0 flex-1 sm:hidden 2xl:block">
                           <h1 className="mb-4 truncate pt-2 text-2xl font-bold text-gray-900">
-                            {userInfo.userId}
+                            {userInfo.userAddress}
                           </h1>
 
                           <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">
