@@ -1,19 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import {
+  ChartSquareBarIcon,
   CloudUploadIcon,
   CreditCardIcon,
   UserCircleIcon,
 } from '@heroicons/react/outline'
 import Notifications from './NotificationSaved'
-import UploadFiles from './Settings/UploadFiles'
 import AccountSettings from './Settings/AccountSettings'
 import ProfileSettings from './ProfileSettings'
+import { useRouter } from 'next/router'
 
 const tabs = [
   { name: 'Profile', href: '#', icon: UserCircleIcon, current: true },
   { name: 'Account', href: '#', icon: CreditCardIcon, current: false },
-  { name: 'Upload', href: '#', icon: CloudUploadIcon, current: false },
+  { name: 'Insights', href: '#', icon: ChartSquareBarIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -21,6 +22,7 @@ function classNames(...classes) {
 }
 
 export default function SettingsPage() {
+  const router = useRouter()
   const [selectedTab, setSelectedTab] = useState('Profile')
   const [notificationSaved, setNotificationSaved] = useState(false)
 
@@ -91,6 +93,12 @@ export default function SettingsPage() {
       </Disclosure> */}
 
       <main className="relative">
+        <div
+          className="mx-auto max-w-7xl px-4 pt-4 pb-2 sm:px-6
+        lg:px-8"
+        >
+          <h1 className="text-2xl font-bold text-teal-500">Dashboard</h1>
+        </div>
         {notificationSaved && <Notifications handleNotif={handleNotif} />}
         <div className=" w-full">
           <div className="overflow-hidden rounded-lg bg-white shadow">
@@ -104,7 +112,7 @@ export default function SettingsPage() {
                         setSelectedTab(tab.name)
                       }}
                       className={classNames(
-                        selectedTab == tab.current
+                        selectedTab == tab.name
                           ? 'border-teal-500 bg-teal-50 text-teal-700 hover:bg-teal-50 hover:text-teal-700'
                           : 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900',
                         'group flex items-center border-l-4 px-3 py-2 text-sm font-medium'
@@ -113,7 +121,7 @@ export default function SettingsPage() {
                     >
                       <tab.icon
                         className={classNames(
-                          selectedTab == tab.current
+                          selectedTab == tab.name
                             ? 'text-teal-500 group-hover:text-teal-500'
                             : 'text-gray-400 group-hover:text-gray-500',
                           '-ml-1 mr-3 h-6 w-6 flex-shrink-0'
@@ -132,9 +140,6 @@ export default function SettingsPage() {
                 </div>
                 <div hidden={selectedTab != 'Account'}>
                   <AccountSettings />
-                </div>
-                <div hidden={selectedTab != 'Upload'}>
-                  <UploadFiles />
                 </div>
               </div>
             </div>

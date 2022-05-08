@@ -35,6 +35,7 @@ export default function ProfileSettings(props) {
       setGenre(r)
       setSelectGenreId(rmap)
       console.log(rmap)
+      console.log(r)
     })
   }, [])
 
@@ -63,6 +64,7 @@ export default function ProfileSettings(props) {
     const gen = new Genres()
     gen.set('objectId', selectGenreId[selectedGenre])
 
+    console.log(selectGenreId[selectedGenre])
     // Whats happening with gen?
 
     const Record = new Moralis.Object.extend('Record')

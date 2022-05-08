@@ -4,6 +4,7 @@ import { Popover, Transition } from '@headlessui/react'
 import {
   CashIcon,
   ChipIcon,
+  CloudUploadIcon,
   CogIcon,
   CreditCardIcon,
   LogoutIcon,
@@ -26,6 +27,12 @@ const solutions = [
     description: 'Edit your Account.',
     href: '/profilesettings',
     icon: CogIcon,
+  },
+  {
+    name: 'Upload',
+    description: 'Records, Tickets & Access Tokens.',
+    href: '/upload',
+    icon: CloudUploadIcon,
   },
 ]
 const callsToAction = [{ name: 'Logout', href: '#', icon: LogoutIcon }]

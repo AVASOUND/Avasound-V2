@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
-import { CogIcon, PlusCircleIcon } from '@heroicons/react/outline'
+import {
+  CheckCircleIcon,
+  CogIcon,
+  PlusCircleIcon,
+} from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis } from 'react-moralis'
 import Albumcard from '../Album/Albumcard'
@@ -108,7 +112,6 @@ export default function ProfilePage() {
                           ? profile.coverImageUrl
                           : '/avasound-blk.svg'
                       }
-                      alt=""
                     />
                   </div>
                   <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -122,11 +125,17 @@ export default function ProfilePage() {
                       </div>
                       <div className="mt-12 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                         <div className="mt-6 min-w-0 flex-1  2xl:block">
-                          <h1 className="mb-2 truncate pt-2 text-2xl font-bold text-gray-900">
-                            {userInfo.username
-                              ? userInfo.username
-                              : userInfo.userId}
-                          </h1>
+                          <div className="flex w-3/12 flex-row items-center justify-between">
+                            <h1 className="mb-2 truncate pt-2 text-2xl font-bold text-gray-900">
+                              {userInfo.username
+                                ? userInfo.username
+                                : userInfo.userId}
+                            </h1>
+                            <div className="flex flex-row items-center space-x-1 rounded-md bg-teal-100 px-1 text-sm font-medium text-teal-800">
+                              <p>Artist</p>
+                              <CheckCircleIcon className="h-4" />
+                            </div>
+                          </div>
                           <h1 className="truncate text-xs font-medium text-gray-900">
                             {userInfo.userAddress}
                           </h1>
@@ -156,7 +165,7 @@ export default function ProfilePage() {
                         </div>
                       </div>
                     </div>
-                    {/* <div className="mt-6 hidden min-w-0 flex-1 sm:block 2xl:hidden">
+                    {/* <div className="mt-6 min-w-0 flex-1 sm:block ">
                       <h1 className="truncate text-2xl font-bold text-gray-900">
                         {profile.name}
                       </h1>

@@ -121,7 +121,10 @@ export default function ProfileSettings() {
         <h2 className="text-lg font-medium leading-6 text-gray-900">
           Upload Record
         </h2>
-        {/* <p className="mt-1 text-sm text-gray-500">Follow the steps.</p> */}
+        <p className="mt-1 text-sm text-gray-500">
+          Follow the 4 steps below to upload your Record. All input fields are
+          required.
+        </p>
       </div>
       <UploadNavbar />
       <div hidden={step != '1'}>
