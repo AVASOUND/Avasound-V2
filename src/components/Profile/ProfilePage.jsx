@@ -3,20 +3,21 @@ import { CogIcon, PlusCircleIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis } from 'react-moralis'
 import Albumcard from '../Album/Albumcard'
+import Spotlight from './Spotlight'
 import RecordListItem from '../Album/RecordListItem'
 import { Disclosure } from '@headlessui/react'
 
 const tabs = [
   { name: 'Profile', href: '#', current: true },
-  { name: 'Items', href: '#', current: false },
-  { name: 'Community', href: '#', current: false },
-  { name: 'Revenue', href: '#', current: false },
-  // { name: 'Insights', href: '#', current: false },
+  { name: 'Collection', href: '#', current: false },
+  // { name: 'Community', href: '#', current: false },
+  // { name: 'Revenue', href: '#', current: false },
+  { name: 'Insights', href: '#', current: false },
 ]
 const profile = {
   name: 'FPX',
   imageUrl: '/fpxlogo.png',
-  coverImageUrl: '/SCHeader.png',
+  // coverImageUrl: '/SCHeader.png',
   about: `
     <p>Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.</p>
     <p>Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.</p>
@@ -26,37 +27,6 @@ const profile = {
     Booker: 'clive@evolutionartists.com',
   },
 }
-
-const team = [
-  {
-    name: 'AIDEN',
-    handle: 'aiden',
-    role: 'Techno / USA',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Gestalt',
-    handle: 'gestalt',
-    role: 'Drum & Bass / AT',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Pech + Schwefel',
-    handle: 'pechplusschwefel',
-    role: 'Techno, AT',
-    imageUrl:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Two Feet',
-    handle: 'twofeet',
-    role: 'Pop / USA',
-    imageUrl:
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -91,6 +61,7 @@ export default function ProfilePage() {
     username: '',
     name: '',
     userId: '',
+    userAddress: '',
     imageUrl: '',
     coverImageUrl: '',
     about: '',
@@ -106,8 +77,11 @@ export default function ProfilePage() {
         username: user.get('username'),
         name: user.get('artistName'),
         userId: user.get('objectId'),
+        userAddress:
+          user.get('ethAddress').slice(0, 4).concat('...') +
+          user.get('ethAddress').slice(38, 42),
         imageUrl: user.get('userImg'),
-        coverImageUrl: user.get('userCover'),
+        coverImageUrl: user.get('coverImg'),
         about: user.get('userbio'),
         fields: {
           Website: user.get('userUrl'),
@@ -129,7 +103,11 @@ export default function ProfilePage() {
                   <div>
                     <img
                       className="h-32 w-full rounded-t-xl object-cover lg:h-48"
-                      src={profile.coverImageUrl || '/avasound-blk.svg'}
+                      src={
+                        profile.coverImageUrl
+                          ? profile.coverImageUrl
+                          : '/avasound-blk.svg'
+                      }
                       alt=""
                     />
                   </div>
@@ -143,16 +121,15 @@ export default function ProfilePage() {
                         />
                       </div>
                       <div className="mt-12 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
-                        <div className="mt-6 min-w-0 flex-1 sm:hidden 2xl:block">
-                          <h1 className="mb-4 truncate pt-2 text-2xl font-bold text-gray-900">
+                        <div className="mt-6 min-w-0 flex-1  2xl:block">
+                          <h1 className="mb-2 truncate pt-2 text-2xl font-bold text-gray-900">
+                            {userInfo.username
+                              ? userInfo.username
+                              : userInfo.userId}
+                          </h1>
+                          <h1 className="truncate text-xs font-medium text-gray-900">
                             {userInfo.userAddress}
                           </h1>
-
-                          <div className="flex w-full flex-row items-center justify-evenly space-x-4 rounded-xl bg-[#f5f5f5]">
-                            <p>78 Records</p>
-                            <p>10,657 Likes</p>
-                            <p>786 Fans</p>
-                          </div>
                         </div>
                         <div className="justify-stretch mt-6 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:space-y-0 sm:space-x-4">
                           {/* <button
@@ -179,11 +156,11 @@ export default function ProfilePage() {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-6 hidden min-w-0 flex-1 sm:block 2xl:hidden">
+                    {/* <div className="mt-6 hidden min-w-0 flex-1 sm:block 2xl:hidden">
                       <h1 className="truncate text-2xl font-bold text-gray-900">
                         {profile.name}
                       </h1>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
@@ -232,6 +209,7 @@ export default function ProfilePage() {
                       <dt className="text-sm font-medium text-gray-500">
                         About
                       </dt>
+
                       <dd
                         className="mt-1 max-w-prose space-y-5 text-sm text-gray-900"
                         dangerouslySetInnerHTML={{ __html: userInfo.about }}
@@ -241,22 +219,23 @@ export default function ProfilePage() {
                       <dt className="text-sm font-medium text-gray-500">
                         Spotlight
                       </dt>
+                      <Spotlight />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <dt className="text-sm font-medium text-gray-500">
+                        New Items
+                      </dt>
+
                       <div className="my-4 mb-8 flex w-full flex-row flex-wrap items-center justify-center sm:flex-nowrap">
                         <Albumcard />
                         <Albumcard />
                         <Albumcard />
                       </div>
                     </div>
-                    {/* <ul className="flex w-full flex-col items-center justify-evenly rounded-lg border-t border-gray-200 bg-[#f5f5f5] p-4 shadow-2xl">
-                      <p className="flex w-full items-center pb-4">Records</p>
-                      {content.map((data, index) => (
-                        <RecordListItem data={data} key={index} />
-                      ))}
-                    </ul> */}
                   </dl>
                 </div>
                 <div
-                  hidden={selectedTab != 'Items'}
+                  hidden={selectedTab != 'Collection'}
                   className="mx-auto  mt-8 max-w-5xl px-4 pb-4 sm:px-6 lg:px-8"
                 >
                   <div className="mt-8">

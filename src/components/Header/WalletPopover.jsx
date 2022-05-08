@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/outline'
 import HeaderItem from './HeaderItem'
 import { useMoralis } from 'react-moralis'
+import { useRouter } from 'next/router'
 
 const solutions = [
   // {
@@ -57,6 +58,8 @@ function classNames(...classes) {
 export default function Example() {
   const { logout, user } = useMoralis()
 
+  const router = useRouter()
+
   const [walletSolution, setWalletSolution] = useState([
     {
       name: '',
@@ -76,6 +79,11 @@ export default function Example() {
       },
     ])
   }, [])
+
+  function userLogout() {
+    router.push('/')
+    logout()
+  }
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -144,7 +152,7 @@ export default function Example() {
                 <div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
                   <button
                     className="flex flex-row items-center text-black"
-                    onClick={logout}
+                    onClick={userLogout}
                   >
                     <div className="flow-root">
                       <a className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100">

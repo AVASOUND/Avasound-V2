@@ -1,11 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Router, { useRouter } from 'next/router'
 import { useMoralis } from 'react-moralis'
 import Header from '../src/components/Header/Header'
+import Login from '../src/components/Login'
 import ProfilePage from '../src/components/Profile/ProfilePage'
 
 const Home: NextPage = () => {
   const { isAuthenticated } = useMoralis()
+  const router = useRouter()
 
   // if (!isAuthenticated) return <Login />
 
