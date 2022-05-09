@@ -1,10 +1,10 @@
-import { InformationCircleIcon, PlusCircleIcon } from '@heroicons/react/outline'
-import { useEffect, useState } from 'react'
-import { useMoralis, useMoralisFile } from 'react-moralis'
-import Albumcard from '../../../Album/Albumcard'
+import { InformationCircleIcon } from '@heroicons/react/outline'
+import { useState } from 'react'
+import { useMoralis } from 'react-moralis'
+import Albumcard from '../../Album/Albumcard'
 import InfoPanel from '../../Settings/InfoPanel'
-import { TokenABI, TokenAddress } from '../../../../contracts/TokenContract'
-import { marketplaceAddress } from '../../../../contracts/MarketplaceContract'
+import { TokenABI, TokenAddress } from '../../../contracts/TokenContract'
+import { marketplaceAddress } from '../../../contracts/MarketplaceContract'
 
 const steps = [
   { id: 'Step 1', name: 'Upload Tracks', status: 'complete' },

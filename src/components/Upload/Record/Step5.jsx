@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { useMoralis, useMoralisFile } from 'react-moralis'
-import Albumcard from '../../../Album/Albumcard'
+import { useState } from 'react'
+import { useMoralis } from 'react-moralis'
+import Albumcard from '../../Album/Albumcard'
 
 export default function ProfileSettings(props) {
   const { user, Moralis } = useMoralis()

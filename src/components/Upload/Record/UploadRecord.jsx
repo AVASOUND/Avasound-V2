@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { PlusCircleIcon } from '@heroicons/react/outline'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 import UploadNavbar from '../UploadNavbar'

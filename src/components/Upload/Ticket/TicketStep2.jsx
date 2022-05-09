@@ -1,19 +1,12 @@
-import { InformationCircleIcon, PlusCircleIcon } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
-import { useMoralis, useMoralisFile } from 'react-moralis'
-import Albumcard from '../../../Album/Albumcard'
-import InfoPanel from '../../Settings/InfoPanel'
-import TicketCard from '../../../Ticket/TicketCard'
-import { TokenABI, TokenAddress } from '../../../../contracts/TokenContract'
-import { marketplaceAddress } from '../../../../contracts/MarketplaceContract'
+import { useMoralis } from 'react-moralis'
+import TicketCard from '../../Ticket/TicketCard'
+import { TokenABI, TokenAddress } from '../../../contracts/TokenContract'
+import { marketplaceAddress } from '../../../contracts/MarketplaceContract'
 
 export default function ProfileSettings(props) {
   // Moralis Hooks
   const { user, Moralis } = useMoralis()
-
-  // State Variables for Info Icons
-  const [showMasterInfo, setShowMasterInfo] = useState(false)
-  const [showRoyaltyInfo, setShowRoyaltyInfo] = useState(false)
 
   // CONTRACT CALL MINT ITEM
   async function contractCall(object) {

@@ -3,14 +3,11 @@ import {
   CheckCircleIcon,
   CloudUploadIcon,
   CogIcon,
-  PlusCircleIcon,
 } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis } from 'react-moralis'
 import Albumcard from '../Album/Albumcard'
 import Spotlight from './Spotlight'
-import RecordListItem from '../Album/RecordListItem'
-import { Disclosure } from '@headlessui/react'
 
 const tabs = [
   { name: 'Profile', href: '#', current: true },

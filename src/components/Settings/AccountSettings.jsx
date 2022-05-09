@@ -1,6 +1,5 @@
 import { ClipboardCheckIcon, ClipboardCopyIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
-import { userInfo } from 'os'
 import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 

@@ -5,9 +5,9 @@ import { useMoralis, useMoralisFile } from 'react-moralis'
 import {
   MarketplaceABI,
   marketplaceAddress,
-} from '../../../../contracts/MarketplaceContract'
-import { TokenABI, TokenAddress } from '../../../../contracts/TokenContract'
-import Albumcard from '../../../Album/Albumcard'
+} from '../../../contracts/MarketplaceContract'
+import { TokenABI, TokenAddress } from '../../../contracts/TokenContract'
+import Albumcard from '../../Album/Albumcard'
 
 export default function ProfileSettings(props) {
   const router = useRouter()

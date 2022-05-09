@@ -4,8 +4,8 @@ import { InformationCircleIcon } from '@heroicons/react/solid'
 import { Fragment, useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 import InfoPanel from '../../Settings/InfoPanel'
-import { TokenABI, TokenAddress } from '../../../../contracts/TokenContract'
-import { marketplaceAddress } from '../../../../contracts/MarketplaceContract'
+import { TokenABI, TokenAddress } from '../../../contracts/TokenContract'
+import { marketplaceAddress } from '../../../contracts/MarketplaceContract'
 
 export default function TicketStep1(props) {
   // Moralis Hooks

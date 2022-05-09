@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react'
-import { Disclosure } from '@headlessui/react'
+import { useState } from 'react'
 import {
   ChartSquareBarIcon,
-  CloudUploadIcon,
   CreditCardIcon,
   UserCircleIcon,
 } from '@heroicons/react/outline'
 import Notifications from './NotificationSaved'
-import AccountSettings from './Settings/AccountSettings'
+import AccountSettings from '../Settings/AccountSettings'
 import ProfileSettings from './ProfileSettings'
 import { useRouter } from 'next/router'
 

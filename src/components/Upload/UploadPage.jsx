@@ -1,20 +1,11 @@
 import { useState } from 'react'
-import { Disclosure } from '@headlessui/react'
-import {
-  FingerPrintIcon,
-  MusicNoteIcon,
-  TicketIcon,
-} from '@heroicons/react/outline'
-// import Notifications from './NotificationSaved'
+import { MusicNoteIcon, TicketIcon } from '@heroicons/react/outline'
 import UploadRecord from './Record/UploadRecord'
 import UploadTicket from './Ticket/UploadTicket'
-import AccountSettings from '../Settings/AccountSettings'
-import ProfileSettings from '../ProfileSettings'
 
 const tabs = [
   { name: 'Record', href: '#', icon: MusicNoteIcon, current: true },
   { name: 'Ticket', href: '#', icon: TicketIcon, current: false },
-  // { name: 'Token', href: '#', icon: FingerPrintIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -84,9 +75,6 @@ export default function SettingsPage() {
                 <div hidden={selectedTab != 'Ticket'}>
                   <UploadTicket />
                 </div>
-                {/* <div hidden={selectedTab != 'Token'}>
-                  <AccountSettings />
-                </div> */}
               </div>
             </div>
           </div>

@@ -11,7 +11,6 @@ import {
   UserIcon,
 } from '@heroicons/react/outline'
 import { useMoralis } from 'react-moralis'
-import HeaderAccount from './HeaderAccount'
 import Image from 'next/image'
 
 const solutions = [
