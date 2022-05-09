@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/outline'
 // import Notifications from './NotificationSaved'
 import UploadRecord from './Record/UploadRecord'
+import UploadTicket from './Ticket/UploadTicket'
 import AccountSettings from '../Settings/AccountSettings'
 import ProfileSettings from '../ProfileSettings'
 
@@ -36,8 +37,8 @@ export default function SettingsPage() {
     <div className="w-full">
       <main className="relative">
         <div
-          className="lg:px -8 mx-auto max-w-7xl px-4 py-4
-        sm:px-6"
+          className="mx-auto max-w-7xl px-4 py-4 sm:px-6
+        lg:px-8"
         >
           <h1 className="text-2xl font-bold text-teal-500">Upload</h1>
         </div>
@@ -80,10 +81,10 @@ export default function SettingsPage() {
                 <div hidden={selectedTab != 'Record'}>
                   <UploadRecord />
                 </div>
-                <div hidden={selectedTab != 'Token'}>
+                <div hidden={selectedTab != 'Ticket'}>
                   <UploadTicket />
                 </div>
-                <div hidden={selectedTab != 'Ticket'}>
+                <div hidden={selectedTab != 'Token'}>
                   <AccountSettings />
                 </div>
               </div>

@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 import UploadNavbar from '../UploadNavbar'
 import Step1 from './Step1'
-import Step2 from '../../Settings/Step2'
-import Step3 from '../../Settings/Step3'
-import Step4 from '../../Settings/Step4'
-import Step5 from '../../Settings/Step5'
+import Step2 from './Step2'
+import Step3 from './Step3'
+import Step4 from './Step4'
+import Step5 from './Step5'
 
 const steps = [
   { id: 'Step 1', name: 'Upload Tracks', href: '#', status: 'current' },
@@ -116,8 +116,8 @@ export default function UploadRecord() {
   }
 
   return (
-    <div className="w-11/12 py-6 px-4 sm:p-6 lg:pb-8">
-      <div>
+    <div className="flex w-full flex-col py-6 px-4 sm:p-6 lg:pb-8">
+      <div className=" flex w-full flex-col justify-center sm:items-center">
         <h2 className="text-lg font-medium leading-6 text-gray-900">
           Upload Record
         </h2>
@@ -125,22 +125,24 @@ export default function UploadRecord() {
           Follow the 4 steps below to upload your Record. All input fields are
           required.
         </p>
+        <UploadNavbar />
       </div>
-      <UploadNavbar />
-      <div hidden={step != '1'}>
-        <Step1 handleStep={handleStep} />
-      </div>
-      <div hidden={step != '2'}>
-        <Step2 handleStep={handleStep} />
-      </div>
-      <div hidden={step != '3'}>
-        <Step3 handleStep={handleStep} />
-      </div>
-      <div hidden={step != '4'}>
-        <Step4 handleStep={handleStep} />
-      </div>
-      <div hidden={step != '5'}>
-        <Step5 handleStep={handleStep} />
+      <div className="flex w-full flex-col items-center justify-center">
+        <div className="w-full" hidden={step != '1'}>
+          <Step1 handleStep={handleStep} />
+        </div>
+        <div hidden={step != '2'}>
+          <Step2 handleStep={handleStep} />
+        </div>
+        <div hidden={step != '3'}>
+          <Step3 handleStep={handleStep} />
+        </div>
+        <div hidden={step != '4'}>
+          <Step4 handleStep={handleStep} />
+        </div>
+        <div hidden={step != '5'}>
+          <Step5 handleStep={handleStep} />
+        </div>
       </div>
     </div>
   )
