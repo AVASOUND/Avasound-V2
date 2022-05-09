@@ -2,13 +2,13 @@ import { useState } from 'react'
 
 /* This example requires Tailwind CSS v2.0+ */
 const steps = [
-  { id: 'Step 1', name: 'Event Details', href: '#', status: 'current' },
-  { id: 'Step 2', name: 'Review & Mint', href: '#', status: 'upcoming' },
-  { id: 'Step 3', name: 'Approve & List', href: '#', status: 'upcoming' },
+  { id: 'Step 1', name: 'Details & Mint', href: '#', status: 'current' },
+  { id: 'Step 2', name: 'Approve & List', href: '#', status: 'upcoming' },
 ]
 
 export default function TicketNavbar() {
   const [step, setStep] = useState('Step 1')
+  const [selectedTab, setSelectedTab] = useState()
 
   return (
     <nav aria-label="Progress" className="mt-6 w-9/12">

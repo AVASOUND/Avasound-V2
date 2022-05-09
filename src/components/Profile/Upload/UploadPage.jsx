@@ -14,7 +14,7 @@ import ProfileSettings from '../ProfileSettings'
 const tabs = [
   { name: 'Record', href: '#', icon: MusicNoteIcon, current: true },
   { name: 'Ticket', href: '#', icon: TicketIcon, current: false },
-  { name: 'Token', href: '#', icon: FingerPrintIcon, current: false },
+  // { name: 'Token', href: '#', icon: FingerPrintIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -37,10 +37,10 @@ export default function SettingsPage() {
     <div className="w-full">
       <main className="relative">
         <div
-          className="mx-auto max-w-7xl px-4 py-4 sm:px-6
-        lg:px-8"
+          className="mx-auto flex max-w-7xl items-center px-4 pt-4 pb-2
+        "
         >
-          <h1 className="text-2xl font-bold text-teal-500">Upload</h1>
+          <h1 className="text-xl font-bold text-teal-500">Upload</h1>
         </div>
         {notificationSaved && <Notifications handleNotif={handleNotif} />}
         <div className=" w-full">
@@ -84,9 +84,9 @@ export default function SettingsPage() {
                 <div hidden={selectedTab != 'Ticket'}>
                   <UploadTicket />
                 </div>
-                <div hidden={selectedTab != 'Token'}>
+                {/* <div hidden={selectedTab != 'Token'}>
                   <AccountSettings />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

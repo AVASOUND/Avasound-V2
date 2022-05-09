@@ -4,6 +4,8 @@ import { InformationCircleIcon } from '@heroicons/react/solid'
 import { Fragment, useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 import InfoPanel from '../../Settings/InfoPanel'
+import { TokenABI, TokenAddress } from '../../../../contracts/TokenContract'
+import { marketplaceAddress } from '../../../../contracts/MarketplaceContract'
 
 export default function TicketStep1(props) {
   // Moralis Hooks
@@ -14,15 +16,18 @@ export default function TicketStep1(props) {
   const [showPriceInfo, setShowPriceInfo] = useState(false)
   const [showTotalCopies, setShowTotalCopies] = useState(false)
 
-  // STEP 1
+  // STEP 1: Upload Details to Moralis DB & IPFS
   async function completeStep(e) {
     e.preventDefault()
     const eventTitle = document.getElementById('eventTitle').value
+    const eventDate = document.getElementById('eventDate').value
+    const eventLocation = document.getElementById('eventLocation').value
     const eventPoster = document.getElementById('eventPoster').files[0]
     const ticketPrice = document.getElementById('ticketPrice').value
     const ticketNumber = document.getElementById('ticketNumber').value
     const eventDetails = document.getElementById('eventDetails').value
 
+    // IPFS
     let ipfsCover = ''
 
     if (eventPoster) {
@@ -34,19 +39,57 @@ export default function TicketStep1(props) {
         }
       )
     }
-
+    // Moralis Database Extension
     const Tickets = new Moralis.Object.extend('Tickets')
-    const ticket = new Record()
+    const ticket = new Tickets()
 
     ticket.set('eventTitle', eventTitle)
+    ticket.set('eventDate', eventDate)
+    ticket.set('eventLocation', eventLocation)
     ticket.set('eventPoster', ipfsCover)
     ticket.set('ticketPrice', ticketPrice)
     ticket.set('ticketNumber', ticketNumber)
     ticket.set('eventDetails', eventDetails)
-    ticket.save().then(() => {
+    ticket.save().then((object) => {
       //   setNotificationSaved(true)
-      props.handleStep('2')
+      contractCall(object)
     })
+  }
+
+  // STEP 1.2: CONTRACT CALL MINT ITEM
+
+  async function contractCall(object) {
+    const web3Provider = await Moralis.enableWeb3()
+    const ethers = Moralis.web3Library
+
+    const contract = new ethers.Contract(
+      TokenAddress,
+      TokenABI,
+      web3Provider.getSigner()
+    )
+
+    const price = ethers.utils.parseEther(object.get('ticketPrice').toString())
+
+    // change to Ticket Contract / Function
+    contract
+      .createAlbum(
+        object.id,
+        object.get('recordCount'),
+        '4',
+        price,
+        object.get('royaltyPrice')
+      )
+      .then((result) => {
+        contract.setApprovalForAll(marketplaceAddress, true)
+        alert(
+          'successful, please confirm direct approval for marketplace via metamask'
+        )
+        setUploadDone(true)
+        alert(
+          "You find the item in your collection. From there you'll be able to list it on the marketplace"
+        )
+        props.handleStep('2')
+      })
   }
 
   return (
@@ -58,13 +101,45 @@ export default function TicketStep1(props) {
               htmlFor="eventTitle"
               className="block text-sm font-medium text-gray-700"
             >
-              Event Title
+              Title
             </label>
             <div className="mt-1 flex rounded-md shadow-sm">
               <input
                 type="text"
                 name="eventTitle"
                 id="eventTitle"
+                className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="eventDate"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Date
+            </label>
+            <div className="mt-1 flex rounded-md shadow-sm">
+              <input
+                type="date"
+                name="eventDate"
+                id="eventDate"
+                className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              htmlFor="eventLocation"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Location
+            </label>
+            <div className="mt-1 flex rounded-md shadow-sm">
+              <input
+                type="text"
+                name="eventLocation"
+                id="eventLocation"
                 className="block w-full min-w-0 flex-grow rounded-md border-gray-300 focus:border-teal-500 focus:ring-teal-500 sm:text-sm"
               />
             </div>
@@ -77,7 +152,7 @@ export default function TicketStep1(props) {
                 htmlFor="eventPoster"
                 className="block text-sm font-medium text-gray-700"
               >
-                Event Flyer
+                Flyer
               </label>
               <div className="flex w-full  flex-row items-center space-x-4">
                 <label
@@ -105,7 +180,7 @@ export default function TicketStep1(props) {
               htmlFor="ticketPrice"
               className="flex flex-row text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Ticketprice
+              Price
               <InformationCircleIcon
                 className="ml-2 h-3 cursor-pointer text-teal-500"
                 onClick={() => {
@@ -197,7 +272,7 @@ export default function TicketStep1(props) {
                   className=" ml-3 inline-flex rounded-md border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
                   onClick={completeStep}
                 >
-                  Next Step
+                  Mint Ticket
                 </button>
               </div>
             </div>

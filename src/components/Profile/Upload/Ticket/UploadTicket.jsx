@@ -4,18 +4,10 @@ import { useRouter } from 'next/router'
 import { useMoralis, useMoralisFile } from 'react-moralis'
 import TicketNavbar from './TicketNavbar'
 import TicketStep1 from './TicketStep1'
-// import TicketStep2 from './TicketStep2'
+import TicketStep2 from './TicketStep2'
 // import TicketStep3 from './TicketStep3'
 // import TicketStep4 from './TicketStep4'
 // import TicketStep5 from './TicketStep5'
-
-const steps = [
-  { id: 'Step 1', name: 'Upload Tracks', href: '#', status: 'current' },
-  { id: 'Step 2', name: 'Mint Item', href: '#', status: 'upcoming' },
-  { id: 'Step 3', name: 'Approve & List Item', href: '#', status: 'upcoming' },
-  { id: 'Step 4', name: 'Approve & List Item', href: '#', status: 'upcoming' },
-  { id: 'Step 5', name: 'Done', status: 'upcoming' },
-]
 
 export default function UploadTicket() {
   const router = useRouter()
@@ -28,10 +20,6 @@ export default function UploadTicket() {
       setStep('2')
     } else if (step == '2') {
       setStep('3')
-    } else if (step == '3') {
-      setStep('4')
-    } else if (step == '5') {
-      setStep('5')
     } else {
       setStep('1')
     }
@@ -60,10 +48,11 @@ export default function UploadTicket() {
         <div className="w-full sm:w-9/12" hidden={step != '1'}>
           <TicketStep1 handleStep={handleStep} />
         </div>
-        {/* <div hidden={step != '2'}>
-        <TicketStep2 handleStep={handleStep} />
+        <div className="w-full sm:w-9/12" hidden={step != '2'}>
+          <TicketStep2 handleStep={handleStep} />
         </div>
-        <div hidden={step != '3'}>
+
+        {/* <div hidden={step != '3'}>
         <TicketStep3 handleStep={handleStep} />
         </div>
         <div hidden={step != '4'}>

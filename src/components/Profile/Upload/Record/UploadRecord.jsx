@@ -128,7 +128,7 @@ export default function UploadRecord() {
         <UploadNavbar />
       </div>
       <div className="flex w-full flex-col items-center justify-center">
-        <div className="w-full" hidden={step != '1'}>
+        <div className="sm:9/12 w-full" hidden={step != '1'}>
           <Step1 handleStep={handleStep} />
         </div>
         <div hidden={step != '2'}>
