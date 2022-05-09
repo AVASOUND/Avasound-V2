@@ -30,12 +30,10 @@ export default function ProfileSettings(props) {
       let rmap = new Map()
       results.forEach((result) => {
         r.push({ id: result.id, Genre: result.get('genre') })
-        rmap[result.get('Genre')] = result.id
+        rmap[result.id] = result.id
       })
       setGenre(r)
       setSelectGenreId(rmap)
-      console.log(rmap)
-      console.log(r)
     })
   }, [])
 

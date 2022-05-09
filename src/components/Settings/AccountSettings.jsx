@@ -2,6 +2,7 @@ import { ClipboardCheckIcon, ClipboardCopyIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
+import ERC20Balances from '../../hooks/useERC20Balance'
 
 export default function AccountSettings() {
   const { user } = useMoralis()
@@ -74,6 +75,7 @@ export default function AccountSettings() {
               Balances
             </label>
             <div className="flex flex-col items-start justify-start">
+              <ERC20Balances />
               {/* AVAX Balance */}
               <div className="mt-2 flex w-4/12 flex-row items-center justify-between space-x-8 text-sm text-gray-500">
                 <div className="flex w-6/12 flex-row items-center justify-evenly">
