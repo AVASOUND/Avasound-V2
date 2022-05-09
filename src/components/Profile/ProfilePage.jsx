@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   CheckCircleIcon,
+  CloudUploadIcon,
   CogIcon,
   PlusCircleIcon,
 } from '@heroicons/react/outline'
@@ -141,16 +142,17 @@ export default function ProfilePage() {
                           </h1>
                         </div>
                         <div className="justify-stretch mt-6 flex flex-col space-y-3 text-sm font-medium sm:flex-row sm:space-y-0 sm:space-x-4">
-                          {/* <button
+                          <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                            onClick={() => router.push('/upload')}
                           >
-                            <PlusCircleIcon
+                            <CloudUploadIcon
                               className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                               aria-hidden="true"
                             />
-                            <span>Follow</span>
-                          </button> */}
+                            <span>Upload</span>
+                          </button>
                           <button
                             type="button"
                             className="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
