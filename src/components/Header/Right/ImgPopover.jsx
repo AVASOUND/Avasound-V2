@@ -16,13 +16,6 @@ import Image from 'next/image'
 
 const solutions = [
   {
-    name: 'Fiat Onramp',
-    description: 'Buy crypto with your credit card.',
-
-    href: '#',
-    icon: CreditCardIcon,
-  },
-  {
     name: 'Dashboard',
     description: 'Edit your Account.',
     href: '/profilesettings',
@@ -33,6 +26,13 @@ const solutions = [
     description: 'Records, Tickets & Access Tokens.',
     href: '/upload',
     icon: CloudUploadIcon,
+  },
+  {
+    name: 'Fiat Onramp',
+    description: 'Buy crypto with your credit card.',
+
+    href: '#',
+    icon: CreditCardIcon,
   },
 ]
 const callsToAction = [{ name: 'Logout', href: '#', icon: LogoutIcon }]

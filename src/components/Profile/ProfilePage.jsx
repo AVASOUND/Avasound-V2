@@ -44,6 +44,8 @@ export default function ProfilePage() {
   // TAB SELECTION
   const [selectedTab, setSelectedTab] = useState('Profile')
 
+  const [isArtist, setIsArtist] = useState(true)
+
   // CONTENT / ITEMS
   const [content, setContent] = useState([])
 
@@ -132,10 +134,17 @@ export default function ProfilePage() {
                                 ? userInfo.username
                                 : userInfo.userId}
                             </h1>
-                            <div className="flex flex-row items-center space-x-1 rounded-md bg-teal-100 px-1 text-sm font-medium text-teal-800">
-                              <p>Artist</p>
-                              <CheckCircleIcon className="h-4" />
-                            </div>
+                            {isArtist ? (
+                              <div className="flex flex-row items-center space-x-1 rounded-md bg-teal-100 px-1 text-sm font-medium text-teal-800">
+                                <p>Artist</p>
+                                <CheckCircleIcon className="h-4" />
+                              </div>
+                            ) : (
+                              <div className="flex flex-row items-center space-x-1 rounded-md bg-cyan-100 px-1 text-sm font-medium text-cyan-800">
+                                <p>Label</p>
+                                <CheckCircleIcon className="h-4" />
+                              </div>
+                            )}
                           </div>
                           <h1 className="truncate text-xs font-medium text-gray-900">
                             {userInfo.userAddress}
