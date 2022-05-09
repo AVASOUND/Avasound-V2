@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import { PlusCircleIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useMoralis, useMoralisFile } from 'react-moralis'
-import UploadNavbar from './UploadNavbar'
+import UploadNavbar from '../UploadNavbar'
 import Step1 from './Step1'
-import Step2 from './Step2'
-import Step3 from './Step3'
-import Step4 from './Step4'
-import Step5 from './Step5'
+import Step2 from '../../Settings/Step2'
+import Step3 from '../../Settings/Step3'
+import Step4 from '../../Settings/Step4'
+import Step5 from '../../Settings/Step5'
 
 const steps = [
   { id: 'Step 1', name: 'Upload Tracks', href: '#', status: 'current' },
@@ -17,7 +17,7 @@ const steps = [
   { id: 'Step 5', name: 'Done', status: 'upcoming' },
 ]
 
-export default function ProfileSettings() {
+export default function UploadRecord() {
   const router = useRouter()
   const { user, Moralis } = useMoralis()
   const { saveFile } = useMoralisFile()

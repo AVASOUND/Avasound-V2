@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { PlusCircleIcon } from '@heroicons/react/outline'
 import { useMoralis, useMoralisFile } from 'react-moralis'
-import UploadNavbar from './UploadNavbar'
 
 export default function Step2(props) {
   const { user, Moralis } = useMoralis()

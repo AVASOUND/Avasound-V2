@@ -3,7 +3,7 @@ import { PlusCircleIcon, SelectorIcon } from '@heroicons/react/outline'
 import { InformationCircleIcon } from '@heroicons/react/solid'
 import { Fragment, useEffect, useState } from 'react'
 import { useMoralis, useMoralisFile } from 'react-moralis'
-import InfoPanel from './InfoPanel'
+import InfoPanel from '../../Settings/InfoPanel'
 
 export default function ProfileSettings(props) {
   // Moralis Hooks

@@ -6,7 +6,7 @@ import {
   TicketIcon,
 } from '@heroicons/react/outline'
 // import Notifications from './NotificationSaved'
-import UploadFiles from '../Settings/UploadFiles'
+import UploadRecord from './Record/UploadRecord'
 import AccountSettings from '../Settings/AccountSettings'
 import ProfileSettings from '../ProfileSettings'
 
@@ -78,10 +78,10 @@ export default function SettingsPage() {
 
               <div className="divide-y divide-gray-200 lg:col-span-9">
                 <div hidden={selectedTab != 'Record'}>
-                  <UploadFiles />
+                  <UploadRecord />
                 </div>
                 <div hidden={selectedTab != 'Token'}>
-                  <ProfileSettings />
+                  <UploadTicket />
                 </div>
                 <div hidden={selectedTab != 'Ticket'}>
                   <AccountSettings />
