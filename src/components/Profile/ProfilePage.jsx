@@ -124,24 +124,26 @@ export default function ProfilePage() {
                         />
                       </div>
                       <div className="mt-12 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
-                        <div className="mt-6 min-w-0 flex-1  2xl:block">
-                          <div className="flex w-3/12 flex-row items-center justify-between">
-                            <h1 className="mb-2 truncate pt-2 text-2xl font-bold text-gray-900">
+                        <div className="flex w-full min-w-0 flex-1 flex-col 2xl:block">
+                          <div className="flex w-full flex-row ">
+                            <div className="mb-2 flex flex-row truncate pt-2 text-2xl font-bold text-gray-900">
                               {userInfo.username
                                 ? userInfo.username
                                 : userInfo.userId}
-                            </h1>
-                            {isArtist ? (
-                              <div className="flex flex-row items-center space-x-1 rounded-md bg-teal-100 px-1 text-sm font-medium text-teal-800">
-                                <p>Artist</p>
-                                <CheckCircleIcon className="h-4" />
-                              </div>
-                            ) : (
-                              <div className="flex flex-row items-center space-x-1 rounded-md bg-cyan-100 px-1 text-sm font-medium text-cyan-800">
-                                <p>Label</p>
-                                <CheckCircleIcon className="h-4" />
-                              </div>
-                            )}
+                            </div>
+                            <div className="mb-4 flex flex-row items-center pl-2">
+                              {isArtist ? (
+                                <div className="flex flex-row items-center space-x-1 rounded-md bg-teal-100 px-1 text-sm font-medium text-teal-800">
+                                  {/* <p>Artist</p> */}
+                                  <CheckCircleIcon className="h-4" />
+                                </div>
+                              ) : (
+                                <div className="flex flex-row items-center space-x-1 rounded-md bg-cyan-100 px-1 text-sm font-medium text-cyan-800">
+                                  {/* <p>Label</p> */}
+                                  <CheckCircleIcon className="h-4" />
+                                </div>
+                              )}
+                            </div>
                           </div>
                           <h1 className="truncate text-xs font-medium text-gray-900">
                             {userInfo.userAddress}
