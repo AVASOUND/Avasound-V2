@@ -26,13 +26,13 @@ const solutions = [
     href: '/upload',
     icon: CloudUploadIcon,
   },
-  {
-    name: 'Fiat Onramp',
-    description: 'Buy crypto with your credit card.',
+  // {
+  //   name: 'Fiat Onramp',
+  //   description: 'Buy crypto with your credit card.',
 
-    href: '#',
-    icon: CreditCardIcon,
-  },
+  //   href: '#',
+  //   icon: CreditCardIcon,
+  // },
 ]
 const callsToAction = [{ name: 'Logout', href: '#', icon: LogoutIcon }]
 

@@ -27,12 +27,12 @@ const solutions = [
     href: '/upload',
     icon: CloudUploadIcon,
   },
-  {
-    name: 'Fiat Onramp',
-    description: 'Buy crypto with your credit card.',
-    href: '/profile',
-    icon: CreditCardIcon,
-  },
+  // {
+  //   name: 'Fiat Onramp',
+  //   description: 'Buy crypto with your credit card.',
+  //   href: '/profile',
+  //   icon: CreditCardIcon,
+  // },
 ]
 
 export default function WalletPopover() {
