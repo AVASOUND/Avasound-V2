@@ -2,6 +2,7 @@ import { ClipboardCheckIcon, ClipboardCopyIcon } from '@heroicons/react/outline'
 import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import ERC20Balances from '../../hooks/useERC20Balance'
+import NativeBalance from '../Balances/NativeBalance'
 
 export default function AccountSettings() {
   const { user } = useMoralis()
@@ -74,26 +75,15 @@ export default function AccountSettings() {
               Balances
             </label>
             <div className="flex flex-col items-start">
+              {/*  NATIVE BALANCE */}
+              <NativeBalance />
+
               <ERC20Balances />
-              {/* AVAX Balance */}
-              <div className="mt-2 flex w-6/12 flex-row items-center space-x-8 text-sm text-gray-500">
-                <div className="ml-4 flex w-6/12 flex-row items-center">
-                  <div className="text-sm text-gray-500">AVAX</div>
-                  {/* <Image src={'/avaxlogo.png'} height={15} width={15} /> */}
-                </div>
-                <div className="text-sm text-gray-500">2,279,980.78</div>
-              </div>
 
               {/* AVSO Balance */}
               <div className="mt-2 flex w-6/12 flex-row items-center space-x-8 text-sm text-gray-500">
                 <div className="ml-4 flex w-6/12 flex-row items-center">
                   <div className="text-sm text-gray-500">AVSX</div>
-                  {/* <Image
-                    src={'/avso-logo.png'}
-                    height={15}
-                    width={15}
-                    className="rounded-full"
-                  /> */}
                 </div>
                 <div className="text-sm text-gray-500">1,000,000,000.00</div>
               </div>

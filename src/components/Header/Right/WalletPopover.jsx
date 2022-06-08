@@ -10,7 +10,7 @@ import {
   LogoutIcon,
   UserIcon,
 } from '@heroicons/react/outline'
-import { useMoralis } from 'react-moralis'
+import { useMoralis, useNativeBalance } from 'react-moralis'
 import HeaderAccount from './HeaderAccount'
 import Image from 'next/image'
 
@@ -35,8 +35,10 @@ const solutions = [
   // },
 ]
 
-export default function WalletPopover() {
-  const { logout, user, isAuthenticated, isWeb3Enabled, enableWeb3 } =
+export default function WalletPopover(props) {
+  const { data: balance } = useNativeBalance(props)
+
+  const { logout, user, account, isAuthenticated, isWeb3Enabled, enableWeb3 } =
     useMoralis()
 
   const [walletSolution, setWalletSolution] = useState([
@@ -63,7 +65,7 @@ export default function WalletPopover() {
         {
           name: user.get('username'),
           address: userAddress,
-          balance: '2,337.20 AVAX', //MAX 10 signs including. and decimals
+          balance: balance.formatted, //MAX 10 signs including. and decimals
           href: '/profile',
           icon: ChipIcon,
         },
@@ -111,11 +113,11 @@ export default function WalletPopover() {
                           <div className="flex w-full flex-col items-end justify-end">
                             <div className="flex w-9/12 flex-row items-center justify-evenly">
                               <div>{user.balance}</div>
-                              <Image
+                              {/* <Image
                                 src={'/avaxlogo.png'}
                                 width={15}
                                 height={15}
-                              />
+                              /> */}
                             </div>
                           </div>
                         </div>
