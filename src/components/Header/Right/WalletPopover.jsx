@@ -117,22 +117,6 @@ export default function WalletPopover() {
                                 height={15}
                               />
                             </div>
-                            {/* <div className="flex w-6/12 flex-row items-center justify-evenly">
-                              <div>{item.description2}</div>
-                              <Image
-                                src={'/avaxlogo.png'}
-                                width={15}
-                                height={15}
-                              />
-                            </div>
-                            <div className="flex w-6/12 flex-row items-center justify-evenly">
-                              <div>{item.description2}</div>
-                              <Image
-                                src={'/avaxlogo.png'}
-                                width={15}
-                                height={15}
-                              />
-                            </div> */}
                           </div>
                         </div>
                       </div>
