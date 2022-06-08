@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useMoralis } from 'react-moralis'
+import { useMoralis, useNativeBalance } from 'react-moralis'
 
-export default function HeaderAccount() {
+export default function HeaderAccount(props) {
+  const { data: balance } = useNativeBalance(props)
+
   const { user } = useMoralis()
 
   const [userEthAdd, setUserEthAdd] = useState('')
-  const [userBalance, setUserBalance] = useState('200')
+  const [userBalance, setUserBalance] = useState('')
 
   useEffect(() => {
     if (user) {
@@ -13,6 +15,7 @@ export default function HeaderAccount() {
         user.get('ethAddress').slice(0, 4).concat('...') +
           user.get('ethAddress').slice(38, 42)
       )
+      setUserBalance(balance.formatted)
     }
   }, [])
 
@@ -27,7 +30,6 @@ export default function HeaderAccount() {
       &nbsp;
       <p>|</p>&nbsp;
       <p>{userBalance}</p> &nbsp;
-      <p>{''}USDC</p>
     </div>
   )
 }

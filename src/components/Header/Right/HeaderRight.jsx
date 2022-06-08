@@ -48,7 +48,7 @@ export default function HeaderRight() {
           />
         )}
       </div>
-      <div className="hidden lg:flex">
+      <div className="hidden xl:flex">
         <HeaderNetwork />
       </div>
       <div className="hidden md:flex">
