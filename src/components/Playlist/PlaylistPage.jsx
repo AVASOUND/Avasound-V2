@@ -1,4 +1,4 @@
-import PlaylistOverview from '../../Test/PlaylistOverview'
+import PlaylistOverview from './PlaylistOverview'
 
 export default function AlbumPage() {
   return (

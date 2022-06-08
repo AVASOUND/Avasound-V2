@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
-import PlaylistItem from '../../Test/PlaylistItem'
+import PlaylistItem from '../Playlist/PlaylistItem'
 
 export default function Spotlight() {
   const { Moralis, user } = useMoralis()
