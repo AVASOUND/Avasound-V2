@@ -40,6 +40,15 @@ export default function AudioPlayer(props) {
       track[0].pause()
       setIsPlaying(false)
     }
+    setInterval(() => {
+      updateWidth()
+    }, 300)
+
+    function updateWidth() {
+      if (sound.playing()) {
+        let width = (sound.seek() / sound.duration()) * 100
+      }
+    }
   }
   // STOP TRACK
   function stopPlaying() {
@@ -55,7 +64,7 @@ export default function AudioPlayer(props) {
   }
 
   function skipThroughTrack() {
-    const seekPart = document.getElementById('seekPart').value
+    const seekPart = document.getElementById('progressBar').value
     track[0].seek(seekPart)
   }
 
@@ -120,7 +129,7 @@ export default function AudioPlayer(props) {
           </div>
           <input
             type="range"
-            id="seekPart"
+            id="progressBar"
             min="0"
             max="100"
             onChange={skipThroughTrack}

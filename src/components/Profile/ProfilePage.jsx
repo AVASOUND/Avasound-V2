@@ -14,7 +14,7 @@ const tabs = [
   { name: 'Collection', href: '#', current: false },
   // { name: 'Community', href: '#', current: false },
   // { name: 'Revenue', href: '#', current: false },
-  { name: 'Insights', href: '#', current: false },
+  // { name: 'Insights', href: '#', current: false },
 ]
 const profile = {
   name: 'FPX',
@@ -222,7 +222,8 @@ export default function ProfilePage() {
                         </dd>
                       </div>
                     ))} */}
-                    <div className="sm:col-span-2">
+                    {/* A B O U T MUTED */}
+                    {/* <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         About
                       </dt>
@@ -231,7 +232,7 @@ export default function ProfilePage() {
                         className="mt-1 max-w-prose space-y-5 text-sm text-gray-900"
                         dangerouslySetInnerHTML={{ __html: userInfo.about }}
                       />
-                    </div>
+                    </div> */}
                     <div className="sm:col-span-2">
                       <dt className="text-sm font-medium text-gray-500">
                         Spotlight
@@ -244,6 +245,7 @@ export default function ProfilePage() {
                       </dt>
 
                       <div className="my-4 mb-8 flex w-full flex-row flex-wrap items-center justify-center sm:flex-nowrap">
+                        <Albumcard />
                         <Albumcard />
                         <Albumcard />
                         <Albumcard />

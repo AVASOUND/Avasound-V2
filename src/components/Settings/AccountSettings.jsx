@@ -1,5 +1,4 @@
 import { ClipboardCheckIcon, ClipboardCopyIcon } from '@heroicons/react/outline'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useMoralis } from 'react-moralis'
 import ERC20Balances from '../../hooks/useERC20Balance'
@@ -67,53 +66,55 @@ export default function AccountSettings() {
           </div>
 
           {/* BAlances */}
-          <div>
+          <div className="flex flex-col">
             <label
               htmlFor="about"
               className="block text-sm font-medium text-gray-700"
             >
               Balances
             </label>
-            <div className="flex flex-col items-start justify-start">
+            <div className="flex flex-col items-start">
               <ERC20Balances />
               {/* AVAX Balance */}
-              <div className="mt-2 flex w-4/12 flex-row items-center justify-between space-x-8 text-sm text-gray-500">
-                <div className="flex w-6/12 flex-row items-center justify-evenly">
+              <div className="mt-2 flex w-6/12 flex-row items-center space-x-8 text-sm text-gray-500">
+                <div className="ml-4 flex w-6/12 flex-row items-center">
                   <div className="text-sm text-gray-500">AVAX</div>
-                  <Image src={'/avaxlogo.png'} height={15} width={15} />
+                  {/* <Image src={'/avaxlogo.png'} height={15} width={15} /> */}
                 </div>
                 <div className="text-sm text-gray-500">2,279,980.78</div>
               </div>
+
               {/* AVSO Balance */}
-              <div className="mt-2 flex w-4/12 flex-row items-center justify-between space-x-8 text-sm text-gray-500">
-                <div className="flex w-6/12 flex-row items-center justify-evenly">
+              <div className="mt-2 flex w-6/12 flex-row items-center space-x-8 text-sm text-gray-500">
+                <div className="ml-4 flex w-6/12 flex-row items-center">
                   <div className="text-sm text-gray-500">AVSX</div>
-                  <Image
+                  {/* <Image
                     src={'/avso-logo.png'}
                     height={15}
                     width={15}
                     className="rounded-full"
-                  />
+                  /> */}
                 </div>
                 <div className="text-sm text-gray-500">1,000,000,000.00</div>
               </div>
               {/* AVSO Balance */}
-              <div className="mt-2 flex w-4/12 flex-row items-center justify-between space-x-8 text-sm text-gray-500">
-                <div className="flex w-6/12 flex-row items-center justify-evenly">
+              <div className="mt-2 flex w-6/12 flex-row items-center space-x-8 text-sm text-gray-500">
+                <div className="ml-4 flex w-6/12 flex-row items-center">
                   <div className="text-sm text-gray-500">UST</div>
-                  <Image
+                  {/* <Image
                     src={'/avso-logo.png'}
                     height={15}
                     width={15}
                     className="rounded-full"
-                  />
+                  /> */}
                 </div>
                 <div className="text-sm text-gray-500">2,000.00</div>
               </div>
             </div>
           </div>
+
           {/* FIAT ONRAMP PLUGIN */}
-          <div>
+          {/* <div>
             <label
               htmlFor="about"
               className="block text-sm font-medium text-gray-700"
@@ -123,7 +124,7 @@ export default function AccountSettings() {
             <p className="mt-1 text-sm text-gray-500">
               Buy Crypto with your Creditcard.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

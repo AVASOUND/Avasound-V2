@@ -75,7 +75,7 @@ export default function ProfileSettings() {
   }
 
   return (
-    <div className="px-4 sm:p-6">
+    <div className="px-4 py-6 sm:p-6">
       <div>
         <h2 className="text-lg font-medium leading-6 text-gray-900">Profile</h2>
         <p className="mt-1 text-sm text-gray-500">
